@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -202,6 +202,26 @@ window.onload = wrap_img;
 <p>The pipeline consists of three models. The first model classifies flight profiles into developed (useful) and non-developed (non-useful) profiles. The second model performs multi-label classification on the developed profiles from the first model. The labels reflect whether a profile has canonical climb/cruise/descent segments. The last model classifies flight profiles with canonical cruise segments into classes that have extended cruises (useful) and shorter cruises (non-useful).</p>
 <p>Next, we prepare a significant unlabeled test dataset, consisting of data points that have never been seen by any of the models. We construct an end-to-end analytic inference process to simulate a production system, apply it to the test dataset, and obtain impressive results. Finally, we make recommendations to post-flight and other interested analysts.</p>
 <p>Keywords: Deep learning, Time series, Image Classification, CNN, RNN, Flight path</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1----BACKGROUND">1    BACKGROUND<a class="anchor-link" href="#1----BACKGROUND"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One of the important operational characteristics of a commercial airliner is its flight path. This term needs qualification though. The <em>lateral</em> flight path is the track projected onto a flat earth from above. To visualize the lateral flight path one can plot longitude versus latitude as flight time progresses. The <em>vertical</em> flight path, on the other hand, is the altitude profile (viewed from the side). This may be visualized by plotting altitude versus flight time. This project will focus on the vertical flight path. When we use the term flight path or flight profile in the rest of the document, we will always refer to the <em>vertical</em> flight path.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>During normal operation, an airliner has a predictable flight path. After <em>takeoff</em>, it climbs as quickly as possible (during the phase known as <em>climb</em>) until it reaches a point called the <em>top of climb</em>. The pilot then levels off and usually maintains this altitude for most of the flight (straight-and-level flight). This phase of the flight is known as <em>cruise</em>. When nearing its destination, a point is reached that is known as <em>top of descent</em>. At this point the pilot enters the <em>descent</em> phase. Finally, the flight ends during the <em>landing</em> of the aircraft.</p>
 
 </div>
 </div>
