@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Title",
-            "content": "&gt; &quot;Capstone Project for Master of Science in Data Science University of Wisconsin&quot; - toc: false - branch: master - badges: true - comments: true - categories: [fastpages, jupyter] - image: images/some_folder/your_image.png - hide: false - search_exclude: true - metadata_key1: metadata_value1 - metadata_key2: metadata_value2 . import pandas as pd . 1+1 . 2 .",
+            "content": "&gt; &quot;Capstone Project for Master of Science in Data Science University of Wisconsin&quot; - toc: true - branch: master - badges: true - comments: true - categories: [fastpages, jupyter] - image: images/some_folder/your_image.png - hide: false - search_exclude: true - metadata_key1: metadata_value1 - metadata_key2: metadata_value2 . import pandas as pd . 1+1 . 2 .",
             "url": "https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/MastersThesis.html",
             "relUrl": "/2020/09/15/MastersThesis.html",
             "date": " • Sep 15, 2020"
