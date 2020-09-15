@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis",
-            "content": "&gt; &quot;Capstone Project for Master of Science in Data Science University of Wisconsin&quot; - toc: true - branch: master - badges: true - comments: true - categories: [fastpages, jupyter] - image: images/some_folder/your_image.png - hide: true - search_exclude: true - metadata_key1: metadata_value1 - metadata_key2: metadata_value2 . import pandas as pd . 1+1 . 2 . Capstone Project for Master of Science in Data Science . University of Wisconsin &#8211; Oshkosh . Oshkosh, WI . 2019 .",
+            "content": "import pandas as pd . 1+1 . 2 . Capstone Project for Master of Science in Data Science . University of Wisconsin &#8211; Oshkosh . Oshkosh, WI . 2019 .",
             "url": "https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/MastersThesis.html",
             "relUrl": "/2020/09/15/MastersThesis.html",
             "date": " • Sep 15, 2020"
