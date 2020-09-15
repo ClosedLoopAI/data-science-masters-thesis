@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -233,16 +233,47 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://github.com/closedloopai/data-science-masters-thesis/raw/master/images/fig1-1.png" alt="" title="Figure 1.1 Typical and Non-typical vertical flight path examples (the non-typical path on the right has steps during cruise)" /></p>
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-1.png" alt="" title="Figure 1.1 Typical and Non-typical vertical flight path examples (the non-typical path on the right has steps during cruise)" /></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-1.png" alt="" title="Figure 1.1 Typical and Non-typical vertical flight path examples (the non-typical path on the right has steps during cruise)" /></p>
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-1.png" alt="" title="Figure 1.2 Non-typical vertical flight path examples due to insignificant cruise section (left) and missing data (right)" /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A large airline can operate thousands of flights a day and it is not feasible for the analyst to do this separation/classification in a manual way. What comes to mind next is to construct an algorithm to take on the task. However, it is not straightforward to come up with a traditional algorithm that would discriminate between typical and non-typical flight paths. A promising approach, of course, is to use supervised machine learning and show the model a large enough number of training examples.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <em>predictor points</em> for this problem are not structured vectors as is common in the case of structured data analysis. Here we have to use a time-series or sequence of scalar-valued predictor points and have the model learn the associated <em>target point</em> which is a single categorical “scalar” in each case. The values of the target points will be either <em>typical</em> (“typ”) or <em>non-typical</em> (“non”). We therefore have a classification problem: Given a flight path (as a scalar-valued time-series), the classifier should choose between typical and non-typical (scalar-valued and categorical).</p>
 
 </div>
 </div>
