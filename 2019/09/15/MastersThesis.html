@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      10 min read
     
 </span></p>
 
@@ -125,7 +125,8 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#1-BACKGROUND">1 BACKGROUND </a></li>
+<li class="toc-entry toc-h1"><a href="#1-BACKGROUND">1 BACKGROUND </a>
+<ul>
 <li class="toc-entry toc-h2"><a href="#1.1--VALUE-PROPOSITION">1.1  VALUE PROPOSITION </a></li>
 <li class="toc-entry toc-h2"><a href="#1.2-OBJECTIVES">1.2 OBJECTIVES </a>
 <ul>
@@ -133,6 +134,14 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#1.2.2-Developed/Non-developed-Model">1.2.2 Developed/Non-developed Model </a></li>
 <li class="toc-entry toc-h3"><a href="#1.2.3-Canonical-Segments-Model">1.2.3 Canonical Segments Model </a></li>
 <li class="toc-entry toc-h3"><a href="#1.2.4-Extended/Short-Cruises-Model">1.2.4 Extended/Short Cruises Model </a></li>
+<li class="toc-entry toc-h3"><a href="#1.2.3-End-to-end-Inference">1.2.3 End-to-end Inference </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#2-DATA-SOURCE">2 DATA SOURCE </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#2.1-SOURCES-OF-FLIGHT-DATA">2.1 SOURCES OF FLIGHT DATA </a></li>
 </ul>
 </li>
 </ul><!--
@@ -150,7 +159,7 @@ window.onload = wrap_img;
 <p>This project suggests an automatic way for post-flight analysts to undertake classification of flight profiles into useful versus non-useful classes. Instead of using the traditional algorithms for time-series classification, this work makes use of a relatively new approach: Before classifying, first transform a time-series into an image. This allows for the application of a well-developed set of algorithms from the area of computer vision. In this project, we perform a comparison of a number of these transformation techniques in terms of their associated image classification performance. We apply each transformation technique to the time-series dataset in turn, train a Convolutional Neural Network to do classification, and record the performance. Then we select the most performant transformation technique (a simple line plot that got a 100% F1-score) and use it in the rest of the analysis pipeline.</p>
 <p>The pipeline consists of three models. The first model classifies flight profiles into developed (useful) and non-developed (non-useful) profiles. The second model performs multi-label classification on the developed profiles from the first model. The labels reflect whether a profile has canonical climb/cruise/descent segments. The last model classifies flight profiles with canonical cruise segments into classes that have extended cruises (useful) and shorter cruises (non-useful).</p>
 <p>Next, we prepare a significant unlabeled test dataset, consisting of data points that have never been seen by any of the models. We construct an end-to-end analytic inference process to simulate a production system, apply it to the test dataset, and obtain impressive results. Finally, we make recommendations to post-flight and other interested analysts.</p>
-<p>Keywords: Deep learning, Time series, Image Classification, CNN, RNN, Flight path</p>
+<p><em>Keywords</em>: Deep learning, Time series, Image Classification, CNN, RNN, Flight path</p>
 
 </div>
 </div>
@@ -158,9 +167,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1-BACKGROUND">
+<h1 id="1-BACKGROUND">
 <a class="anchor" href="#1-BACKGROUND" aria-hidden="true"><span class="octicon octicon-link"></span></a>1 BACKGROUND<a class="anchor-link" href="#1-BACKGROUND"> </a>
-</h2>
+</h1>
 </div>
 </div>
 </div>
@@ -369,6 +378,57 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The final model in the pipeline will classify flight profiles with canonical <em>cruise</em> segments (regardless of the properties of climb or descent segments) into profiles that have extended cruises (useful) and shorter cruises (non-useful).</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.3-End-to-end-Inference">
+<a class="anchor" href="#1.2.3-End-to-end-Inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.3 End-to-end Inference<a class="anchor-link" href="#1.2.3-End-to-end-Inference"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final objective will be to prepare a significant <em>test</em> dataset, consisting of data points that have never been seen by any of the models. We will construct an end-to-end inference process to simulate a production system and apply it to the test dataset. Then we will make recommendations to post-flight analysts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2-DATA-SOURCE">
+<a class="anchor" href="#2-DATA-SOURCE" aria-hidden="true"><span class="octicon octicon-link"></span></a>2 DATA SOURCE<a class="anchor-link" href="#2-DATA-SOURCE"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At any moment, there is an average of about 10,000 airplanes in the sky carrying more than a million passengers. Hundreds of variables are usually monitored during a flight which often has a duration of a number of hours. Many of these variables are sampled at a rate of once per second or more frequently. A huge volume of data is generated during a typical flight. This suggests that the analysis of flight data should be of some importance. Moreover, it seems reasonable that flight data should be easily accessible. This is not always the case, however.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Flight data directly reveals how an airline operates its core business and how efficiently pilots perform their duties. This data is considered sensitive. Some of the collected flight data, however, is so basic that it is, in fact, publicly available. Examples are datapoints that contain altitude, latitude, longitude, and heading. This information is considered to be public in the interest of the safe operation of all aircraft.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.1-SOURCES-OF-FLIGHT-DATA">
+<a class="anchor" href="#2.1-SOURCES-OF-FLIGHT-DATA" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 SOURCES OF FLIGHT DATA<a class="anchor-link" href="#2.1-SOURCES-OF-FLIGHT-DATA"> </a>
+</h2>
 </div>
 </div>
 </div>
