@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      12 min read
+      13 min read
     
 </span></p>
 
@@ -146,14 +146,15 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#2.1.1---Publicly-available-flight-data">2.1.1   Publicly available flight data </a></li>
 <li class="toc-entry toc-h3"><a href="#2.1.2-In-depth-flight-data">2.1.2 In-depth flight data </a></li>
 <li class="toc-entry toc-h3"><a href="#2.1.3-Selected-data-source">2.1.3 Selected data source </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#3-DATA-PREPARATION">3 DATA PREPARATION </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#3.1-EXPLORATION-OF-DATA-STRUCTURE">3.1 EXPLORATION OF DATA STRUCTURE </a></li>
+<li class="toc-entry toc-h2"><a href="#3.2-CLEANING-PREPARATION-PROCEDURE">3.2 CLEANING PREPARATION PROCEDURE </a>
+<ul>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
@@ -567,72 +568,67 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>We selected the DASHlink source. The data is accessible from <a href="https://c3.nasa.gov/dashlink/projects/85/">https://c3.nasa.gov/dashlink/projects/85/</a>.  After clicking on “35 Datasets,” we used the data for “Tail 687.” This is a large amount of data (2,395.4 MB in zipped format) from which we sub-selected the first three datasets: Tail_687_1.zip, Tail_687_2.zip, and Tail_687_3.zip. The data can be downloaded from <a href="https://c3.nasa.gov/dashlink/resources/664/">Sample Flight Data</a>. There are 186 measured quantities (features) in the data.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<h1 id="3-DATA-PREPARATION">
+<a class="anchor" href="#3-DATA-PREPARATION" aria-hidden="true"><span class="octicon octicon-link"></span></a>3 DATA PREPARATION<a class="anchor-link" href="#3-DATA-PREPARATION"> </a>
+</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The preparation of data involves conversion, cleaning, resampling, and the transformation of time-series data to images.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<h2 id="3.1-EXPLORATION-OF-DATA-STRUCTURE">
+<a class="anchor" href="#3.1-EXPLORATION-OF-DATA-STRUCTURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 EXPLORATION OF DATA STRUCTURE<a class="anchor-link" href="#3.1-EXPLORATION-OF-DATA-STRUCTURE"> </a>
+</h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The structure of the raw data files is somewhat complicated. It is in MATLAB format and different variables were sampled at different sample rates. For familiarization, a thorough exploration of the structure of the raw data is provided in the notebook:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/10_mat2csv.ipynb">10_mat2csv.ipynb</a>.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The actual preparation of the data was divided into two procedures. This first takes care of general conversion and cleaning tasks. The second undertakes the transformation of the time-series in each file to its associated spatial signal or image. Each procedure occurs in its own notebook.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<h2 id="3.2-CLEANING-PREPARATION-PROCEDURE">
+<a class="anchor" href="#3.2-CLEANING-PREPARATION-PROCEDURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 CLEANING PREPARATION PROCEDURE<a class="anchor-link" href="#3.2-CLEANING-PREPARATION-PROCEDURE"> </a>
+</h2>
 </div>
 </div>
 </div>
