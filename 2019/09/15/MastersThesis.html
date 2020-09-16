@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      13 min read
+      15 min read
     
 </span></p>
 
@@ -132,14 +132,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#3-DATA-PREPARATION">3 DATA PREPARATION </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#3.1-EXPLORATION-OF-DATA-STRUCTURE">3.1 EXPLORATION OF DATA STRUCTURE </a></li>
-<li class="toc-entry toc-h2"><a href="#3.2-CLEANING-PREPARATION-PROCEDURE">3.2 CLEANING PREPARATION PROCEDURE </a>
+<li class="toc-entry toc-h2"><a href="#3.2-CLEANING-PREPARATION-PROCEDURE">3.2 CLEANING PREPARATION PROCEDURE </a></li>
+<li class="toc-entry toc-h2"><a href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE">3.3 TRANFORMATION PREPARATION PROCEDURE </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
@@ -614,54 +609,85 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The source data is in MATLAB format (.mat) after downloading and unzipping. The raw data acquired for this project were as follows:</p>
+<ul>
+<li>For training, including validation (data will be labeled)<ul>
+<li>Tail_687_1.zip (651 flights)</li>
+<li>Tail_687_2.zip (602 flights)</li>
+</ul>
+</li>
+<li>For testing, i.e. simulation of production (data will not be labeled)<ul>
+<li>Tail_687_3.zip (582 flights)</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>After downloading and unzipping, the files in each folder were converted separately (from .mat to .csv) by means of the notebook:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/10_mat2csv-2.ipynb">10_mat2csv-2.ipynb</a></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The output .csv files were eventually moved to either the Train (1,253 files) or Test (582 files) folders.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The cleaning preparation procedure can be summarized as follows:</p>
+<ul>
+<li>Conversion:<ul>
+<li>Using the scipy.io Python package, the data is converted from MATLAB format to a simple .csv format.</li>
+</ul>
+</li>
+<li>Make a dataframe for each sample rate:<ul>
+<li>All datapoints for a specific sample rate are collected in a dataframe. The rates available are referred to as 0.25, 1, 2, 4, 8, and 16.</li>
+<li>All dataframes are combined into a single dataframe.</li>
+</ul>
+</li>
+<li>Remove invalid time values:<ul>
+<li>Files with invalid values for year, month, day, hour, minute, or second are removed in this step.</li>
+</ul>
+</li>
+<li>Output a csv file from the dataframe</li>
+<li>Build date-time index<ul>
+<li>Being a time-series, it is important to index the data in the form of a date-time index. This is done by reading the exported file back into a dataframe.</li>
+</ul>
+</li>
+<li>Down-sample to 1 minute rate:<ul>
+<li>The data in each file’s dataframe is down-sampled from a variable’s specific sample rate to a 1 minute rate. This reduces the intensity of the data as well as provides for a more realistic sample rate for the purposes of this study. </li>
+<li>Another csv file is exported using the same name but having a “-1min” appended to the name.</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<h2 id="3.3-TRANFORMATION-PREPARATION-PROCEDURE">
+<a class="anchor" href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 TRANFORMATION PREPARATION PROCEDURE<a class="anchor-link" href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE"> </a>
+</h2>
 </div>
 </div>
 </div>
