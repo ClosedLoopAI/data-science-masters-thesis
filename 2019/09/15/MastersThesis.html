@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      29 min read
+      30 min read
     
 </span></p>
 
@@ -156,7 +156,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h4"><a href="#4.1.3.5-Recurrence-Plot-(RP)">4.1.3.5 Recurrence Plot (RP) </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h3"><a href="#4.1.4-Convolutional-Neural-Networks-(CNNs)">4.1.4 Convolutional Neural Networks (CNNs) </a></li>
+<li class="toc-entry toc-h3"><a href="#4.1.4-Convolutional-Neural-Networks-(CNNs)">4.1.4 Convolutional Neural Networks (CNNs) </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#4.1.4.1-Convolution-layers">4.1.4.1 Convolution layers </a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -982,7 +986,7 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 $$ \Large
 \begin{align}
-\tilde{x}^{&lt;i&gt;} = \frac{(x^{&lt;i&gt;} - \text{max}(X)) + (x^{&lt;i&gt;} - \text{min}(X))}{\text{max}(X)-\text{min}(X)} \text{ (1)}
+\tilde{x}^{&lt;i&gt;} = \frac{(x^{&lt;i&gt;} - \text{max}(X)) + (x^{&lt;i&gt;} - \text{min}(X))}{\text{max}(X)-\text{min}(X)} \qquad(1)
 \end{align}
 $$
 </div>
@@ -1001,8 +1005,8 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 $$ \Large
 \begin{align}
-\phi &amp;= \text{arccos}(\tilde{x}^{&lt;i&gt;}), -1 \le \tilde{x}^{&lt;i&gt;} \in \tilde{X} \text{ (2a)} \\
-r &amp;= \frac{t^{&lt;i&gt;}}{N}, t^{&lt;i&gt;} \in \mathbb{N} \text{ (2b)}
+\phi &amp;= \text{arccos}(\tilde{x}^{&lt;i&gt;}), -1 \le \tilde{x}^{&lt;i&gt;} \in \tilde{X} \qquad\qquad\;\,(2a) \\
+r &amp;= \frac{t^{&lt;i&gt;}}{N}, t^{&lt;i&gt;} \in \mathbb{N} \qquad\qquad\qquad\qquad\qquad\qquad\quad(2b)
 \end{align}
 $$
 </div>
@@ -1050,7 +1054,7 @@ G =
 \text{cos}(\phi_2+\phi_1) &amp; \cdots &amp; \text{cos}(\phi_2+\phi_m)\\
 \vdots &amp; \ddots &amp; \vdots \\
 \text{cos}(\phi_m+\phi_1) &amp; \cdots &amp; \text{cos}(\phi_m+\phi_m)
-\end{bmatrix} \text{ (3)}
+\end{bmatrix} \qquad\qquad(3)
 $$
 </div>
 </div>
@@ -1082,7 +1086,7 @@ G_{GASF} =
 \text{cos}(\phi_2+\phi_1) &amp; \cdots &amp; \text{cos}(\phi_2+\phi_m)\\
 \vdots &amp; \ddots &amp; \vdots \\
 \text{cos}(\phi_m+\phi_1) &amp; \cdots &amp; \text{cos}(\phi_m+\phi_m)
-\end{bmatrix} \text{ (4)}
+\end{bmatrix} \qquad(4)
 $$
 </div>
 </div>
@@ -1130,7 +1134,7 @@ G_{GADF} =
 \text{sin}(\phi_2-\phi_1) &amp; \cdots &amp; \text{sin}(\phi_2-\phi_m)\\
 \vdots &amp; \ddots &amp; \vdots \\
 \text{sin}(\phi_m-\phi_1) &amp; \cdots &amp; \text{sin}(\phi_m-\phi_m)
-\end{bmatrix} \text{ (5)}
+\end{bmatrix} \qquad\qquad(5)
 $$
 </div>
 </div>
@@ -1186,7 +1190,7 @@ w_{ij|x_1 \in q_i, x_1 \in q_j} &amp; \cdots &amp; w_{ij|x_1 \in q_i, x_m \in q_
 w_{ij|x_2 \in q_i, x_1 \in q_j} &amp; \cdots &amp; w_{ij|x_2 \in q_i, x_m \in q_j} \\
 \vdots &amp; \ddots &amp; \vdots \\
 w_{ij|x_m \in q_i, x_1 \in q_j} &amp; \cdots &amp; w_{ij|x_m \in q_i, x_m \in q_j}
-\end{bmatrix} \text{ (6)}
+\end{bmatrix} \qquad\qquad(6)
 $$
 </div>
 </div>
@@ -1262,7 +1266,7 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 $$ \Large
-R_{ij} = H(\epsilon - \Vert \pmb{s}_i-\pmb{s}_j \Vert) \text{ (7)}
+R_{ij} = H(\epsilon - \Vert \pmb{s}_i-\pmb{s}_j \Vert) \qquad\qquad\qquad(7)
 $$
 </div>
 </div>
@@ -1311,7 +1315,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The first paper that really showed the benefits of using CNNs for image classification was that of Krizhevsky, Sutskever, and Hinton (2012). A follow-up paper provided updates (Krizhevsky, Sutskever &amp; Hinton, 2017). Convolutional Neural Networks are structured in a way that enables them to exploit translational invariance. They extract features through receptive fields. Significant weight sharing drastically reduces the number of parameters involved in training them. They are the state-of-the-art architecture in the handling of computer vision tasks.</p>
 
 </div>
 </div>
@@ -1319,7 +1323,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>A CNN consists of different types of layers. The most important ones are <em>convolution</em>, <em>pooling</em>, and <em>dense</em> layers. Convolution and pooling layers often alternate during the initial layers. Near the end, a number of dense layers usually occurs which often ends with a sigmoid or softmax layer in the case of a classification CNN.</p>
 
 </div>
 </div>
@@ -1327,7 +1331,16 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<h4 id="4.1.4.1-Convolution-layers">
+<a class="anchor" href="#4.1.4.1-Convolution-layers" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.4.1 Convolution layers<a class="anchor-link" href="#4.1.4.1-Convolution-layers"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Convolution layers are described by the equations:</p>
 
 </div>
 </div>
@@ -1335,23 +1348,19 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
+$$ \Large
+\begin{align}
+\mathbf{Z}^{[l]} &amp;= \mathbf{W}^{[l]} \ast \mathbf{A}^{[l-1]} + \mathbf{b}^{[l]} \qquad(8) \\
+\mathbf{A}^{[l]} &amp;= g^{[l]}(\mathbf{Z}^{[l]}) \qquad\qquad\qquad\qquad\,(9)
+\end{align}
+$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The <em>filter</em> (also called <em>kernel</em>) of a convolution layer is indicated by $\mathbf{W}^{[l]}$ where $l$ is the index of the layer. $\mathbf{W}^{[l]}$ is tensor-valued with each element $w_{ijk}^{[l]} \in \mathbb{R}$. The values of $w_{ijk}^{[l]}$ are learned by the training process. The <em>dimensions</em> (or <em>shape</em>) of $\mathbf{W}^{[l]}$ are $n_C^{[l-1]} \times f^{[l]} \times f^{[l]}$ where $n_C^{[l-1]}$ is the <em>number of filters</em> (also the <em>number of channels</em>) in the previous layer. The filter size is indicated by $f^{[l]}$. If we have multiple filters in layer $l$, the dimensions of $\mathbf{W}^{[l]}$ expand to $n_C^{[l]} \times n_C^{[l-1]} \times f^{[l]} \times f^{[l]}$ making $\mathbf{W}^{[l]}$ a vector of tensors.</p>
 
 </div>
 </div>
