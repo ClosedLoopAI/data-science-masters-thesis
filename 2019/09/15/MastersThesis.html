@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      19 min read
+      21 min read
     
 </span></p>
 
@@ -141,14 +141,12 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#4.1-TIME-SERIES-CLASSIFICATION">4.1 TIME-SERIES CLASSIFICATION </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#4.1.1-Recurrent-Neural-Networks-(RNNs)">4.1.1 Recurrent Neural Networks (RNNs) </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#4.1.2-Disadvantages-of-RNNs">4.1.2 Disadvantages of RNNs </a></li>
+<li class="toc-entry toc-h3"><a href="#4.1.3-Time-series-transformation-to-images">4.1.3 Time-series transformation to images </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image">4.1.3.1 Altitude line plots transformed into an image </a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
@@ -850,8 +848,16 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+<p>In the context of our classification problem, the input is a sequence of scalar-valued continuous predictor points. The output is a single scalar-valued categorical target point (after being processed by a sigmoid function). The values of a target point are the classes, either <em>typ</em> or <em>non</em>. This type of RNN is also known as a <em>many-to-one</em> RNN because a series of input data points leads to a single output datapoint.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.2-Disadvantages-of-RNNs">
+<a class="anchor" href="#4.1.2-Disadvantages-of-RNNs" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.2 Disadvantages of RNNs<a class="anchor-link" href="#4.1.2-Disadvantages-of-RNNs"> </a>
 </h3>
 </div>
 </div>
@@ -859,8 +865,24 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+<p>In 2015 RNNs made a dramatic come-back (Karpathy, 2015). A year or two after this the <em>ResNet</em> (He, Zhang, Ren &amp; Sun, 2016) and the <em>attention</em> mechanism (Xu et al., 2015) were invented. This provided an expanded context for the evaluation of RNNs and the Long Short Term Memory (LSTM). A further two years later saw the beginning of the decline of the popularity of the RNN and the LSTM in some disciplines.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Culurciell (2018) points out some shortcomings of RNNs in his article “The fall of RNN / LSTM.” In this regard, he mentions the problem of vanishing gradients and that RNNs are not hardware friendly. Fawaz et al. (2019) mostly agree with these sentiments and also mention that an RNN’s architecture was designed for the prediction of the next element in a sequence, not necessarily ideal for the classification task. RNNs are also harder to train and parallelize.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.3-Time-series-transformation-to-images">
+<a class="anchor" href="#4.1.3-Time-series-transformation-to-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.3 Time-series transformation to images<a class="anchor-link" href="#4.1.3-Time-series-transformation-to-images"> </a>
 </h3>
 </div>
 </div>
@@ -868,54 +890,25 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>Before we look at Convolutional Neural Networks (CNNs), we will discuss how a time-series can be transformed into an image. The purpose of this transformation is to enable computers to “visually” recognize and classify the time-series signal. By doing this transformation we can take advantage of the impressive successes of deep learning architectures (using CNNs) in computer vision. This allows us to identify the structure of a time-series, leading to more effective classification.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>We will start by plotting the altitude time-series of a flight. This will be the first (and most simple) transformation. Then we make the image slightly richer by filling the area under the curve. After this, a number of more sophisticated transformation techniques will be used to transform the same time-series into the following representations: Gramian angular summation field, Gramian angular difference field, Markov transition field, and a recurrence plot.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<h4 id="4.1.3.1-Altitude-line-plots-transformed-into-an-image">
+<a class="anchor" href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.3.1 Altitude line plots transformed into an image<a class="anchor-link" href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image"> </a>
+</h4>
 </div>
 </div>
 </div>
