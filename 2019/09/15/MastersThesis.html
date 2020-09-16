@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Capstone Project for Master of Science in Data Science (University of Wisconsin)" />
+<meta property="og:description" content="Capstone Project for Master of Science in Data Science (University of Wisconsin)" />
+<link rel="canonical" href="https://closedloopai.github.io/data-science-masters-thesis/2019/09/15/MastersThesis.html" />
+<meta property="og:url" content="https://closedloopai.github.io/data-science-masters-thesis/2019/09/15/MastersThesis.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-15T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://closedloopai.github.io/data-science-masters-thesis/2019/09/15/MastersThesis.html","@type":"BlogPosting","headline":"Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis","dateModified":"2019-09-15T00:00:00-05:00","datePublished":"2019-09-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://closedloopai.github.io/data-science-masters-thesis/2019/09/15/MastersThesis.html"},"description":"Capstone Project for Master of Science in Data Science (University of Wisconsin)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/data-science-masters-thesis/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://closedloopai.github.io/data-science-masters-thesis/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/data-science-masters-thesis/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/data-science-masters-thesis/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/data-science-masters-thesis/about/">About Me</a><a class="page-link" href="/data-science-masters-thesis/search/">Search</a><a class="page-link" href="/data-science-masters-thesis/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis</h1><p class="page-description">Capstone Project for Master of Science in Data Science (University of Wisconsin)</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-09-15T00:00:00-05:00" itemprop="datePublished">
+        Sep 15, 2019
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      21 min read
+    
+</span></p>
+
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#1-BACKGROUND">1 BACKGROUND </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1.1--VALUE-PROPOSITION">1.1  VALUE PROPOSITION </a></li>
+<li class="toc-entry toc-h2"><a href="#1.2-OBJECTIVES">1.2 OBJECTIVES </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#1.2.1-Transformation-Techniques">1.2.1 Transformation Techniques </a></li>
+<li class="toc-entry toc-h3"><a href="#1.2.2-Developed/Non-developed-Model">1.2.2 Developed/Non-developed Model </a></li>
+<li class="toc-entry toc-h3"><a href="#1.2.3-Canonical-Segments-Model">1.2.3 Canonical Segments Model </a></li>
+<li class="toc-entry toc-h3"><a href="#1.2.4-Extended/Short-Cruises-Model">1.2.4 Extended/Short Cruises Model </a></li>
+<li class="toc-entry toc-h3"><a href="#1.2.3-End-to-end-Inference">1.2.3 End-to-end Inference </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#2-DATA-SOURCE">2 DATA SOURCE </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#2.1-SOURCES-OF-FLIGHT-DATA">2.1 SOURCES OF FLIGHT DATA </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#2.1.1---Publicly-available-flight-data">2.1.1   Publicly available flight data </a></li>
+<li class="toc-entry toc-h3"><a href="#2.1.2-In-depth-flight-data">2.1.2 In-depth flight data </a></li>
+<li class="toc-entry toc-h3"><a href="#2.1.3-Selected-data-source">2.1.3 Selected data source </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#3-DATA-PREPARATION">3 DATA PREPARATION </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#3.1-EXPLORATION-OF-DATA-STRUCTURE">3.1 EXPLORATION OF DATA STRUCTURE </a></li>
+<li class="toc-entry toc-h2"><a href="#3.2-CLEANING-PREPARATION-PROCEDURE">3.2 CLEANING PREPARATION PROCEDURE </a></li>
+<li class="toc-entry toc-h2"><a href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE">3.3 TRANFORMATION PREPARATION PROCEDURE </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#4-MODELING">4 MODELING </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#4.1-TIME-SERIES-CLASSIFICATION">4.1 TIME-SERIES CLASSIFICATION </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#4.1.1-Recurrent-Neural-Networks-(RNNs)">4.1.1 Recurrent Neural Networks (RNNs) </a></li>
+<li class="toc-entry toc-h3"><a href="#4.1.2-Disadvantages-of-RNNs">4.1.2 Disadvantages of RNNs </a></li>
+<li class="toc-entry toc-h3"><a href="#4.1.3-Time-series-transformation-to-images">4.1.3 Time-series transformation to images </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image">4.1.3.1 Altitude line plots transformed into an image </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2019-09-15-MastersThesis.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This project suggests an automatic way for post-flight analysts to undertake classification of flight profiles into useful versus non-useful classes. Instead of using the traditional algorithms for time-series classification, this work makes use of a relatively new approach: Before classifying, first transform a time-series into an image. This allows for the application of a well-developed set of algorithms from the area of computer vision. In this project, we perform a comparison of a number of these transformation techniques in terms of their associated image classification performance. We apply each transformation technique to the time-series dataset in turn, train a Convolutional Neural Network to do classification, and record the performance. Then we select the most performant transformation technique (a simple line plot that got a 100% F1-score) and use it in the rest of the analysis pipeline.</p>
+<p>The pipeline consists of three models. The first model classifies flight profiles into developed (useful) and non-developed (non-useful) profiles. The second model performs multi-label classification on the developed profiles from the first model. The labels reflect whether a profile has canonical climb/cruise/descent segments. The last model classifies flight profiles with canonical cruise segments into classes that have extended cruises (useful) and shorter cruises (non-useful).</p>
+<p>Next, we prepare a significant unlabeled test dataset, consisting of data points that have never been seen by any of the models. We construct an end-to-end analytic inference process to simulate a production system, apply it to the test dataset, and obtain impressive results. Finally, we make recommendations to post-flight and other interested analysts.</p>
+<p><em>Keywords</em>: Deep learning, Time series, Image Classification, CNN, RNN, Flight path</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="1-BACKGROUND">
+<a class="anchor" href="#1-BACKGROUND" aria-hidden="true"><span class="octicon octicon-link"></span></a>1 BACKGROUND<a class="anchor-link" href="#1-BACKGROUND"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One of the important operational characteristics of a commercial airliner is its flight path. This term needs qualification though. The <em>lateral</em> flight path is the track projected onto a flat earth from above. To visualize the lateral flight path one can plot longitude versus latitude as flight time progresses. The <em>vertical</em> flight path, on the other hand, is the altitude profile (viewed from the side). This may be visualized by plotting altitude versus flight time. This project will focus on the vertical flight path. When we use the term flight path or flight profile in the rest of the document, we will always refer to the <em>vertical</em> flight path.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>During normal operation, an airliner has a predictable flight path. After <em>takeoff</em>, it climbs as quickly as possible (during the phase known as <em>climb</em>) until it reaches a point called the <em>top of climb</em>. The pilot then levels off and usually maintains this altitude for most of the flight (straight-and-level flight). This phase of the flight is known as <em>cruise</em>. When nearing its destination, a point is reached that is known as <em>top of descent</em>. At this point the pilot enters the <em>descent</em> phase. Finally, the flight ends during the <em>landing</em> of the aircraft.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Post-flight data analysts are often interested in separating useful from non-useful (or less useful) flight paths prior to a specific analysis. In this document, and its associated analysis code, useful profiles will be labeled as <em>typical</em> (abbreviated as “typ”) while less useful, non-useful, or anomalous flight paths (for a specific analysis) will be labeled as <em>non-typical</em> (abbreviated as “non”). A <em>typical</em> flight profile, in the context of this document, has a relatively extended cruise section without changes in altitude (see Figure 1.1). This characteristic will make it useful for certain types of analyses, for example, to estimate hard-to-measure variables like drag and exact angle-of-attack, as well as estimations of the positions of vertical flight control surfaces (even though they are measured). Flight paths could also be considered <em>non-typical</em> due to insignificant (i.e. too short) cruise segments and missing data (see Figure 1.2). Note that our definition of usefulness is by no means universal in post-flight analysis.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-1.png" alt="Figure 1.1 Typical and Non-typical vertical flight path examples (the non-typical path on the right has steps during cruise)" title="Figure 1.1 Typical and Non-typical vertical flight path examples (the non-typical path on the right has steps during cruise)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A large airline can operate thousands of flights a day and it is not feasible for the analyst to do this separation/classification in a manual way. What comes to mind next is to construct an algorithm to take on the task. However, it is not straightforward to come up with a traditional algorithm that would discriminate between typical and non-typical flight paths. A promising approach, of course, is to use supervised machine learning and show the model a large enough number of training examples.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-2.png" alt="Figure 1.2 Non-typical vertical flight path examples due to insignificant cruise section (left) and missing data (right)" title="Figure 1.2 Non-typical vertical flight path examples due to insignificant cruise section (left) and missing data (right)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <em>predictor points</em> for this problem are not structured vectors as is common in the case of structured data analysis. Here we have to use a time-series or sequence of scalar-valued predictor points and have the model learn the associated <em>target point</em> which is a single categorical “scalar” in each case. The values of the target points will be either <em>typical</em> (“typ”) or <em>non-typical</em> (“non”). We therefore have a classification problem: Given a flight path (as a scalar-valued time-series), the classifier should choose between typical and non-typical (scalar-valued and categorical).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the deep learning subfield, it is common to use a <em>Recurrent Neural Network</em> (RNN) for this kind of problem. See, for example, Hüsken and Stagge (2003), and also Sun, Di, and Fang (2019). However, the training of an RNN can be challenging due to high demands on computing resources including processing power, processing time, and memory. There is also the vanishing/exploding gradients problem, addressed in various ways, but is often still lurking in the background.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider how easy it is for the human visual system to handle this problem, and in a fraction of a second. In fact, this is exactly how analysts often do their classifications manually. This suggests that we might benefit from tapping into the biological mechanisms for analyzing visual data (i.e. images). Recently, some researchers started adopting this insight. See, for example, Wang and Oates (2015a). The essence of this line of thought is the following: Instead of analyzing a sequence of 1-D or scalar-valued <em>temporal</em> data points, we transform them into a single 2-D or matrix-valued <em>spatial</em> data point. The spatial data point is simply an image which means the time-series signal has been transformed into an image (see Figure 1.3 for an example of a transformation technique). This allows for the application of a large body of relatively well-developed computer vision techniques to the above-stated problem. Most of these techniques center around the <em>Convolutional Neural Network</em> (CNN). In summary, the <em>time-series classification</em> problem has been converted to an <em>image classification</em> problem.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig1-3.png" alt="Figure 1.3 Example of Gramian Angular Summation Field (GASF) transformation of a time-series" title="Figure 1.3 Example of Gramian Angular Summation Field (GASF) transformation of a time-series"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This comparative case study will not attempt to compare the difference between using RNNs and CNNs to solve the flight path classification problem. Instead, it will compare the impact of a number of transformation techniques (to transform the time-series into an image) on the image classification performance. After application of each transformation technique to the training dataset of flight path time-series, a CNN will be trained which will serve as a classifier. The performance of the classifiers will be compared. <em>Transfer learning</em> will be used to speed up the training of the CNNs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.1--VALUE-PROPOSITION">
+<a class="anchor" href="#1.1--VALUE-PROPOSITION" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1  VALUE PROPOSITION<a class="anchor-link" href="#1.1--VALUE-PROPOSITION"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This project seeks to provide value in a number of ways:</p>
+<ul>
+<li>Demonstrates how flight profile time-series can be turned into images for more effective classification</li>
+<li>Identifies the best transformation technique for flight path time-series</li>
+<li>Reduces the need for (or does away with) hand classification of flight profiles. This will save significant amounts of time for post-flight analysts.</li>
+<li>Provides an analytic process that can be adopted as a tool by analysts. They can then implement the analytical process in their own preferred technology environment.</li>
+<li>Demonstrates how transfer learning greatly speedup the time to train a CNN neural network for the classification of profiles. This should encourage analysts that might still be skeptical about the use of deep learning for everyday tasks, and save them even more time.</li>
+<li>Demonstrates how post-flight analysis can be undertaken by ordinary analysts. This data is usually considered sensitive by airlines and are not published. A publicly available de-identified source of flight data is used and the project demonstrates how this provides a valuable opportunity for analysts.</li>
+<li>Encourages data scientists to undertake post-flight analyses. This is especially needed in the area of airline safety. In addition, and when allowed by airline policies and pilot unions, post-flight analysis can be a valuable tool in the performance evaluation of pilots. This can have a positive impact on the profitability of an airline.</li>
+<li>Satisfies my personal interest in the analysis of flight data as well as the application of cutting edge analysis techniques in the form of deep learning.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.2-OBJECTIVES">
+<a class="anchor" href="#1.2-OBJECTIVES" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 OBJECTIVES<a class="anchor-link" href="#1.2-OBJECTIVES"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To setup an analytics pipeline for analysts, the foremost objective is to find the best transformation technique to convert flight path time-series into images. The rest of the objectives provide the components for the construction of the pipeline.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.1-Transformation-Techniques">
+<a class="anchor" href="#1.2.1-Transformation-Techniques" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1 Transformation Techniques<a class="anchor-link" href="#1.2.1-Transformation-Techniques"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will perform a comparison of a number of transformation techniques in terms of their associated image classification performance. To do this we will apply each transformation technique to the cleaned time-series dataset in turn, train a CNN to do classification (using supervised learning), and record the performance. Then we will select the most performant transformation technique and use this technique in the rest of the analysis pipeline. The following transformation techniques will be considered:</p>
+<ul>
+<li>Altitude line plots transformed into an image</li>
+<li>Altitude area plots transformed into an image</li>
+<li>Gramian Angular Summation Field (GASF)</li>
+<li>Gramian Angular Difference Field (GADF)</li>
+<li>Markov Transition Field (MTF)</li>
+<li>Recurrence Plot (RP)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.2-Developed/Non-developed-Model">
+<a class="anchor" href="#1.2.2-Developed/Non-developed-Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.2 Developed/Non-developed Model<a class="anchor-link" href="#1.2.2-Developed/Non-developed-Model"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first model in the analytics pipeline will classify flight profiles into developed (useful) and non-developed (non-useful) profiles. We will also consider the use of <em>anomaly detection</em> by means of an <em>auto-encoder</em> (instead of a classification algorithm) due to a significant class imbalance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.3-Canonical-Segments-Model">
+<a class="anchor" href="#1.2.3-Canonical-Segments-Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.3 Canonical Segments Model<a class="anchor-link" href="#1.2.3-Canonical-Segments-Model"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The next model in the pipeline will perform multi-label classification of the developed profiles. The labels used here will reflect whether a profile has <em>canonical</em> climb, cruise, and descent segments. In this context, canonical means relatively smooth.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.4-Extended/Short-Cruises-Model">
+<a class="anchor" href="#1.2.4-Extended/Short-Cruises-Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.4 Extended/Short Cruises Model<a class="anchor-link" href="#1.2.4-Extended/Short-Cruises-Model"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final model in the pipeline will classify flight profiles with canonical <em>cruise</em> segments (regardless of the properties of climb or descent segments) into profiles that have extended cruises (useful) and shorter cruises (non-useful).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.3-End-to-end-Inference">
+<a class="anchor" href="#1.2.3-End-to-end-Inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.3 End-to-end Inference<a class="anchor-link" href="#1.2.3-End-to-end-Inference"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final objective will be to prepare a significant <em>test</em> dataset, consisting of data points that have never been seen by any of the models. We will construct an end-to-end inference process to simulate a production system and apply it to the test dataset. Then we will make recommendations to post-flight analysts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2-DATA-SOURCE">
+<a class="anchor" href="#2-DATA-SOURCE" aria-hidden="true"><span class="octicon octicon-link"></span></a>2 DATA SOURCE<a class="anchor-link" href="#2-DATA-SOURCE"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At any moment, there is an average of about 10,000 airplanes in the sky carrying more than a million passengers. Hundreds of variables are usually monitored during a flight which often has a duration of a number of hours. Many of these variables are sampled at a rate of once per second or more frequently. A huge volume of data is generated during a typical flight. This suggests that the analysis of flight data should be of some importance. Moreover, it seems reasonable that flight data should be easily accessible. This is not always the case, however.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Flight data directly reveals how an airline operates its core business and how efficiently pilots perform their duties. This data is considered sensitive. Some of the collected flight data, however, is so basic that it is, in fact, publicly available. Examples are datapoints that contain altitude, latitude, longitude, and heading. This information is considered to be public in the interest of the safe operation of all aircraft.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.1-SOURCES-OF-FLIGHT-DATA">
+<a class="anchor" href="#2.1-SOURCES-OF-FLIGHT-DATA" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 SOURCES OF FLIGHT DATA<a class="anchor-link" href="#2.1-SOURCES-OF-FLIGHT-DATA"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The gradual adoption of <em>Automatic Dependent Surveillance – Broadcast</em> (ADS–B) by airlines is leading to the wide availability of flight data in the public domain. Wikipedia gives a good overview of this technology ("Automatic dependent surveillance – broadcast," n.d.). The ADS-B technology allows an aircraft to use satellite navigation to find its position. It then broadcasts this information periodically which enables ground stations to track it. This method is used as a replacement for secondary surveillance radar (SSR) and does not depend on an interrogation signal from the ground. The data that is broadcast can also update the situational awareness of other aircraft in the area.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.1.1---Publicly-available-flight-data">
+<a class="anchor" href="#2.1.1---Publicly-available-flight-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.1   Publicly available flight data<a class="anchor-link" href="#2.1.1---Publicly-available-flight-data"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The increasing use of ADS-B has led to many flight tracking sites that publish basic flight data for consumption by the public. See "This Is How Flight Tracking Sites Work" (Rabinowitz, 2017). This data is relatively superficial and usually consists of a dozen or so measured quantities. Some of the more prominent players are:</p>
+<ul>
+<li>ADS-B Exchange at <a href="https://www.adsbexchange.com/">https://www.adsbexchange.com/</a>  </li>
+<li>OPENSKY at <a href="https://opensky-network.org/">https://opensky-network.org/</a> </li>
+<li>FlightAware at <a href="https://flightaware.com/">https://flightaware.com/</a> </li>
+<li>ADSBHub at <a href="http://www.adsbhub.org/">http://www.adsbhub.org/</a> </li>
+<li>planefinder at <a href="https://planefinder.net/">https://planefinder.net/</a> </li>
+<li>Aireon at <a href="https://aireon.com/">https://aireon.com/</a> </li>
+<li>flightradar24 at <a href="https://www.flightradar24.com/">https://www.flightradar24.com/</a>
+</li>
+<li>RadarBox at <a href="https://www.radarbox24.com/">https://www.radarbox24.com/</a> </li>
+</ul>
+<p>Even though these sources provide the altitude data needed for the analyses described in this document, we chose to not use any of them. Follow-up analyses often require more in-depth flight data that is not provided by any of the ADS-B sources. We also want to provide an example of how to use a substantial flight data source consisting of in-depth data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.1.2-In-depth-flight-data">
+<a class="anchor" href="#2.1.2-In-depth-flight-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.2 In-depth flight data<a class="anchor-link" href="#2.1.2-In-depth-flight-data"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Detailed, in-depth flight data is generally unavailable to the public. There are a few sources that make de-indentified data available but usefulness varies. A few sources are:</p>
+<ul>
+<li>DASHlink at <a href="https://c3.nasa.gov/dashlink/">https://c3.nasa.gov/dashlink/</a> </li>
+<li>IATA at <a href="https://www.iata.org/services/statistics/gadm/Pages/fdx.aspx">https://www.iata.org/services/statistics/gadm/Pages/fdx.aspx</a> </li>
+<li>Data.gov at <a href="https://www.data.gov/">https://www.data.gov/</a> with a search term of “ads-b”</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.1.3-Selected-data-source">
+<a class="anchor" href="#2.1.3-Selected-data-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.3 Selected data source<a class="anchor-link" href="#2.1.3-Selected-data-source"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We selected the DASHlink source. The data is accessible from <a href="https://c3.nasa.gov/dashlink/projects/85/">https://c3.nasa.gov/dashlink/projects/85/</a>.  After clicking on “35 Datasets,” we used the data for “Tail 687.” This is a large amount of data (2,395.4 MB in zipped format) from which we sub-selected the first three datasets: Tail_687_1.zip, Tail_687_2.zip, and Tail_687_3.zip. The data can be downloaded from <a href="https://c3.nasa.gov/dashlink/resources/664/">Sample Flight Data</a>. There are 186 measured quantities (features) in the data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3-DATA-PREPARATION">
+<a class="anchor" href="#3-DATA-PREPARATION" aria-hidden="true"><span class="octicon octicon-link"></span></a>3 DATA PREPARATION<a class="anchor-link" href="#3-DATA-PREPARATION"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The preparation of data involves conversion, cleaning, resampling, and the transformation of time-series data to images.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.1-EXPLORATION-OF-DATA-STRUCTURE">
+<a class="anchor" href="#3.1-EXPLORATION-OF-DATA-STRUCTURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 EXPLORATION OF DATA STRUCTURE<a class="anchor-link" href="#3.1-EXPLORATION-OF-DATA-STRUCTURE"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The structure of the raw data files is somewhat complicated. It is in MATLAB format and different variables were sampled at different sample rates. For familiarization, a thorough exploration of the structure of the raw data is provided in the notebook:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/10_mat2csv.ipynb">10_mat2csv.ipynb</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The actual preparation of the data was divided into two procedures. This first takes care of general conversion and cleaning tasks. The second undertakes the transformation of the time-series in each file to its associated spatial signal or image. Each procedure occurs in its own notebook.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.2-CLEANING-PREPARATION-PROCEDURE">
+<a class="anchor" href="#3.2-CLEANING-PREPARATION-PROCEDURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 CLEANING PREPARATION PROCEDURE<a class="anchor-link" href="#3.2-CLEANING-PREPARATION-PROCEDURE"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The source data is in MATLAB format (.mat) after downloading and unzipping. The raw data acquired for this project were as follows:</p>
+<ul>
+<li>For training, including validation (data will be labeled)<ul>
+<li>Tail_687_1.zip (651 flights)</li>
+<li>Tail_687_2.zip (602 flights)</li>
+</ul>
+</li>
+<li>For testing, i.e. simulation of production (data will not be labeled)<ul>
+<li>Tail_687_3.zip (582 flights)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After downloading and unzipping, the files in each folder were converted separately (from .mat to .csv) by means of the notebook:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/10_mat2csv-2.ipynb">10_mat2csv-2.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The output .csv files were eventually moved to either the Train (1,253 files) or Test (582 files) folders.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The cleaning preparation procedure can be summarized as follows:</p>
+<ul>
+<li>Conversion:<ul>
+<li>Using the scipy.io Python package, the data is converted from MATLAB format to a simple .csv format.</li>
+</ul>
+</li>
+<li>Make a dataframe for each sample rate:<ul>
+<li>All datapoints for a specific sample rate are collected in a dataframe. The rates available are referred to as 0.25, 1, 2, 4, 8, and 16.</li>
+<li>All dataframes are combined into a single dataframe.</li>
+</ul>
+</li>
+<li>Remove invalid time values:<ul>
+<li>Files with invalid values for year, month, day, hour, minute, or second are removed in this step.</li>
+</ul>
+</li>
+<li>Output a csv file from the dataframe</li>
+<li>Build date-time index<ul>
+<li>Being a time-series, it is important to index the data in the form of a date-time index. This is done by reading the exported file back into a dataframe.</li>
+</ul>
+</li>
+<li>Down-sample to 1 minute rate:<ul>
+<li>The data in each file’s dataframe is down-sampled from a variable’s specific sample rate to a 1 minute rate. This reduces the intensity of the data as well as provides for a more realistic sample rate for the purposes of this study. </li>
+<li>Another csv file is exported using the same name but having a “-1min” appended to the name.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.3-TRANFORMATION-PREPARATION-PROCEDURE">
+<a class="anchor" href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 TRANFORMATION PREPARATION PROCEDURE<a class="anchor-link" href="#3.3-TRANFORMATION-PREPARATION-PROCEDURE"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The transformation procedure occurs in the notebook:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/10_csv2png-3.ipynb">10_csv2png-3.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The transformation preparation procedure can be summarized as follows:</p>
+<ul>
+<li>Read the csv data into a dataframe</li>
+<li>Select the transformation technique<ul>
+<li>Done by commenting in the appropriate section of code. Please see section 4.1.3 for a description of each transformation technique.</li>
+</ul>
+</li>
+<li>Plot the time-series signal<ul>
+<li>To convert the time-series signal to a spatial signal it is plotted as a graphic.</li>
+<li>The graphic is stripped of all annotations, e.g. the frame, tick marks, tick labels, axis labels, and heading.</li>
+</ul>
+</li>
+<li>Save the image, using the same name but having an extension of .png.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4-MODELING">
+<a class="anchor" href="#4-MODELING" aria-hidden="true"><span class="octicon octicon-link"></span></a>4 MODELING<a class="anchor-link" href="#4-MODELING"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this section, we will look at the important concept of time-series classification and how it relates to two of the most important deep learning architectures: Recurrent Neural Networks (RNNs) and Convolutional Neural Networks (CNNs). Then we will discuss the classification models for our pipeline in detail, making use of image-transformed flight profile time-series and the CNN architecture.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.1-TIME-SERIES-CLASSIFICATION">
+<a class="anchor" href="#4.1-TIME-SERIES-CLASSIFICATION" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 TIME-SERIES CLASSIFICATION<a class="anchor-link" href="#4.1-TIME-SERIES-CLASSIFICATION"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Time-series classification (TSC) is an area of active research. Some consider it one of the most challenging problems in data mining (Esling &amp; Agon, 2012). This opinion is supported by Yang and Wu (2006). A large number of techniques have been invented. Many of these approaches are covered by Bagnall, Lines, Bostrom, Large, and Keogh (2017). The most promising approach, they point out, is known as COTE (Collective Of Transformation-based Ensembles) as described by Bagnall, Lines, Hills, and Bostrom (2016). HIVE-COTE is an extension of COTE (Lines, Taylor, &amp; Bagnall, 2016). See also Lines, Taylor, and Bagnall (2018). The extension is in the form of a Hierarchical Vote system. This is considered the state-of-the-art currently. To use HIVE-COTE a large number of classifiers (37) need to be trained. The decisions made by them are not easy to interpret and classification time is excessive.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Given the impressive successes of deep learning in many disciplines lately, the use of it has started to make inroads into the area of time-series classification (Wang, Yan, &amp; Oates, 2017). In their recent paper, “Deep Learning for Time Series Classification: A Review,” Fawaz, Forestier, Weber, Idoumghar, and Muller (2019) point out that they achieved results that are not significantly different from results obtained from HIVE-COTE by making use of deep learning and a residual network. They also provide a handy taxonomy (p. 11) for the use of deep learning algorithms to classify time-series (somewhat abbreviated here):</p>
+<ul>
+<li>Deep Learning for Time Series Classification<ul>
+<li>Generative Models<ul>
+<li>Auto Encoders<ul>
+<li>RNNs</li>
+</ul>
+</li>
+<li>Echo State Networks (simplified RNNs)</li>
+</ul>
+</li>
+<li>Discriminative Models<ul>
+<li>Feature Engineering<ul>
+<li>Image Transformation</li>
+<li>Domain Specific</li>
+</ul>
+</li>
+<li>End-to-End<ul>
+<li>Multi-Layer Perceptrons (aka fully-connected or FC networks)</li>
+<li>CNNs</li>
+<li>Hybrid</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The main division is between generative and discriminative models. Generative models generally include an unsupervised training step before the learner fits its classifier. A discriminative model, on the other hand, directly fits the mapping from the raw input of a time-series to the probability distribution over the classification classes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The literature informally agree that discriminative models are more accurate than generative models. In this report, we will focus on the Image Transformation leaf of this tree, which falls under discriminative models.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are significant advantages in the use of deep learning to classify time-series. One specific advantage is the ability to detect time invariant characteristics. This is similar to how spatially invariant filters detect patterns in images.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.1-Recurrent-Neural-Networks-(RNNs)">
+<a class="anchor" href="#4.1.1-Recurrent-Neural-Networks-(RNNs)" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.1 Recurrent Neural Networks (RNNs)<a class="anchor-link" href="#4.1.1-Recurrent-Neural-Networks-(RNNs)"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In a fairly old paper, Hüsken and Stagge (2003) promote the use of RNNs for time-series classification. Recurrent layers are described by the equations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\begin{align}
+\mathbf{a}^{&lt;t&gt;} &amp;= g(\mathbf{W}_{aa} \mathbf{a}^{&lt;t-1&gt;} + \mathbf{W}_{ax} \mathbf{x}^{&lt;t&gt;} + \mathbf{b}_a) \\
+\hat{\mathbf{y}}^{&lt;t&gt;}  &amp;= g(\mathbf W_{ya}\mathbf{a}^{&lt;t&gt;} + \mathbf{b_y})
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The parameters or weights that undergo training are captured in a number of <em>filters</em> or <em>kernels</em>. The <em>feedback</em> filter is $\mathbf{W}_{aa}$, the <em>input</em> filter $\mathbf{W}_{ax}$, and the <em>output</em> filter $\mathbf{W}_{ya}$. The <em>signal</em> is the data that are used as examples during training. The symbols $\mathbf{x}^{&lt;t&gt;}$ and $\mathbf{\hat{y}}^{&lt;t&gt;}$ represent the input and output signals respectively. The hidden state, or internal signal, is given by $\mathbf{a}^{&lt;t&gt;}$. The filters are matrices while the signals are vector-valued. There is often a single layer in an RNN. Note, however, that this architecture is recursive. This means that each time-step could be considered a separate layer in time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the context of our classification problem, the input is a sequence of scalar-valued continuous predictor points. The output is a single scalar-valued categorical target point (after being processed by a sigmoid function). The values of a target point are the classes, either <em>typ</em> or <em>non</em>. This type of RNN is also known as a <em>many-to-one</em> RNN because a series of input data points leads to a single output datapoint.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.2-Disadvantages-of-RNNs">
+<a class="anchor" href="#4.1.2-Disadvantages-of-RNNs" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.2 Disadvantages of RNNs<a class="anchor-link" href="#4.1.2-Disadvantages-of-RNNs"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In 2015 RNNs made a dramatic come-back (Karpathy, 2015). A year or two after this the <em>ResNet</em> (He, Zhang, Ren &amp; Sun, 2016) and the <em>attention</em> mechanism (Xu et al., 2015) were invented. This provided an expanded context for the evaluation of RNNs and the Long Short Term Memory (LSTM). A further two years later saw the beginning of the decline of the popularity of the RNN and the LSTM in some disciplines.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Culurciell (2018) points out some shortcomings of RNNs in his article “The fall of RNN / LSTM.” In this regard, he mentions the problem of vanishing gradients and that RNNs are not hardware friendly. Fawaz et al. (2019) mostly agree with these sentiments and also mention that an RNN’s architecture was designed for the prediction of the next element in a sequence, not necessarily ideal for the classification task. RNNs are also harder to train and parallelize.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.3-Time-series-transformation-to-images">
+<a class="anchor" href="#4.1.3-Time-series-transformation-to-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.3 Time-series transformation to images<a class="anchor-link" href="#4.1.3-Time-series-transformation-to-images"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before we look at Convolutional Neural Networks (CNNs), we will discuss how a time-series can be transformed into an image. The purpose of this transformation is to enable computers to “visually” recognize and classify the time-series signal. By doing this transformation we can take advantage of the impressive successes of deep learning architectures (using CNNs) in computer vision. This allows us to identify the structure of a time-series, leading to more effective classification.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will start by plotting the altitude time-series of a flight. This will be the first (and most simple) transformation. Then we make the image slightly richer by filling the area under the curve. After this, a number of more sophisticated transformation techniques will be used to transform the same time-series into the following representations: Gramian angular summation field, Gramian angular difference field, Markov transition field, and a recurrence plot.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.1.3.1-Altitude-line-plots-transformed-into-an-image">
+<a class="anchor" href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.3.1 Altitude line plots transformed into an image<a class="anchor-link" href="#4.1.3.1-Altitude-line-plots-transformed-into-an-image"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To create this spatial (or image) representation of the time-series, we will use a dark pen on a light background. This black-and-white rendition was deliberately prevented from being binary. A binary image only needs one channel. The pixel values of such an image only have one of two values. To make fair comparisons with more complex renditions (that use coloration), this image was allowed to have three channels as well. This manifests in the form of some blurriness along the black lines which come from the presence of grey pixels.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No graphical annotations will be included, i.e. graphic frame, tick marks, tick labels, axis labels, and heading. Annotations will make the learning process unnecessarily complex. Figure 4.1 shows an example.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig4-1.png" alt="Figure 4.1 Line plot of altitude, also considered a line-plot transformation of the example time-series" title="Figure 4.1 Line plot of altitude, also considered a line-plot transformation of the example time-series"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="x.x.x-Holder">
+<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
+</h3>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="ClosedLoopAI/data-science-masters-thesis"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/data-science-masters-thesis/2019/09/15/MastersThesis.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/data-science-masters-thesis/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/data-science-masters-thesis/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
