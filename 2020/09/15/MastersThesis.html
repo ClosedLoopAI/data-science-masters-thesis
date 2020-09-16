@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      8 min read
     
 </span></p>
 
@@ -226,7 +226,7 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1----BACKGROUND">1    BACKGROUND<a class="anchor-link" href="#1----BACKGROUND"> </a></h2>
+<h2 id="1-BACKGROUND">1 BACKGROUND<a class="anchor-link" href="#1-BACKGROUND"> </a></h2>
 </div>
 </div>
 </div>
@@ -309,7 +309,7 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="VALUE-PROPOSITION">VALUE PROPOSITION<a class="anchor-link" href="#VALUE-PROPOSITION"> </a></h3>
+<h2 id="1.1--VALUE-PROPOSITION">1.1  VALUE PROPOSITION<a class="anchor-link" href="#1.1--VALUE-PROPOSITION"> </a></h2>
 </div>
 </div>
 </div>
@@ -327,6 +327,46 @@ window.onload = wrap_img;
 <li>Satisfies my personal interest in the analysis of flight data as well as the application of cutting edge analysis techniques in the form of deep learning.</li>
 </ul>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.2-OBJECTIVES">1.2 OBJECTIVES<a class="anchor-link" href="#1.2-OBJECTIVES"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To setup an analytics pipeline for analysts, the foremost objective is to find the best transformation technique to convert flight path time-series into images. The rest of the objectives provide the components for the construction of the pipeline.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.1-Transformation-Techniques">1.2.1 Transformation Techniques<a class="anchor-link" href="#1.2.1-Transformation-Techniques"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will perform a comparison of a number of transformation techniques in terms of their associated image classification performance. To do this we will apply each transformation technique to the cleaned time-series dataset in turn, train a CNN to do classification (using supervised learning), and record the performance. Then we will select the most performant transformation technique and use this technique in the rest of the analysis pipeline. The following transformation techniques will be considered:</p>
+<ul>
+<li>Altitude line plots transformed into an image</li>
+<li>Altitude area plots transformed into an image</li>
+<li>Gramian Angular Summation Field (GASF)</li>
+<li>Gramian Angular Difference Field (GADF)</li>
+<li>Markov Transition Field (MTF)</li>
+<li>Recurrence Plot (RP)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.2-Developed/Non-developed-Model">1.2.2 Developed/Non-developed Model<a class="anchor-link" href="#1.2.2-Developed/Non-developed-Model"> </a></h3>
 </div>
 </div>
 </div>
