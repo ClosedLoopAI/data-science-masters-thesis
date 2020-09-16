@@ -168,7 +168,6 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 <li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
-<li class="toc-entry toc-h3"><a href="#x.x.x-Holder">x.x.x Holder </a></li>
 </ul>
 </li>
 </ul>
@@ -832,34 +831,8 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 \begin{align}
-MC_p \frac{dT}{dt} &amp;= UA(T_a-T)+\epsilon\sigma A(T_a^4-T^4)+Q \\
-M &amp;= \text{Mass} \\
-C_p &amp;= \text{Heat Capacity} \\
-T &amp;= \text{Temperature} \\
-U &amp;= \text{Overall Heat Transfer Coefficent} \\
-A &amp;= \text{Surface Area} \\
-T_a &amp;= \text{Ambient Temperature} \\
-\epsilon &amp;= \text{Emissivity} \\
-\sigma &amp;= \text{Boltzmann Constant} \\
-Q &amp;= \text{Heater Output}
-\end{align}
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-\begin{align}
 \mathbf{a}^{&lt;t&gt;} &amp;= g(\mathbf{W}_{aa} \mathbf{a}^{&lt;t-1&gt;} + \mathbf{W}_{ax} \mathbf{x}^{&lt;t&gt;} + \mathbf{b}_a) \\
-\hat{\mathbf{y}}^{&lt;t&gt;}  &amp;= g(\mathbf W_{ya}\mathbf{a}^{&lt;t&gt;} + \mathbf{b_y}) \\
-C_p &amp;= \text{Heat Capacity} \\
-T &amp;= \text{Temperature} \\
-U &amp;= \text{Overall Heat Transfer Coefficent} \\
-A &amp;= \text{Surface Area} \\
-T_a &amp;= \text{Ambient Temperature} \\
-\epsilon &amp;= \text{Emissivity} \\
-\sigma &amp;= \text{Boltzmann Constant} \\
-Q &amp;= \text{Heater Output}
+\hat{\mathbf{y}}^{&lt;t&gt;}  &amp;= g(\mathbf W_{ya}\mathbf{a}^{&lt;t&gt;} + \mathbf{b_y})
 \end{align}
 </div>
 </div>
@@ -867,9 +840,8 @@ Q &amp;= \text{Heater Output}
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="x.x.x-Holder">
-<a class="anchor" href="#x.x.x-Holder" aria-hidden="true"><span class="octicon octicon-link"></span></a>x.x.x Holder<a class="anchor-link" href="#x.x.x-Holder"> </a>
-</h3>
+<p>The parameters or weights that undergo training are captured in a number of <em>filters</em> or <em>kernels</em>. The <em>feedback</em> filter is $\mathbf{W}_{aa}$, the <em>input</em> filter $\mathbf{W}_{ax}$, and the <em>output</em> filter $\mathbf{W}_{ya}$. The <em>signal</em> is the data that are used as examples during training. The symbols $\mathbf{x}^{&lt;t&gt;}$ and $\mathbf{\hat{y}}^{&lt;t&gt;}$ represent the input and output signals respectively. The hidden state, or internal signal, is given by $\mathbf{a}^{&lt;t&gt;}$. The filters are matrices while the signals are vector-valued. There is often a single layer in an RNN. Note, however, that this architecture is recursive. This means that each time-step could be considered a separate layer in time.</p>
+
 </div>
 </div>
 </div>
