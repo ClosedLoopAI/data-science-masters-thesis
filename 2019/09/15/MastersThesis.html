@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      34 min read
+      37 min read
     
 </span></p>
 
@@ -164,6 +164,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h4"><a href="#4.1.4.4-Residual-Networks">4.1.4.4 Residual Networks </a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#4.2-CLASSIFICATION-MODELS">4.2 CLASSIFICATION MODELS </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#4.2.1-Stage-III:-Developed/Non-developed-Model-(mod3)">4.2.1 Stage III: Developed/Non-developed Model (mod3) </a></li>
 </ul>
 </li>
 </ul>
@@ -1571,6 +1576,336 @@ $$
 <h4 id="4.1.4.4-Residual-Networks">
 <a class="anchor" href="#4.1.4.4-Residual-Networks" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.4.4 Residual Networks<a class="anchor-link" href="#4.1.4.4-Residual-Networks"> </a>
 </h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>He et al. (2016) provides an impressive and state-of-the-art architecture to improve the performance of CNNs even more. This architecture is called a <em>residual network</em>, or a <em>ResNet</em>. <a href="https://towardsdatascience.com/review-resnet-winner-of-ilsvrc-2015-image-classification-localization-detection-e39402bfa5d8">Sik-Ho Tsang</a> (2018) has a blog that presents some of the details in a more digestible form.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A ResNet layer or block is developed as follows. As before, for a convolution layer, we have:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\begin{align}
+\mathbf{Z}^{[l]} &amp;= \mathbf{W}^{[l]} \ast \mathbf{A}^{[l-1]} + \mathbf{b}^{[l]} \\
+\mathbf{A}^{[l]} &amp;= g^{[l]}(\mathbf{Z}^{[l]})
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let’s add 1 to the index values for the purpose of deriving:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\begin{align}
+\mathbf{Z}^{[l+1]} &amp;= \mathbf{W}^{[l+1]} \ast \mathbf{A}^{[l]} + \mathbf{b}^{[l+1]} \qquad(18) \\
+\mathbf{A}^{[l+1]} &amp;= g^{[l+1]}(\mathbf{Z}^{[l+1]}) \qquad\qquad\qquad\qquad\,(19)
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The next layer will then be:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\begin{align}
+\mathbf{Z}^{[l+2]} &amp;= \mathbf{W}^{[l+2]} \ast \mathbf{A}^{[l+1]} + \mathbf{b}^{[l+2]} \qquad(20) \\
+\mathbf{A}^{[l+2]} &amp;= g^{[l+2]}(\mathbf{Z}^{[l+2]}) \qquad\qquad\qquad\qquad\quad(21)
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now comes the crucial step. We feed the activations $\mathbf{A}^{[l]}$ in Equation 18 <em>forward</em> by means of a <em>skip-connection</em> (also called a <em>short-circuit-connection</em>) and add them to $\mathbf{Z}^{[l+2]}$ in Equation 20. This means Equation 21 now becomes:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\mathbf{A}^{[l+2]} = g^{[l+2]}(\mathbf{Z}^{[l+2]} + \mathbf{A}^{[l]})
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The ResNet block is therefore described by the equations:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\begin{align}
+\mathbf{Z}^{[l+2]} &amp;= \mathbf{W}^{[l+2]} \ast \mathbf{A}^{[l+1]} + \mathbf{b}^{[l+2]} \qquad(22) \\
+\mathbf{A}^{[l+2]} &amp;= g^{[l+2]}(\mathbf{Z}^{[l+2]} + \mathbf{A}^{[l]}) \qquad\qquad\quad(23)
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Expressed as a single equation we have:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\mathbf{A}^{[l+2]} = g^{[l+2]}(\mathbf{W}^{[l+2]} \ast \mathbf{A}^{[l+1]} + \mathbf{b}^{[l+2]} + \mathbf{A}^{[l]})\quad(24)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adjusting the indexes again, we have</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+\mathbf{A}^{[l]} = g^{[l]}(\mathbf{W}^{[l]} \ast \mathbf{A}^{[l-1]} + \mathbf{b}^{[l]} + \mathbf{A}^{[l-2]})\qquad(25)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The ResNet architecture allows for much deeper networks than before by stacking ResNet blocks as deep as needed. In theory, as the number of layers in a traditional deep neural network increases, the training error should keep on decreasing. The reality is that when the network gets too deep, the training error actually starts to increase again. ResNets rescue this situation, allowing the training error to keep on falling even with the number of layers approaching one thousand.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next we will discuss all the classification models used in this paper. All of them make use of a 50-layer ResNet architecture.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.2-CLASSIFICATION-MODELS">
+<a class="anchor" href="#4.2-CLASSIFICATION-MODELS" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 CLASSIFICATION MODELS<a class="anchor-link" href="#4.2-CLASSIFICATION-MODELS"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The purpose of the analytics pipeline is to separate useful (called typical) flight paths from non-useful (called non-typical/anomalous) ones. As pointed out earlier, a typical flight profile, in this context, means it is conducive to certain types of analyses. The main requirements for usefulness is that the flight profile will be fully developed, and have a canonical and extended cruise segment (see Figure 1.1). All other flight paths will be considered less useful/non-useful/anomalous for our purposes. Non-usefulness is often due to insignificant (i.e. too short) cruise segments and missing data (see Figure 1.2). Note that in visualizations and in the code, typical (useful) profiles are labeled as <em>typ</em>, while non-typical (non-useful) profiles will be labeled as <em>non</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will need a number of classification models to arrive at the objectives described above. Each model will select the useful flight profiles from its input data and pass them on to the next model in the pipeline. The output from the last model will represent a useful dataset for post-flight analysis as described in this paper. The pipeline is defined as follows:</p>
+<ul>
+<li>Stage III: Developed/Non-developed Model</li>
+<li>Stage  II: Canonicity of Segments Model</li>
+<li>Stage   I: Extended/Short Cruises Model</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that we count <em>down</em>, starting from Stage III which processes the rawest data. Stage I is the final stage that provides the usable data for the analyst.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.1-Stage-III:-Developed/Non-developed-Model-(mod3)">
+<a class="anchor" href="#4.2.1-Stage-III:-Developed/Non-developed-Model-(mod3)" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.1 Stage III: Developed/Non-developed Model (mod3)<a class="anchor-link" href="#4.2.1-Stage-III:-Developed/Non-developed-Model-(mod3)"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
 </div>
 </div>
 </div>
