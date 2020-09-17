@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      30 min read
+      31 min read
     
 </span></p>
 
@@ -159,6 +159,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#4.1.4-Convolutional-Neural-Networks-(CNNs)">4.1.4 Convolutional Neural Networks (CNNs) </a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#4.1.4.1-Convolution-layers">4.1.4.1 Convolution layers </a></li>
+<li class="toc-entry toc-h4"><a href="#4.1.4.2-Pooling-layers">4.1.4.2 Pooling layers </a></li>
 </ul>
 </li>
 </ul>
@@ -1368,7 +1369,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The <em>activations</em> in layer $l$ are represented by another tensor $\mathbf{A}^{[l]}$. For each layer, we distinguish between the <em>input</em> activations, $\mathbf{A}^{[l-1]}$, and <em>output</em> activations, $\mathbf{A}^{[l]}$. The dimensions of $\mathbf{A}^{[l-1]}$ are $n_C^{[l-1]} \times n_H^{[l-1]} \times n_W^{[l-1]}$ where $n_C^{[l-1]}$ is the number of channels in the previous layer, $n_H^{[l-1]}$ the <em>height</em> of the image in the previous layer, and $n_W^{[l-1]}$ the <em>width</em> of the image in the previous layer.</p>
 
 </div>
 </div>
@@ -1376,7 +1377,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The dimensions of $\mathbf{A}^{[l]}$ are $n_C^{[l]} \times n_H^{[l]} \times n_W^{[l]}$  where</p>
 
 </div>
 </div>
@@ -1384,7 +1385,25 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+$$ \Large
+n_H^{[l]}=\Bigg \lfloor \frac{n_H^{[l-1]}+2p^{[l]}-f^{[l]}}{s^{[l]}} + 1 \Bigg \rfloor\qquad\qquad\qquad\qquad(10)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \Large
+n_W^{[l]}=\Bigg \lfloor \frac{n_W^{[l-1]}+2p^{[l]}-f^{[l]}}{s^{[l]}} + 1 \Bigg \rfloor\qquad\qquad\qquad\qquad(11)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <em>padding</em> size in layer $l$ is indicated by $p^{[l]}$. The <em>stride</em> is represented by $s^{[l]}$. If we make use of mini-batch training, the dimensions of $\mathbf{A}^{[l]}$ will expand to $n_C^{[l]} \times n_H^{[l]} \times n_W^{[l]}$ where $m$ is the mini-batch size. In this case $\mathbf{A}^{[l]}$ becomes a vector of tensors.</p>
 
 </div>
 </div>
@@ -1392,7 +1411,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The <em>bias</em> vector in layer $l$ is indicated by $\mathbf{b}^{[l]}$. The <em>convolution operation</em> is indicated by the symbol $\ast$. Equation 8 describes the <em>linear</em> part of the convolution. The <em>activation</em> part is captured by Equation 9. The <em>activation function</em>, $g^{[l]}$, is often a rectified linear unit (ReLU).</p>
 
 </div>
 </div>
@@ -1400,7 +1419,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>Equations 8 and 9 can be combined into a single equation:</p>
 
 </div>
 </div>
@@ -1408,7 +1427,17 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+$$ \Large
+\mathbf{A}^{[l]} = g^{[l]}(\mathbf{W}^{[l]} \ast \mathbf{A}^{[l-1]} + \mathbf{b}^{[l]}) \qquad\qquad\qquad\qquad\,(12)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://towardsdatascience.com/gentle-dive-into-math-behind-convolutional-neural-networks-79a07dd44cf9">Piotr  Skalski</a>
+ (2019) has a blog that makes the operation of CNNs easy to understand. It includes a number of animations that provide valuable insight.</p>
 
 </div>
 </div>
@@ -1416,40 +1445,9 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
+<h4 id="4.1.4.2-Pooling-layers">
+<a class="anchor" href="#4.1.4.2-Pooling-layers" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.4.2 Pooling layers<a class="anchor-link" href="#4.1.4.2-Pooling-layers"> </a>
+</h4>
 </div>
 </div>
 </div>
