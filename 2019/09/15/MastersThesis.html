@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      31 min read
+      34 min read
     
 </span></p>
 
@@ -160,6 +160,8 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h4"><a href="#4.1.4.1-Convolution-layers">4.1.4.1 Convolution layers </a></li>
 <li class="toc-entry toc-h4"><a href="#4.1.4.2-Pooling-layers">4.1.4.2 Pooling layers </a></li>
+<li class="toc-entry toc-h4"><a href="#4.1.4.3-Dense-layers">4.1.4.3 Dense layers </a></li>
+<li class="toc-entry toc-h4"><a href="#4.1.4.4-Residual-Networks">4.1.4.4 Residual Networks </a></li>
 </ul>
 </li>
 </ul>
@@ -1454,7 +1456,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The filter of a pooling layer has no weights that need to be trained. It has a filter size $f^{[l]}$, and a stride $s^{[l]}$. The value for padding is almost always zero, $p^{[l]}=0$. The filter performs an aggregation operation as it slides over the activation signal. This operation is performed on each of the input channels independently. Types of aggregation operations are <em>maximum</em> and <em>average</em>. The most common type is the <em>max-pool</em> layer. As the $f \times f$ filter slides across the image, it picks the maximum activation for each position and sends that to the output image, thereby reducing the size of the input image according to equations (10) and (11). There is also no activation function. This means pooling layers are described by the following equation:</p>
 
 </div>
 </div>
@@ -1462,7 +1464,25 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+$$ \Large
+\mathbf{A}^{[l]}=\text{max}(\mathbf{A}^{[l-1]}) \qquad\qquad\qquad(13)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.1.4.3-Dense-layers">
+<a class="anchor" href="#4.1.4.3-Dense-layers" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.4.3 Dense layers<a class="anchor-link" href="#4.1.4.3-Dense-layers"> </a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Dense layers</em> always form the last few layers of a CNN that performs classification. These layers are also called <em>fully connected</em> layers. Dense layers are described by Equations 14 and 15:</p>
 
 </div>
 </div>
@@ -1470,7 +1490,19 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+$$ \Large
+\begin{align}
+\mathbf{z}^{[l]} &amp;= \mathbf{W}^{[l]}\mathbf{a}^{[l-1]}+\mathbf{b}^{[l]}\qquad\qquad (14)\\
+\mathbf{a}^{[l]} &amp;= g^{[l]}(\mathbf{z}^{[l]})\qquad\qquad\qquad\qquad\quad(15)
+\end{align}
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice the absence of the convolution operator, which have been replaced by matrix multiplication.</p>
 
 </div>
 </div>
@@ -1478,7 +1510,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The <em>filter</em> of a dense layer is indicated by $\mathbf{W}^{[l]}$ where $l$ is the index of the layer. $\mathbf{W}^{[l]}$ is matrix-valued with each element $w_{ij}^{[l]}\in\mathbb{R}$. The values of $w_{ij}^{[l]}$ are learned by the training process. The <em>dimensions</em> of $\mathbf{W}^{[l]}$ are $n^{[l]} \times n^{[l-1]}$ where $n^{[l-1]}$ is the <em>number of input features</em> (also the number of output features in the previous layer), and $n^{[l]}$ is the <em>number of output features</em>.</p>
 
 </div>
 </div>
@@ -1486,7 +1518,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>The <em>activations</em> in layer $l$ are represented by a vector $\mathbf{a}^{[l]}$. For each layer, we distinguish between the <em>input</em> activations, $\mathbf{a}^{[l-1]}$, and <em>output</em> activations, $\mathbf{a}^{[l]}$. The dimension of $\mathbf{a}^{[l-1]}$ is $n^{[l-1]}$ where $n^{[l-1]}$ is the number of neurons or hidden units in the previous layer. The dimension of $\mathbf{a}^{[l]}$ is $n^{[l]}$ where $n^{[l]}$ is the number of units in the current layer.</p>
 
 </div>
 </div>
@@ -1494,7 +1526,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>There is no concept of padding nor of stride. The <em>bias</em> vector in layer $l$ is indicated by $\mathbf{b}^{[l]}$. Equation 14 describes the <em>linear</em> part of the filter. The <em>activation</em> part is captured by Equation 15. The <em>activation function</em>, $g^{[l]}$, is often a ReLU.</p>
 
 </div>
 </div>
@@ -1502,7 +1534,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+<p>As before, we can combine Equations 14 and 15 into a single equation (see Equation 16).</p>
 
 </div>
 </div>
@@ -1510,7 +1542,16 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
+$$ \Large
+\mathbf{a}^{[l]} = g^{[l]}(\mathbf{W}^{[l]} \mathbf{a}^{[l-1]} + \mathbf{b}^{[l]}) \qquad\qquad\qquad\qquad\,(16)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we make use of mini-batch training, the dimensions of $\mathbf{a}^{[l]}$ will expand to $n^{[l]} \times m$ where $m$ is the mini-batch size. In this case $\mathbf{a}^{[l]}$ becomes a matrix $\mathbf{A}^{[l]}$ so that we have</p>
 
 </div>
 </div>
@@ -1518,48 +1559,18 @@ $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
+$$ \Large
+\mathbf{A}^{[l]} = g^{[l]}(\mathbf{W}^{[l]} \mathbf{A}^{[l-1]} + \mathbf{b}^{[l]}) \qquad\qquad\qquad\qquad(17)
+$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>holder</p>
-
+<h4 id="4.1.4.4-Residual-Networks">
+<a class="anchor" href="#4.1.4.4-Residual-Networks" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1.4.4 Residual Networks<a class="anchor-link" href="#4.1.4.4-Residual-Networks"> </a>
+</h4>
 </div>
 </div>
 </div>
