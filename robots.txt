@@ -1,1 +1,1 @@
-Sitemap: https://closedloopai.github.io/data-science-masters-thesis/sitemap.xml
+Sitemap: https://closedloopai.github.io/portfolio/sitemap.xml

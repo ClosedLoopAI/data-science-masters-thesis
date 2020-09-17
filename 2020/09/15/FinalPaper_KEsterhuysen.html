@@ -10,15 +10,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis" />
 <meta property="og:description" content="Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis" />
-<link rel="canonical" href="https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/FinalPaper_KEsterhuysen.html" />
-<meta property="og:url" content="https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/FinalPaper_KEsterhuysen.html" />
+<link rel="canonical" href="https://closedloopai.github.io/portfolio/2020/09/15/FinalPaper_KEsterhuysen.html" />
+<meta property="og:url" content="https://closedloopai.github.io/portfolio/2020/09/15/FinalPaper_KEsterhuysen.html" />
 <meta property="og:site_name" content="fastpages" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-09-15T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/FinalPaper_KEsterhuysen.html","@type":"BlogPosting","headline":"Finalpaper_kesterhuysen","dateModified":"2020-09-15T00:00:00-05:00","datePublished":"2020-09-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://closedloopai.github.io/data-science-masters-thesis/2020/09/15/FinalPaper_KEsterhuysen.html"},"description":"Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis","@context":"https://schema.org"}</script>
+{"url":"https://closedloopai.github.io/portfolio/2020/09/15/FinalPaper_KEsterhuysen.html","@type":"BlogPosting","headline":"Finalpaper_kesterhuysen","dateModified":"2020-09-15T00:00:00-05:00","datePublished":"2020-09-15T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://closedloopai.github.io/portfolio/2020/09/15/FinalPaper_KEsterhuysen.html"},"description":"Using Deep Learning to Classify Airliner Flight Profiles for Post-Flight Analysis","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/data-science-masters-thesis/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://closedloopai.github.io/data-science-masters-thesis/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/data-science-masters-thesis/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="/portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://closedloopai.github.io/portfolio/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/portfolio/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
 <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
@@ -69,7 +69,7 @@ window.onload = wrap_img;
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/data-science-masters-thesis/">fastpages</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/portfolio/">fastpages</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -79,7 +79,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/data-science-masters-thesis/about/">About Me</a><a class="page-link" href="/data-science-masters-thesis/search/">Search</a><a class="page-link" href="/data-science-masters-thesis/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/portfolio/about/">About Me</a><a class="page-link" href="/portfolio/search/">Search</a><a class="page-link" href="/portfolio/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -284,11 +284,11 @@ window.onload = wrap_img;
 
 <h1 id="background">BACKGROUND</h1>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image1.png" alt="" />One of the important operational characteristics of a commercial airliner is its flight path. This term needs qualification though. The <em>lateral</em> flight path is the track projected onto a flat earth from above. To visualize the lateral flight path one can plot longitude versus latitude as flight time progresses. The <em>vertical</em> flight path, on the other hand, is the altitude profile (viewed from the side). This may be visualized by plotting altitude versus flight time. This project will focus on the vertical flight path. When we use the term flight path or flight profile in the rest of the document, we will always refer to the <em>vertical</em> flight path.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image1.png" alt="" />One of the important operational characteristics of a commercial airliner is its flight path. This term needs qualification though. The <em>lateral</em> flight path is the track projected onto a flat earth from above. To visualize the lateral flight path one can plot longitude versus latitude as flight time progresses. The <em>vertical</em> flight path, on the other hand, is the altitude profile (viewed from the side). This may be visualized by plotting altitude versus flight time. This project will focus on the vertical flight path. When we use the term flight path or flight profile in the rest of the document, we will always refer to the <em>vertical</em> flight path.</p>
 
 <p>During normal operation, an airliner has a predictable flight path. After <em>takeoff</em>, it climbs as quickly as possible (during the phase known as <em>climb</em>) until it reaches a point called the <em>top of climb</em>. The pilot then levels off and usually maintains this altitude for most of the flight (straight-and-level flight). This phase of the flight is known as <em>cruise</em>. When nearing its destination, a point is reached that is known as <em>top of descent</em>. At this point the pilot enters the <em>descent</em> phase. Finally, the flight ends during the <em>landing</em> of the aircraft.</p>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image3.png" alt="" />Post-flight data analysts are often interested in separating useful from non-useful (or less useful) flight paths prior to a specific analysis. In this document, and its associated analysis code, useful profiles will be labeled as <em>typical</em> (abbreviated as “typ”) while less useful, non-useful, or anomalous flight paths (for a specific analysis) will be labeled as <em>non-typical</em> (abbreviated as “non”). A <em>typical</em> flight profile, in the context of this document, has a relatively extended cruise section without changes in altitude (see Figure 1.1). This characteristic will make it useful for certain types of analyses, for example, to estimate hard-to-measure variables like drag and exact angle-of-attack, as well as estimations of the positions of vertical flight control surfaces (even though they are measured). Flight paths could also be considered <em>non-typical</em> due to insignificant (i.e. too short) cruise segments and missing data (see Figure 1.2). Note that our definition of usefulness is by no means universal in post-flight analysis.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image3.png" alt="" />Post-flight data analysts are often interested in separating useful from non-useful (or less useful) flight paths prior to a specific analysis. In this document, and its associated analysis code, useful profiles will be labeled as <em>typical</em> (abbreviated as “typ”) while less useful, non-useful, or anomalous flight paths (for a specific analysis) will be labeled as <em>non-typical</em> (abbreviated as “non”). A <em>typical</em> flight profile, in the context of this document, has a relatively extended cruise section without changes in altitude (see Figure 1.1). This characteristic will make it useful for certain types of analyses, for example, to estimate hard-to-measure variables like drag and exact angle-of-attack, as well as estimations of the positions of vertical flight control surfaces (even though they are measured). Flight paths could also be considered <em>non-typical</em> due to insignificant (i.e. too short) cruise segments and missing data (see Figure 1.2). Note that our definition of usefulness is by no means universal in post-flight analysis.</p>
 
 <p>A large airline can operate thousands of flights a day and it is not feasible for the analyst to do this separation/classification in a manual way. What comes to mind next is to construct an algorithm to take on the task. However, it is not straightforward to come up with a traditional algorithm that would discriminate between typical and non-typical flight paths. A promising approach, of course, is to use supervised machine learning and show the model a large enough number of training examples.</p>
 
@@ -296,7 +296,7 @@ window.onload = wrap_img;
 
 <p>In the deep learning subfield, it is common to use a <em>Recurrent Neural Network</em> (RNN) for this kind of problem. See, for example, Hüsken and Stagge (2003), and also Sun, Di, and Fang (2019). However, the training of an RNN can be challenging due to high demands on computing resources including processing power, processing time, and memory. There is also the vanishing/exploding gradients problem, addressed in various ways, but is often still lurking in the background.</p>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image5.png" alt="" />Consider how easy it is for the human visual system to handle this problem, and in a fraction of a second. In fact, this is exactly how analysts often do their classifications manually. This suggests that we might benefit from tapping into the biological mechanisms for analyzing visual data (i.e. images). Recently, some researchers started adopting this insight. See, for example, Wang and Oates (2015a). The essence of this line of thought is the following: Instead of analyzing a sequence of 1-D or scalar-valued <em>temporal</em> data points, we transform them into a single 2-D or matrix-valued <em>spatial</em> data point. The spatial data point is simply an image which means the time-series signal has been transformed into an image (see Figure 1.3 for an example of a transformation technique). This allows for the application of a large body of relatively well-developed computer vision techniques to the above-stated problem. Most of these techniques center around the <em>Convolutional Neural Network</em> (CNN). In summary, the <em>time-series classification</em> problem has been converted to an <em>image classification</em> problem.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image5.png" alt="" />Consider how easy it is for the human visual system to handle this problem, and in a fraction of a second. In fact, this is exactly how analysts often do their classifications manually. This suggests that we might benefit from tapping into the biological mechanisms for analyzing visual data (i.e. images). Recently, some researchers started adopting this insight. See, for example, Wang and Oates (2015a). The essence of this line of thought is the following: Instead of analyzing a sequence of 1-D or scalar-valued <em>temporal</em> data points, we transform them into a single 2-D or matrix-valued <em>spatial</em> data point. The spatial data point is simply an image which means the time-series signal has been transformed into an image (see Figure 1.3 for an example of a transformation technique). This allows for the application of a large body of relatively well-developed computer vision techniques to the above-stated problem. Most of these techniques center around the <em>Convolutional Neural Network</em> (CNN). In summary, the <em>time-series classification</em> problem has been converted to an <em>image classification</em> problem.</p>
 
 <p>This comparative case study will not attempt to compare the difference between using RNNs and CNNs to solve the flight path classification problem. Instead, it will compare the impact of a number of transformation techniques (to transform the time-series into an image) on the image classification performance. After application of each transformation technique to the training dataset of flight path time-series, a CNN will be trained which will serve as a classifier. The performance of the classifiers will be compared. <em>Transfer learning</em> will be used to speed up the training of the CNNs.</p>
 
@@ -671,13 +671,13 @@ window.onload = wrap_img;
 
 <h4 id="altitude-line-plots-transformed-into-an-image">Altitude line plots transformed into an image</h4>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image7.png" alt="" />To create this spatial (or image) representation of the time-series, we will use a dark pen on a light background. This black-and-white rendition was deliberately prevented from being binary. A binary image only needs one channel. The pixel values of such an image only have one of two values. To make fair comparisons with more complex renditions (that use coloration), this image was allowed to have three channels as well. This manifests in the form of some blurriness along the black lines which come from the presence of grey pixels.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image7.png" alt="" />To create this spatial (or image) representation of the time-series, we will use a dark pen on a light background. This black-and-white rendition was deliberately prevented from being binary. A binary image only needs one channel. The pixel values of such an image only have one of two values. To make fair comparisons with more complex renditions (that use coloration), this image was allowed to have three channels as well. This manifests in the form of some blurriness along the black lines which come from the presence of grey pixels.</p>
 
 <p>No graphical annotations will be included, i.e. graphic frame, tick marks, tick labels, axis labels, and heading. Annotations will make the learning process unnecessarily complex. Figure 4.1 shows an example.</p>
 
 <h4 id="altitude-area-plots-transformed-into-an-image">Altitude area plots transformed into an image</h4>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image9.png" alt="" />To create the area transformation, we use a color (magenta) that is not confined to a single channel in the red-green-blue (RGB) encoding. There is also an outline in a slightly darker tint. Figure 4.2 shows the rendition of the same time-series.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image9.png" alt="" />To create the area transformation, we use a color (magenta) that is not confined to a single channel in the red-green-blue (RGB) encoding. There is also an outline in a slightly darker tint. Figure 4.2 shows the rendition of the same time-series.</p>
 
 <h4 id="gramian-angular-field-gaf">Gramian Angular Field (GAF)</h4>
 
@@ -700,7 +700,7 @@ r = \frac{t^{&lt; i &gt;}}{N},\ t^{&lt; i &gt;}\mathbb{\in N\ \ \ \ \ \ \ \ \ \ 
 
 <p>where (t^{&lt; i &gt;}) is the timestamp, (N) is a constant factor to regularize the span of the polar coordinate system, and (\mathbb{N}) is the set of natural numbers.</p>
 
-<p>To understand this transformation, imagine the following: Varying <em>values</em> of the time-series swing along different angular positions, similar to a weather cock. The progression of <em>time</em> resembles the way rippling water waves would emanate from the point where a stone was dropped. The transformation equations (Equation 2a, 2b) form a bijection because (\cos\phi) is monotonic when (\phi \in \lbrack 0,\ \pi\rbrack) (see Figure 4.3). This means that, for a given time-series, the mapping in Equation 2 produces one and only one transformation in the polar coordinate system with a unique inverse function.<img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image11.png" alt="" /></p>
+<p>To understand this transformation, imagine the following: Varying <em>values</em> of the time-series swing along different angular positions, similar to a weather cock. The progression of <em>time</em> resembles the way rippling water waves would emanate from the point where a stone was dropped. The transformation equations (Equation 2a, 2b) form a bijection because (\cos\phi) is monotonic when (\phi \in \lbrack 0,\ \pi\rbrack) (see Figure 4.3). This means that, for a given time-series, the mapping in Equation 2 produces one and only one transformation in the polar coordinate system with a unique inverse function.<img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image11.png" alt="" /></p>
 
 <p>Next, we form the GAF matrix, (G) where each element is the cosine of the sum of each pair of (\phi)’s. This captures the temporal correlation within different time intervals:</p>
 
@@ -730,7 +730,7 @@ G_{\text{GASF}} = \begin{bmatrix}
 
 <h5 id="gramian-angular-difference-field-gadf">Gramian Angular Difference Field (GADF)</h5>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image13.png" alt="" />If the summations in the GAF matrix are replaced with differences, and the cosines with sinuses, we get the Gramian Angular Difference Field (GADF). To define the Gramian Angular Difference Field (GADF) we form the sine of the difference of each pair of (\phi)’s:</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image13.png" alt="" />If the summations in the GAF matrix are replaced with differences, and the cosines with sinuses, we get the Gramian Angular Difference Field (GADF). To define the Gramian Angular Difference Field (GADF) we form the sine of the difference of each pair of (\phi)’s:</p>
 
 <p>[\begin{matrix}
 G_{\text{GADF}} = \begin{bmatrix}
@@ -741,7 +741,7 @@ G_{\text{GADF}} = \begin{bmatrix}
 \end{bmatrix}#\left( 5 \right) <br />
 \end{matrix}]</p>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image15.png" alt="" />When Figure 4.1’s time series is GADF-transformed, we get the image in Figure 4.5.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image15.png" alt="" />When Figure 4.1’s time series is GADF-transformed, we get the image in Figure 4.5.</p>
 
 <h4 id="markov-transition-field-mtf">Markov Transition Field (MTF)</h4>
 
@@ -760,7 +760,7 @@ w_{\text{ij}|x_{m} \in q_{i},x_{1} \in q_{j}} &amp; \cdots &amp; w_{\text{ij}|x_
 
 <p>The matrix (W) (Markov transition matrix) is constructed as follows. The magnitude of all the datapoints are separated into (Q) quantile bins. The bins that contain the datapoints at timestamp (i) and (j) are (q_{i}) and (q_{j}). The associated transition probability of (q_{i} \rightarrow q_{j}) in (M) (Markov Transition Field) is (M_{\text{ij}}). This has the effect of spreading out the matrix (W) which contains the transition probability on the magnitude axis into the (M) matrix by taking into account the temporal positions. This leads to the (M) matrix actually <em>encoding</em> the multi-span transition probabilities of the time-series, because we assign the probability from the quantile at timestamp (i) to the quantile at timestamp (j) at each pixel (M_{\text{ij}}). The main diagonal (M_{\text{ii}}) contains the probability from each quantile to itself (also called the self-transition probability) at timestamp (i).</p>
 
-<p>When the time series in Figure 4.1 is MTF-transformed, we get the image in Figure 4.6.<img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image17.png" alt="" /></p>
+<p>When the time series in Figure 4.1 is MTF-transformed, we get the image in Figure 4.6.<img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image17.png" alt="" /></p>
 
 <h4 id="recurrence-plot-rp">Recurrence Plot (RP)</h4>
 
@@ -782,7 +782,7 @@ R_{\text{ij}} = H\left( \epsilon - \left| \mathbf{s}<em>{i} - \mathbf{s}</em>{j}
 
 <p>To interpret the (R) matrix two aspects should be considered: <em>Texture</em> and <em>typology.</em> Texture manifests in the form of single dots, vertical lines, horizontal lines, and diagonal lines. Typology is encountered in the forms <em>homogenous</em>, <em>periodic</em>, <em>disrupted</em>, and <em>drift</em>. For example, if fading happens towards the upper left and lower right corners the dynamics exhibit a drift (commonly referred to as a trend). It is not always straightforward, however, to visually interpret a recurrence plot.</p>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image19.png" alt="" />When the time series in Figure 4.1 is RP-transformed, we get the image in Figure 4.7.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image19.png" alt="" />When the time series in Figure 4.1 is RP-transformed, we get the image in Figure 4.7.</p>
 
 <h3 id="convolutional-neural-networks-cnns">Convolutional Neural Networks (CNNs)</h3>
 
@@ -1357,7 +1357,7 @@ n_{W}^{\left\lbrack l \right\rbrack} = \left\lfloor \frac{n_{W}^{\left\lbrack l 
 
 <h4 id="selection-of-sub-model-with-best-transformation-technique">Selection of sub-model with best transformation technique</h4>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image21.png" alt="" />It is somewhat surprising that the simplest transformations, line and area plots, provide the highest scores. It could be a situation where the more elaborate transformations are an “overkill” for the task at hand. At the same time, it is encouraging to see that a simpler transformation technique works better for the present task. But what if we over-fitted the line plot sub-model? Figure 4.8 shows the losses for the unfrozen sub-model and there is no reason to suspect an over-fit. It is also encouraging to receive a perfect score (in the case of line and area plots) which means that all 216 profiles have been classified correctly.</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image21.png" alt="" />It is somewhat surprising that the simplest transformations, line and area plots, provide the highest scores. It could be a situation where the more elaborate transformations are an “overkill” for the task at hand. At the same time, it is encouraging to see that a simpler transformation technique works better for the present task. But what if we over-fitted the line plot sub-model? Figure 4.8 shows the losses for the unfrozen sub-model and there is no reason to suspect an over-fit. It is also encouraging to receive a perfect score (in the case of line and area plots) which means that all 216 profiles have been classified correctly.</p>
 
 <p>Thanks to the use of transfer learning, the small training time was also impressive. From the notebook, we see that, for the selected learning rate, the total training time for the frozen model was only (16 \times 6 = 96) seconds. The frozen model only trains the last few layers that provide customization for our purposes. For the unfrozen model the time was a mere (16 \times 8 = 128) seconds! The unfrozen model trains the complete architecture, for fine-tuning, making use of the transferred weights from the ImageNet model. In fact, it took much longer to experimentally find a good learning rate.</p>
 
@@ -1402,7 +1402,7 @@ n_{W}^{\left\lbrack l \right\rbrack} = \left\lfloor \frac{n_{W}^{\left\lbrack l 
   <p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/30_mod4-2.ipynb">30_mod4-2.ipynb</a></p>
 </blockquote>
 
-<p><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image23.png" alt="" />Figure 4.9, Figure 4.10, and Figure 4.11 shows reconstruction efforts by the trained model from train, validation, and anomalous data, respectively (it was found that the autoencoder worked better when working with inverted images). It is clear that the <img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image25.png" alt="" /><img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image27.png" alt="" />reconstruction error is significantly higher in the case of the anomalous data (Figure 4.11).</p>
+<p><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image23.png" alt="" />Figure 4.9, Figure 4.10, and Figure 4.11 shows reconstruction efforts by the trained model from train, validation, and anomalous data, respectively (it was found that the autoencoder worked better when working with inverted images). It is clear that the <img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image25.png" alt="" /><img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image27.png" alt="" />reconstruction error is significantly higher in the case of the anomalous data (Figure 4.11).</p>
 
 <p>The (F_{1}) score for this model (from the notebook) is 0.944. Table 4‑3 reveals that the autoencoder performs worse than all the classification sub-models in the previous section. Consequently, we will still use mod3a (as selected previously) for Stage III rather than the anomaly detection model (mod4).</p>
 
@@ -1535,7 +1535,7 @@ n_{W}^{\left\lbrack l \right\rbrack} = \left\lfloor \frac{n_{W}^{\left\lbrack l 
 
 <p>Figure 4.12 shows some examples of multi-label classification from the notebook.</p>
 
-<p>The best (F_{1}) score that could be obtained for mod2 during training is 0.937 (compare with Table 4‑3). This is much lower than the score for mod3a (1.000). Firstly, it <img src="https://ClosedLoopAI.github.io/data-science-masters-thesis/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image29.png" alt="" />was trained on fewer data points (Figure 5.1). Secondly, the labeling process introduced some noise. It is somewhat subjective to decide whether, for example, a discontinuity towards the end of the cruise segment is associated with cruise itself, or, alternatively, with the beginning of descent. The model finds the classification task a bit more challenging due to this noise.</p>
+<p>The best (F_{1}) score that could be obtained for mod2 during training is 0.937 (compare with Table 4‑3). This is much lower than the score for mod3a (1.000). Firstly, it <img src="https://ClosedLoopAI.github.io/portfolio/assets/img/2020-09-15-FinalPaper_KEsterhuysen/media/image29.png" alt="" />was trained on fewer data points (Figure 5.1). Secondly, the labeling process introduced some noise. It is somewhat subjective to decide whether, for example, a discontinuity towards the end of the cruise segment is associated with cruise itself, or, alternatively, with the beginning of descent. The model finds the classification task a bit more challenging due to this noise.</p>
 
 <h3 id="stage-i-extendedshort-cruises-model-mod1">Stage I: Extended/Short Cruises Model (mod1)</h3>
 
@@ -2118,20 +2118,20 @@ n_{W}^{\left\lbrack l \right\rbrack} = \left\lfloor \frac{n_{W}^{\left\lbrack l 
   </li>
 </ul>
 
-  </div><a class="u-url" href="/data-science-masters-thesis/2020/09/15/FinalPaper_KEsterhuysen.html" hidden></a>
+  </div><a class="u-url" href="/portfolio/2020/09/15/FinalPaper_KEsterhuysen.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/data-science-masters-thesis/"></data>
+  <data class="u-url" href="/portfolio/"></data>
 
   <div class="wrapper">
 
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
-          <a href="/data-science-masters-thesis/feed.xml">
+          <a href="/portfolio/feed.xml">
             <svg class="svg-icon orange">
-              <use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#rss"></use>
+              <use xlink:href="/portfolio/assets/minima-social-icons.svg#rss"></use>
             </svg><span>Subscribe</span>
           </a>
         </p>
@@ -2141,7 +2141,7 @@ n_{W}^{\left\lbrack l \right\rbrack} = \left\lfloor \frac{n_{W}^{\left\lbrack l 
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/data-science-masters-thesis/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/portfolio/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
 </div>
 
   </div>
