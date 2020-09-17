@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      45 min read
+      48 min read
     
 </span></p>
 
@@ -175,6 +175,8 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h3"><a href="#4.2.2-Anomaly-Detection-Model-(mod4)">4.2.2 Anomaly Detection Model (mod4) </a></li>
+<li class="toc-entry toc-h3"><a href="#4.2.3-Stage-II:-Canonicity-of-Segments-Model-(mod2)">4.2.3 Stage II: Canonicity of Segments Model (mod2) </a></li>
+<li class="toc-entry toc-h3"><a href="#4.2.4-Stage-I:-Extended/Short-Cruises-Model-(mod1)">4.2.4 Stage I: Extended/Short Cruises Model (mod1) </a></li>
 </ul>
 </li>
 </ul>
@@ -2266,6 +2268,737 @@ $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the previous section, we selected the line plot associated sub-model (mod3a) as the best. It will, however, be interesting to see how the performance of an autoencoder compares to that of the selected model, given the current situation of class imbalance. On the filesystem, the relevant .png files are in the folder:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>dashlink<ul>
+<li>Train<ul>
+<li>png4a [‘4’ refers to mod4]<ul>
+<li>non [non-typical/anonymous png files]</li>
+<li>typ [typical/normal png files]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The code for the anomaly detection model, mod4, is present in the Python notebook:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/30_mod4-2.ipynb">30_mod4-2.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 4.9, Figure 4.10, and Figure 4.11 shows reconstruction efforts by the trained model from train, validation, and anomalous data, respectively (it was found that the autoencoder worked better when working with inverted images). It is clear that the reconstruction error is significantly higher in the case of the anomalous data (Figure 4.11).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig4-9.png" alt="Figure 4.9 Reconstructed images (bottom) from train data (top)" title="Figure 4.9 Reconstructed images (bottom) from train data (top)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig4-10.png" alt="Figure 4.10 Reconstructed images (bottom) from validation data (top)" title="Figure 4.10 Reconstructed images (bottom) from validation data (top)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig4-11.png" alt="Figure 4.11 Reconstructed images (bottom) from anomalous data (top)" title="Figure 4.11 Reconstructed images (bottom) from anomalous data (top)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The $F_1$ score for this model (from the notebook) is 0.944. Table 4‑3 reveals that the autoencoder performs worse than all the classification sub-models in the previous section. Consequently, we will still use mod3a (as selected previously) for Stage III rather than the anomaly detection model (mod4).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.3-Stage-II:-Canonicity-of-Segments-Model-(mod2)">
+<a class="anchor" href="#4.2.3-Stage-II:-Canonicity-of-Segments-Model-(mod2)" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.3 Stage II: Canonicity of Segments Model (mod2)<a class="anchor-link" href="#4.2.3-Stage-II:-Canonicity-of-Segments-Model-(mod2)"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The input for this model (993 data points) are all the useful profile images (from <em>typ</em>) that was output from the Stage III model (i.e. mod3a). In the software, this model is called <em>mod2</em>. The purpose of the model is to multi-label-classify developed profiles according to the canonicity of their segments. A segment (climb/cruise/descent) is considered canonical if it is relatively smooth, i.e. does not contain steps or other vertical irregularities. Table 4‑4 shows a fragment from the <em>canonical-segments.csv</em> file required by this model for training. Each of the 993 images were inspected and the canonicities of its segments were captured in the file under the <em>tags</em> column. Table 4‑5 shows the encodings used.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Table 4‑4 Fragment from canonical-segments.csv</em></p>
+<table>
+<thead>
+<tr>
+<th>image_name</th>
+<th>tags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>687200104111158-1min</td>
+<td>cl cr</td>
+</tr>
+<tr>
+<td>687200104111441-1min</td>
+<td>cl cr</td>
+</tr>
+<tr>
+<td>687200104120604-1min</td>
+<td>cr</td>
+</tr>
+<tr>
+<td>687200104121330-1min</td>
+<td>cl cr</td>
+</tr>
+<tr>
+<td>687200104130953-1min</td>
+<td>cr</td>
+</tr>
+<tr>
+<td>687200104131343-1min</td>
+<td>cl cr</td>
+</tr>
+<tr>
+<td>687200104131515-1min</td>
+<td>cl cr</td>
+</tr>
+<tr>
+<td>687200104111637-1min</td>
+<td>cl</td>
+</tr>
+<tr>
+<td>687200104120347-1min</td>
+<td>cr</td>
+</tr>
+<tr>
+<td>687200104140606-1min</td>
+<td>cl cr de</td>
+</tr>
+<tr>
+<td>687200104190709-1min</td>
+<td>no</td>
+</tr>
+<tr>
+<td>687200104130631-1min</td>
+<td>cl cr</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Table 4‑5 Codes used for canonicity of segments</em></p>
+<table>
+<thead>
+<tr>
+<th>Encoding</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cl</td>
+<td>canonical climb</td>
+</tr>
+<tr>
+<td>cr</td>
+<td>canonical cruise</td>
+</tr>
+<tr>
+<td>de</td>
+<td>canonical descent</td>
+</tr>
+<tr>
+<td>no</td>
+<td>no canonical segments</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This arrangement is flexible for analysts with more general needs. For example, say an analyst wants to use profiles with only smooth climb segments, or say non-smooth cruises and smooth descents, whatever the need, it is easy to tweak the notebook to output the required files.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On the filesystem, the .png files are in a single folder:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>dashlink<ul>
+<li>Train<ul>
+<li>png2 [contains all the png files]</li>
+<li>canonical-segments.csv file</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The code for the Stage II model is present in the Python notebook:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://nbviewer.jupyter.org/github/kobus78/dashlink/blob/master/30_mod2.ipynb">30_mod2.ipynb</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The model’s notebook performs similar steps to what was described in Stage III. The main difference is due to training that supports multi-label classification rather than binary classification.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 4.12 shows some examples of multi-label classification from the notebook.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The best $F_1$ score that could be obtained for mod2 during training is 0.937 (compare with Table 4‑3). This is much lower than the score for mod3a (1.000). Firstly, it was trained on fewer data points (Figure 5.1). Secondly, the labeling process introduced some noise. It is somewhat subjective to decide whether, for example, a discontinuity towards the end of the cruise segment is associated with cruise itself, or, alternatively, with the beginning of descent. The model finds the classification task a bit more challenging due to this noise.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data-science-masters-thesis/images/copied_from_nb/../images/fig4-12.png" alt="Figure 4.12 Examples of multi-label classification" title="Figure 4.12 Examples of multi-label classification"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.4-Stage-I:-Extended/Short-Cruises-Model-(mod1)">
+<a class="anchor" href="#4.2.4-Stage-I:-Extended/Short-Cruises-Model-(mod1)" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2.4 Stage I: Extended/Short Cruises Model (mod1)<a class="anchor-link" href="#4.2.4-Stage-I:-Extended/Short-Cruises-Model-(mod1)"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>holder</p>
 
 </div>
 </div>
