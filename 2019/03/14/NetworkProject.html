@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NetworkProject ?? good title | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="NetworkProject ?? good title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Network Analysis on USA Airports" />
+<meta property="og:description" content="Network Analysis on USA Airports" />
+<link rel="canonical" href="https://closedloopai.github.io/portfolio/2019/03/14/NetworkProject.html" />
+<meta property="og:url" content="https://closedloopai.github.io/portfolio/2019/03/14/NetworkProject.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://closedloopai.github.io/portfolio/2019/03/14/NetworkProject.html","@type":"BlogPosting","headline":"NetworkProject ?? good title","dateModified":"2019-03-14T00:00:00-05:00","datePublished":"2019-03-14T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://closedloopai.github.io/portfolio/2019/03/14/NetworkProject.html"},"description":"Network Analysis on USA Airports","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://closedloopai.github.io/portfolio/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/portfolio/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/portfolio/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/portfolio/about/">About Me</a><a class="page-link" href="/portfolio/search/">Search</a><a class="page-link" href="/portfolio/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NetworkProject ?? good title</h1><p class="page-description">Network Analysis on USA Airports</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-03-14T00:00:00-05:00" itemprop="datePublished">
+        Mar 14, 2019
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Purpose">Purpose </a></li>
+<li class="toc-entry toc-h2"><a href="#Dataset">Dataset </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Vertex-attributes">Vertex attributes </a></li>
+<li class="toc-entry toc-h3"><a href="#Edge-attributes">Edge attributes </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Visualization-and-Network-Summary">Visualization and Network Summary </a></li>
+<li class="toc-entry toc-h2"><a href="#Community-Detection">Community Detection </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Cliques">Cliques </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#REFERENCES">REFERENCES </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2019-03-14-NetworkProject.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Purpose">
+<a class="anchor" href="#Purpose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Purpose<a class="anchor-link" href="#Purpose"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The purpose of this project is to gain insights from a <em>network analysis</em> of USA airports. This network consists of passenger flights between airports in the United States that occurred during December of 2010.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dataset">
+<a class="anchor" href="#Dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset<a class="anchor-link" href="#Dataset"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data comes from the Research and Innovative Technology Administration (RITA). See <a href="http://www.rita.dot.gov/about_rita/">http://www.rita.dot.gov/about_rita/</a> for details. The airport position information was collected from Wikipedia (by Gabor) and other public online sources.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset is a directed network with edge directions aligning with flight directions. The network contains multiple edges between many vertices. Each edge is associated with a single carrier aircraft type. Multiple carriers between the same pair of airports will have multiple edges between the vertices for the airports. This kind of network is sometimes called a <em>multigraph</em>. In total the network has 755 vertices and 23,473 edges.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The analysis was performed in R using the igraphdata package, written by Gabor Csardi (Gabor, 2015). He also maintains the package. The package is available in the CRAN repository (<a href="https://cran.r-project.org/web/packages/igraphdata/igraphdata.pdf">https://cran.r-project.org/web/packages/igraphdata/igraphdata.pdf</a>). This package consists of a collection of network datasets to use with the igraph package. Examples of these datasets are: The Enron email network, various food webs, interactions in the immunoglobulin protein, the karate club network, Koenigsberg's bridges, visuotactile brain areas of the macaque monkey, UK faculty friendship network, and the domestic US flights network.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will start by working with the complete dataset. The dataset will be slimmed down progressively until I arrive at a suitable subset for my purposes. I have a general interest in the operations of airlines. In addition, the network seemed rich in terms of the number of attributes and the multiplicity of edges.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will describe the attributes included with the network. The network has a ‘name’ graph attribute. It also has several vertex and edge attributes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Vertex-attributes">
+<a class="anchor" href="#Vertex-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vertex attributes<a class="anchor-link" href="#Vertex-attributes"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>name:</strong> Symbolic vertex name, this is the three letter IATA airport code.</li>
+<li>
+<strong>City:</strong> City and state, where the airport is located.</li>
+<li>
+<strong>Position:</strong> Position of the airport, in WGS coordinates.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Edge-attributes">
+<a class="anchor" href="#Edge-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Edge attributes<a class="anchor-link" href="#Edge-attributes"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Carrier:</strong> Name of the airline. The network includes both domestic and international carriers that performed at least one flight in December of 2010.</li>
+<li>
+<strong>Departures:</strong> The number of departures (for a given airline and aircraft type.</li>
+<li>
+<strong>Seats:</strong> The total number of seats available on the flights carried out by a given airline, using a given aircraft type.</li>
+<li>
+<strong>Passengers:</strong> The total number of passengers on the flights carried out by a given airline, using a given aircraft type.</li>
+<li>
+<strong>Aircraft:</strong> Type of the aircraft.</li>
+<li>
+<strong>Distance:</strong> The distance between the two airports, in miles.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Visualization-and-Network-Summary">
+<a class="anchor" href="#Visualization-and-Network-Summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualization and Network Summary<a class="anchor-link" href="#Visualization-and-Network-Summary"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although the terms “node” and “link” (rather than <em>vertex</em> and <em>edge</em>) are more digestible to the general reader, I have decided, for the sake of preciseness, to use the more technical <em>vertex</em> and <em>edge</em>. This usage will be extended to the visualizations as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A summary of this network in R confirms that it is <em>directed</em> and <em>named</em>. It is not <em>bipartite</em>; neither is it <em>weighted</em>. There are, however, edge attributes that can be used to make it weighted.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>&gt; summary(usa)
+IGRAPH bf6202d DN-- 755 23473 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Carrier (e/c), Departures (e/n),| Seats (e/n), Passengers (e/n), Aircraft (e/n), Distance (e/n)![image.png](attachment:image.png)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 1 shows a visualization of the network. Note that the size of vertices has been made proportional to the log of the degree due to the large variation of the degree of vertices. The symbolic vertex names (airport codes) are not shown to improve clarity. There are 755 vertices and 23,473 edges (although this is not apparent from the visualization). It is quite clear that, as we might expect, that this is a <em>scale-free</em> (rather than a random) network. A number of prominent, highly connected vertices are easy to spot.  Another characteristic of this network is its apparent partitioning of vertices into a number of cohesive subgroups. There seems to be two main subgroups and several smaller ones. There are even small “islands” of a few connected vertices. The visualization reveals the presence of some <em>self-loops</em> in the network.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig1.png" alt="Figure 1  Network with vertex size proportional to the log of the number of connected edges" title="Figure 1  Network with vertex size proportional to the log of the number of connected edges"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The R-code finds 53 self-loops:</p>
+
+<pre><code>&gt; sum(which_loop(usa))
+[1] 53</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 2 shows the network again, this time without taking the log of the degree. This provides some additional insights.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig2.png" alt="Figure 2  Network with vertex size proportional to the number of connected edges" title="Figure 2  Network with vertex size proportional to the number of connected edges"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 3 is the same as Figure 2 except that the layout of the vertices is along a circle. This visualization emphasizes how highly-connected the hub vertices are in this scale-free network.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig3.png" alt="Figure 3  Network with vertex size proportional to the number of connected edges" title="Figure 3  Network with vertex size proportional to the number of connected edges"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Community-Detection">
+<a class="anchor" href="#Community-Detection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Community Detection<a class="anchor-link" href="#Community-Detection"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can approach the presence of cohesion in a network from a number of angles. One approach is to consider <em>cliques</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cliques">
+<a class="anchor" href="#Cliques" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cliques<a class="anchor-link" href="#Cliques"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A clique is a maximally complete subgraph, in other words, a subset of vertices that have all possible ties among them. Cliques are usually considered in the context of undirected networks. It is, however, somewhat interesting to pretend for a moment that our network is undirected and consider the presence of cliques.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The R code reveals that there are cliques present and that the size of the largest maximally complete subgraph is 27:</p>
+
+<pre><code>&gt; clique.number(usa)
+[1] 27</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To proceed toward proper community detection, we will remove all the self-loops in the network. The occurrence of these are somewhat abnormal. They could be data errors or simply the fact that an airplane had to turn back to its takeoff airport due to problems that were experienced. As mentioned above, there are 53 self-loops in the network.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After removal, we have this network:</p>
+
+<pre><code>&gt; summary(usa2)
+IGRAPH b11c16a DN-- 755 23420 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Carrier (e/c), Departures (e/n),| Seats (e/n), Passengers (e/n), Aircraft (e/n), Distance (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will simplify the network by collapsing all the multi-edges. In other words, I will turn the multigraph into a simple graph. Doing this will simplify the analysis. It does not make sense to combine the values for <em>Carrier</em> and <em>Aircraft</em> from multiple edges into a single value for my purposes. I will ignore these edge attributes. For the other edge attributes I will combine them by summing. This means I will sum all the <em>Departures</em>, <em>Seats</em>, and <em>Passengers</em> for all the similarly-directed edges between a given vertex pair. The network will still be directional. The <em>Distance</em> edge attribute values will be combined by taking the max of sets of equal values. After simplification, we have:</p>
+
+<pre><code>&gt; summary(usa3)
+IGRAPH ddbc561 DN-- 755 8228 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)
+&gt; is_simple(usa3) #confirm that usa3 is now a simple graph
+[1] TRUE</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will turn the graph into a <em>weighted</em> network. I will use the <em>Distance</em> edge attribute to weight each edge.  After weighting, we have:</p>
+
+<pre><code>&gt; summary(usa4)
+IGRAPH ddbc561 DNW- 755 8228 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="REFERENCES">
+<a class="anchor" href="#REFERENCES" aria-hidden="true"><span class="octicon octicon-link"></span></a>REFERENCES<a class="anchor-link" href="#REFERENCES"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Berinato, S. (2016). Good Charts - The HBR Guide to Making Smarter, More Persuasive Data Visualizations.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tufte, E. R. (1990). Envisioning Information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tufte, E. R. (2001). The Visual Display of Quantitative Information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tufte, E. R. (2006). Beautiful Evidence.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="ClosedLoopAI/portfolio"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/portfolio/2019/03/14/NetworkProject.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/portfolio/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/portfolio/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/portfolio/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/portfolio/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
