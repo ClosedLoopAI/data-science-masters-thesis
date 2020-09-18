@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      15 min read
+      20 min read
     
 </span></p>
 
@@ -129,6 +129,12 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Network-Modeling">Network Modeling </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Null-model">Null model </a></li>
+<li class="toc-entry toc-h3"><a href="#Population-effect">Population effect </a></li>
+<li class="toc-entry toc-h3"><a href="#Homophily-effect">Homophily effect </a></li>
+<li class="toc-entry toc-h3"><a href="#Differential-Homophily-effect">Differential Homophily effect </a></li>
+<li class="toc-entry toc-h3"><a href="#Differential-Homophily-effect-2">Differential Homophily effect 2 </a></li>
+<li class="toc-entry toc-h3"><a href="#Differential-Homophily-effect-3">Differential Homophily effect 3 </a></li>
+<li class="toc-entry toc-h3"><a href="#Relational-terms-(network-predictors)">Relational terms (network predictors) </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#REFERENCES">REFERENCES </a></li>
@@ -906,7 +912,7 @@ IGRAPH 6881ea4 UN-- 36 71 -- US airports
 Summary of model fit
 ==========================
 
-Formula:   usa.n ~ &lt;mark&gt;edges&lt;/mark&gt;
+Formula:   usa.n ~ edges
 
 Iterations:  5 out of 20 
 
@@ -921,6 +927,289 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 AIC: 445.7    BIC: 450.1    (Smaller is better.)</code></pre>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The coefficient of edges is significant and is negative (-2.063) which shows that the density of the network is less than 50% (a coefficient of 0 indicates a 50% density). It is typical of real networks to have a density less than 50%. Indeed, the R code reveals that the density of the network is 0.1126984. This value is also the probability of creating an additional edge by adding one more node. The null model gives an AIC value of 445.7.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Population-effect">
+<a class="anchor" href="#Population-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Population effect<a class="anchor-link" href="#Population-effect"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adding the population data to the existing model, I get the following model (called pop.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula:   usa.n ~ edges + nodecov("Population")
+
+Iterations:  4 out of 20 
+
+Monte Carlo MLE Results:
+                     Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges              -2.332e+00  1.743e-01      0 -13.375   &lt;1e-04 ***
+nodecov.Population  1.023e-07  4.097e-08      0   2.496   0.0126 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 438.0  on 628  degrees of freedom
+
+AIC: 442    BIC: 450.9    (Smaller is better.)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The low p value of nodecov.Population shows that the coefficient of nodecov.Population is somewhat significant in predicting the connection between two airport nodes. For example, the 
+likelihood of a flight connection between two cities with population of 1 and 2 million respectively, is:</p>
+
+<pre><code>plogis(-2.332 + 1.023e-07*1 + 1.023e-07*2) = 0.08850721</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This value is smaller than the density of the network (0.1126984) which indicates that the role of the population in the present model is not very helpful in the prediction of a connection. Even so, the AIC value of this model is a little lower than that of the null model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Homophily-effect">
+<a class="anchor" href="#Homophily-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Homophily effect<a class="anchor-link" href="#Homophily-effect"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will use homophily to see if matches between Coastal values of vertices might help. Doing this, I got the following model (called hom.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula:   usa.n ~ edges + nodecov("Population") 
+                         + nodematch("Coastal", diff = F)
+
+Iterations:  5 out of 20 
+
+Monte Carlo MLE Results:
+                     Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges              -2.821e+00  2.524e-01      0 -11.176  &lt; 1e-04 ***
+nodecov.Population  1.103e-07  4.188e-08      0   2.634  0.00843 ** 
+nodematch.Coastal   8.241e-01  2.671e-01      0   3.085  0.00203 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 428.0  on 627  degrees of freedom
+
+AIC: 434    BIC: 447.3    (Smaller is better.)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The low p value of nodematch.Coastal shows that its coefficient is significant in predicting the connection between two airport vertices. (We notice that the significance of the nodecov.Population parameter has improved too.) For example, the likelihood of a flight connection between two cities with population of 1 and 2 million respectively, and matching <em>Coastal</em> values is:</p>
+
+<pre><code>plogis(-2.821 + 1.103e-07*1 + 1.103e-07*2 + 8.241e-01)=0.1195288</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This value is larger than the density of the network (0.1126984) which indicates that the effect of whether an airport is at the coast or not is indeed helpful in the prediction of a connection. In addition, the AIC has improved too, now at 434.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-Homophily-effect">
+<a class="anchor" href="#Differential-Homophily-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differential Homophily effect<a class="anchor-link" href="#Differential-Homophily-effect"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now use homophily of the Coastal vertex attribute in a more in-depth way, known as differential homophily. This means we will match for both No-No as well as Yes-Yes. Doing so gave me the following model (called difhom1.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula:   usa.n ~ edges + nodecov("Population") 
+                         + nodematch("Coastal", diff=TRUE)
+
+Iterations:  5 out of 20 
+
+Monte Carlo MLE Results:
+                          Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges                   -2.905e+00  2.642e-01      0 -10.994  &lt; 1e-04 ***
+nodecov.Population       1.355e-07  4.513e-08      0   3.002 0.002686 ** 
+nodematch.Coastal.FALSE  1.070e+00  2.982e-01      0   3.587 0.000334 ***
+nodematch.Coastal.TRUE   4.444e-01  3.567e-01      0   1.246 0.212748    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 424.8  on 626  degrees of freedom
+
+AIC: 432.8    BIC: 450.6    (Smaller is better.)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the significance of nodematch.Coastal.FALSE is higher than the significance of nodematch.Coastal in the previous model. In our example, the 
+likelihood of a flight connection between two cities with population of 1 and 2 million respectively, and miss-matching <em>Coastal</em> values is:</p>
+
+<pre><code>plogis(-2.905 + 1.335e-07*1 + 1.335e-07*2 + 1*1.070)= 0.1376438</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The AIC value is even better (lower), now at 432.8.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-Homophily-effect-2">
+<a class="anchor" href="#Differential-Homophily-effect-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differential Homophily effect 2<a class="anchor-link" href="#Differential-Homophily-effect-2"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now use differential homophily of the Coastal vertex attribute to only match for No-No. This gave me the following model (called difhom2.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula: usa.n ~ edges + nodecov("Population") 
+                       + nodematch("Coastal", diff=TRUE, keep=1)
+
+Iterations:  5 out of 20 
+
+Monte Carlo MLE Results:
+                          Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges                   -2.790e+00  2.418e-01      0 -11.535  &lt; 1e-04 ***
+nodecov.Population       1.435e-07  4.477e-08      0   3.206 0.001347 ** 
+nodematch.Coastal.FALSE  9.397e-01  2.737e-01      0   3.433 0.000597 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 426.3  on 627  degrees of freedom
+
+AIC: 432.3    BIC: 445.7    (Smaller is better.)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the significance of all the previous parameters have remained. In addition, the AIC value is slightly lower to 432.3.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-Homophily-effect-3">
+<a class="anchor" href="#Differential-Homophily-effect-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Differential Homophily effect 3<a class="anchor-link" href="#Differential-Homophily-effect-3"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This time I will have the Coastal vertex attribute to only match for Yes-Yes. This gave me the following model (called difhom2.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula: usa.n ~ edges + nodecov("Population") 
+                       + nodematch("Coastal", diff=T, keep=2)
+
+Iterations:  4 out of 20 
+
+Monte Carlo MLE Results:
+                         Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges                  -2.334e+00  1.791e-01      0 -13.035   &lt;1e-04 ***
+nodecov.Population      1.017e-07  4.183e-08      0   2.432    0.015 *  
+nodematch.Coastal.TRUE  1.992e-02  3.196e-01      0   0.062    0.950    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 438.0  on 627  degrees of freedom
+
+AIC: 444    BIC: 457.3    (Smaller is better.)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This time we have a <em>weaker</em> model in terms of the significance of the parameter estimates. In addition, the AIC value is up to 444.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Relational-terms-(network-predictors)">
+<a class="anchor" href="#Relational-terms-(network-predictors)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relational terms (network predictors)<a class="anchor-link" href="#Relational-terms-(network-predictors)"> </a>
+</h3>
 </div>
 </div>
 </div>
