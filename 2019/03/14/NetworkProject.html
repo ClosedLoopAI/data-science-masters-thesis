@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      15 min read
     
 </span></p>
 
@@ -115,6 +115,20 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Community-Detection">Community Detection </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Cliques">Cliques </a></li>
+<li class="toc-entry toc-h3"><a href="#Edge-betweenness-algorithm">Edge-betweenness algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Leading-eigenvector-algorithm">Leading eigenvector algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Fast-greedy-algorithm">Fast-greedy algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Louvain-algorithm">Louvain algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Walktrap-algorithm">Walktrap algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Label-propagation-algorithm">Label propagation algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#InfoMAP-algorithm">InfoMAP algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Spinglass-algorithm">Spinglass algorithm </a></li>
+<li class="toc-entry toc-h3"><a href="#Most-interesting-community-structure">Most interesting community structure </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Network-Modeling">Network Modeling </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Null-model">Null model </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#REFERENCES">REFERENCES </a></li>
@@ -429,6 +443,483 @@ IGRAPH ddbc561 DN-- 755 8228 -- US airports
 <pre><code>&gt; summary(usa4)
 IGRAPH ddbc561 DNW- 755 8228 -- US airports
 + attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first ten edges now look like this:</p>
+
+<pre><code>&gt; E(usa4)[[1:10]]+ 10/8228 edges from ddbc561 (vertex names):
+   tail head tid hid Departures Seats Passengers Distance weight
+1   BGR  BOS   1   2          1    34          6      201    201
+2   BGR  JFK   1   4          2   525        446      382    382
+3   BGR  MIA   1   6          1    12          4     1459   1459
+4   BGR  EWR   1   7          4   758        680      393    393
+5   BGR  DCA   1  43          4   200        116      590    590
+6   BGR  DTW   1  44         55  2750       1955      750    750
+7   BGR  LGA   1  57        130  6266       3640      378    378
+8   BGR  PHL   1  71        100  6274       4953      473    473
+9   BGR  PIE   1 157          9  1350       1198     1394   1394
+10  BGR  SFB   1 370         11  1650       1491     1299   1299</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After inspecting a much larger listing, we find that there are many flights with only a few passengers. This is also evident from the histogram in Figure 4. For example, there are 128 flights with a single passenger, 256 with 1 or 2 passengers, 522 with 5 or less, and 756 with 10 or fewer passengers:</p>
+
+<pre><code>&gt; length(E(usa4)[Passengers &lt;= 1]$Passengers)
+[1] 128
+&gt; length(E(usa4)[Passengers &lt;= 2]$Passengers)
+[1] 256
+&gt; length(E(usa4)[Passengers &lt;= 5]$Passengers)
+[1] 522
+&gt; length(E(usa4)[Passengers &lt;= 10]$Passengers)
+[1] 756</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig4.png" alt="Figure 4  Distribution of number of passengers" title="Figure 4  Distribution of number of passengers"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will remove all these edges. In fact, I will remove all edges that have 50,000 or less passengers. After this, we have the network:</p>
+
+<pre><code>&gt; summary(usa5)
+IGRAPH 6d89fa3 DNW- 755 131 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, I will remove all the isolates (vertices without any connected edges). After this step, we have:</p>
+
+<pre><code>&gt; summary(usa5)
+IGRAPH 679f9d1 DNW- 38 131 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After this, we can inspect the distribution of the number of flight legs over all geodesics. This is shown in Figure 5. Most flights (in the current dataset) consists of 2 legs (i.e. one transfer). Analyzing this further could open up opportunities to establish new direct flights, or reduced-leg flights. But, this is not our purpose currently.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig5.png" alt="Figure 5  Distribution of number of flight legs over all geodesics" title="Figure 5  Distribution of number of flight legs over all geodesics"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The next step is to convert the network to an undirected, unweighted graph. This will allow us more algorithms for the detection of communities. In converting to an undirected network, I will sum the <em>Departures</em> for both directions between a vertex pair. This will also be done for the edge attributes <em>Seats</em> and <em>Passengers</em>. For distance, I will take the max (of two identical numbers). The <em>weight</em> edge attribute will be ignored. After these operations, we have:</p>
+
+<pre><code>&gt; summary(usa6)
+IGRAPH 999ad18 UN-- 38 72 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This network consists of two clusters. We extract the largest component and then have:</p>
+
+<pre><code>&gt; summary(usa7)
+IGRAPH 6881ea4 UN-- 36 71 -- US airports
++ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This largest component is shown in Figure 6.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig6.png" alt="Figure 6  Largest component of the network" title="Figure 6  Largest component of the network"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are finally ready for community analysis. <em>Modularity</em> is an internal quality measure of clustering. This is an ideal measure when the ground truth for the 'correctness' of a cluster is not known. I will use this measure. Next, i will submit the network to a number of algorithms to identify communities.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Edge-betweenness-algorithm">
+<a class="anchor" href="#Edge-betweenness-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Edge-betweenness algorithm<a class="anchor-link" href="#Edge-betweenness-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 7 shows the edge-betweenness communities. This algorithm identifies three communities with a modularity of 0.31. One is centralized around Atlanta, GA. Another consists of the airports on the Hawaiian Islands. The third is a conglomeration of the rest of the airports.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig7.png" alt="Figure 7  Edge-betweenness communities" title="Figure 7  Edge-betweenness communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Leading-eigenvector-algorithm">
+<a class="anchor" href="#Leading-eigenvector-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Leading eigenvector algorithm<a class="anchor-link" href="#Leading-eigenvector-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Figure 8 the communities identified by the leading eigenvector algorithm can be seen. These communities have a modularity of 0.33. This time we have four communities – Austin, TX and Dallas, TX form a separate community on their own. Los Angeles, CA is now part of the “Hawaii community” and so are Houston, TX and Washington, DC.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig8.png" alt="Figure 8  Leading eigenvector communities" title="Figure 8  Leading eigenvector communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fast-greedy-algorithm">
+<a class="anchor" href="#Fast-greedy-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fast-greedy algorithm<a class="anchor-link" href="#Fast-greedy-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 9 shows the communities identified by the Fast-greedy algorithm. The modularity is 0.34 and we now have five communities. A fifth community seems to straddle parts of the “Atlanta”, “Dallas”, and “Other” communities.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig9.png" alt="Figure 9  Fast-greedy communities" title="Figure 9  Fast-greedy communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Louvain-algorithm">
+<a class="anchor" href="#Louvain-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Louvain algorithm<a class="anchor-link" href="#Louvain-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Louvain algorithm finds four communities with a modularity of 0.35. This is shown in Figure 10. It outlines a community centralized around Chicago, IL. The Atlanta and Hawaii communities are still present as well as the “Other” more “mesh-like” community.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig10.png" alt="Figure 10  Louvain communities" title="Figure 10  Louvain communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Walktrap-algorithm">
+<a class="anchor" href="#Walktrap-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Walktrap algorithm<a class="anchor-link" href="#Walktrap-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Figure 11 we see the communities outlined by the Walktrap algorithm. The algorithm calculates a modularity of 0.31. We are back to three communities, much like the edge-betweenness algorithm’s result. There is a community centered around Atlanta, one centered around Honolulu, and a “other” community that contains the rest of the airports.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig11.png" alt="Figure 11  Walktrap communities" title="Figure 11  Walktrap communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Label-propagation-algorithm">
+<a class="anchor" href="#Label-propagation-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Label propagation algorithm<a class="anchor-link" href="#Label-propagation-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Figure 12 shows the communities identified by the label propagation algorithm with a modularity of 0.10. This time we only have two communities: One centered around Honolulu and a second one that contains the rest of the airports. The crudeness of this partitioning is reflected in the relatively low modularity score of 0.10.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig12.png" alt="Figure 12  Label propagation communities" title="Figure 12  Label propagation communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="InfoMAP-algorithm">
+<a class="anchor" href="#InfoMAP-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>InfoMAP algorithm<a class="anchor-link" href="#InfoMAP-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Figure 13 we see the communities outlined by the InfoMAP algorithm. Again, we have a relatively low modularity of 0.10. The two communities identified resembles those from the previous label propagation algorithm.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig13.png" alt="Figure 13  InfoMAP communities" title="Figure 13  InfoMAP communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Spinglass-algorithm">
+<a class="anchor" href="#Spinglass-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spinglass algorithm<a class="anchor-link" href="#Spinglass-algorithm"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The communities identified by the Spinglass algorithm appears in Figure 14. Here we have a modularity of 0.34. Except for the “Hawaii” cluster, we have a somewhat novel partitioning this time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig14.png" alt="Figure 14  Spinglass communities" title="Figure 14  Spinglass communities"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Most-interesting-community-structure">
+<a class="anchor" href="#Most-interesting-community-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Most interesting community structure<a class="anchor-link" href="#Most-interesting-community-structure"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To me, the most interesting community structure was provided by the edge-betweenness algorithm. This structure is repeated in Figure 15 and has a modularity of 0.31. It cleanly partitions the vertices into three communities. One community is strongly centered around Atlanta, GA. It has a particularly central and strong hub (Atlanta) from where a number of “spokes” emanates to smaller airports. This is not a surprise. Most Americans know that Atlanta is a world-wide flight hub. Due to its star-like structure, we expect the density of the subgraph associated with this “Atlanta” community to be low. Indeed, when we form an induced subgraph and calculate its density we get a density of only 0.16:</p>
+
+<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[1]]]) #Atlanta
+[1] 0.1648352</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig15.png" alt="Figure 15  Most interesting community structure" title="Figure 15  Most interesting community structure"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The second community is centered around Honolulu, HI and also has a star structure. This is interesting because the algorithm considers this tiny cluster of only 5 vertices as a “peer” of the other two communities. Once again, this is in line with our expectation. The flight data was collected in December of 2010 which means it is winter in the USA. The fact that the Hawaii cluster is so prominent reflects the substantial holiday traffic associated with this tropical island during the mainland’s winter season. Add to this the fact that the Hawaiian Islands can only (reasonably) be visited by flying there (i.e. no driving) and you have a very “worthy” airport community.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Due to its star-like structure, we also expect the density of the subgraph associated with the “Hawaii” community to be low. However, it has a very small number of vertices and there are not many more links that can be made. So, its density turns out to be 0.4:</p>
+
+<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[3]]]) #Hawaii
+[1] 0.4</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The third community is interesting in the sense that it almost resembles a random (Erdos-Renyi) network (Erdos, Renyi, 1959). It seems like the relatively large airports contained within it compete with each other to be larger hubs and in the process, ends up more-or-less as “peers.” This random appearance suggests that the subgraph associated with this “Other” community might be denser, and indeed it is when compared with the “Atlanta” community which has a density of only 0.16. This community has a density of 0.28:</p>
+
+<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[2]]]) #Others
+[1] 0.2794118</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For a final visualization of our most interesting community structure we size the edge width according to the total number of passengers flowing back and forth along each edge. See Figure 16. Indeed, we see how relatively strong the flow towards and within the Hawaii community is.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/portfolio/images/copied_from_nb/../images/net_fig16.png" alt="Figure 16  Most interesting community structure (2)" title="Figure 16  Most interesting community structure (2)"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Network-Modeling">
+<a class="anchor" href="#Network-Modeling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network Modeling<a class="anchor-link" href="#Network-Modeling"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now add two <em>additional</em> vertex attributes to the network to make analysis more interesting. I suspect that the population of an airport’s city might have an effect on the network’s model. Accordingly, I obtained population information from the 2010 US Census,  <a href="https://www.census.gov/programs-surveys/decennial-census/decade.2010.html">https://www.census.gov/programs-surveys/decennial-census/decade.2010.html</a>. I stored this data in a new numeric vertex attribute called <em>Population</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another variable I thought might play a role is whether an airport’s city is a coastal city. For this, I added a new boolean vertex variable called <em>Coastal</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now use ERGM to build progressively richer and more accurate models for the network. The first model is the <em>null</em> model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Null-model">
+<a class="anchor" href="#Null-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Null model<a class="anchor-link" href="#Null-model"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using only the edge feature, I got this model (called null.mod in the R code):</p>
+
+<pre><code>==========================
+Summary of model fit
+==========================
+
+Formula:   usa.n ~ &lt;mark&gt;edges&lt;/mark&gt;
+
+Iterations:  5 out of 20 
+
+Monte Carlo MLE Results:
+      Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
+edges   -2.063      0.126      0  -16.38   &lt;1e-04 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+     Null Deviance: 873.4  on 630  degrees of freedom
+ Residual Deviance: 443.7  on 629  degrees of freedom
+
+AIC: 445.7    BIC: 450.1    (Smaller is better.)</code></pre>
 
 </div>
 </div>
