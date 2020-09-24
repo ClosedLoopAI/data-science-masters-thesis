@@ -1661,8 +1661,7 @@ Length of testing_set:  20000
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>{r}
-## Load sentiment data on Trump Syria Strike
+<pre><code>## Load sentiment data on Trump Syria Strike
 df &lt;- read.csv("trump_syria_strike15.csv", sep = "|", stringsAsFactors = FALSE)
 head(df)
 names(df)</code></pre>
@@ -1674,8 +1673,7 @@ names(df)</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>{r}
-## Count the tweets with positive sentiment, disregard a handful of rows that have NAs
+<pre><code>## Count the tweets with positive sentiment, disregard a handful of rows that have NAs
 total.evals &lt;- sum(complete.cases(df))
 total.evals
 total.approvals &lt;- sum(df[,'est_sentiment'], na.rm = TRUE)
