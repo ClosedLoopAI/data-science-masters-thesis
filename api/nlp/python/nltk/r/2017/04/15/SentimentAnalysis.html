@@ -1684,26 +1684,11 @@ Length of testing_set:  20000
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>## Load sentiment data on Trump Syria Strike
-df &lt;- read.csv("trump_syria_strike15.csv", sep = "|", stringsAsFactors = FALSE)
-head(df)
-names(df)</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>## Count the tweets with positive sentiment, disregard a handful of rows that have NAs
-total.evals &lt;- sum(complete.cases(df))
-total.evals
-total.approvals &lt;- sum(df[,'est_sentiment'], na.rm = TRUE)
-total.approvals
-fraction.approvals &lt;- total.approvals/total.evals
-fraction.approvals</code></pre>
+<div class="highlight"><pre><span></span><span class="c1">## Load sentiment data on Trump Syria Strike</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">"trump_syria_strike15.csv"</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">"|"</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -1711,31 +1696,46 @@ fraction.approvals</code></pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">## Count the tweets with positive sentiment, disregard a handful of rows that have NAs</span>
+<span class="n">total.evals</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">total.evals</span>
+<span class="n">total.approvals</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="s">'est_sentiment'</span><span class="p">],</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">total.approvals</span>
+<span class="n">fraction.approvals</span> <span class="o">&lt;-</span> <span class="n">total.approvals</span><span class="o">/</span><span class="n">total.evals</span>
+<span class="n">fraction.approvals</span>
+</pre></div>
 
-<pre><code>## Perform a hypothesis test of proportions
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1">## Perform a hypothesis test of proportions</span>
 
-### Setup hypotheses
+<span class="c1">### Setup hypotheses</span>
 
-The hypotheses will be:
+<span class="n">The</span> <span class="n">hypotheses</span> <span class="n">will</span> <span class="n">be</span><span class="o">:</span>
 
-    H0: p = p0
-    H1: p != p0
+    <span class="n">H0</span><span class="o">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p0</span>
+    <span class="n">H1</span><span class="o">:</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">p0</span>
 
-where 
+<span class="n">where</span> 
 
-p is the true proportion of the American public that *approves* the strike, and p0 = 0.46. 
+<span class="n">p</span> <span class="n">is</span> <span class="n">the</span> <span class="n">true</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">the</span> <span class="n">American</span> <span class="n">public</span> <span class="n">that</span> <span class="o">*</span><span class="n">approves</span><span class="o">*</span> <span class="n">the</span> <span class="n">strike</span><span class="p">,</span> <span class="n">and</span> <span class="n">p0</span> <span class="o">=</span> <span class="m">0.46</span><span class="n">.</span> 
 
-The *null* hypothesis, therefore, states that the proportion of the public that *approves* the strike (associated with *positive* sentiment tweets), is the *same* as the proportion of popular votes (46%) during the presidential election. 
+<span class="n">The</span> <span class="o">*</span><span class="n">null</span><span class="o">*</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="n">therefore</span><span class="p">,</span> <span class="n">states</span> <span class="n">that</span> <span class="n">the</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">the</span> <span class="n">public</span> <span class="n">that</span> <span class="o">*</span><span class="n">approves</span><span class="o">*</span> <span class="n">the</span> <span class="nf">strike </span><span class="p">(</span><span class="n">associated</span> <span class="n">with</span> <span class="o">*</span><span class="n">positive</span><span class="o">*</span> <span class="n">sentiment</span> <span class="n">tweets</span><span class="p">),</span> <span class="n">is</span> <span class="n">the</span> <span class="o">*</span><span class="n">same</span><span class="o">*</span> <span class="n">as</span> <span class="n">the</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">popular</span> <span class="nf">votes </span><span class="p">(</span><span class="m">46</span><span class="o">%) during the presidential election. </span>
 
-The *alternative* hypothesis, states that the proportion of the public that approves the strike is *different* from the proportion of popular votes. The type of hypothesis test will be a *one-sample test for a proportion*. The test will be *two-sided*.
+<span class="o">The *alternative* hypothesis, states that the proportion of the public that approves the strike is *different* from the proportion of popular votes. The type of hypothesis test will be a *one-sample test for a proportion*. The test will be *two-sided*.</span>
 
-### Perform hypothesis test
+<span class="o">### Perform hypothesis test</span>
 
-prop.test(total.approvals, n = total.evals, p = 0.46, alternative = 'two.sided')
+<span class="o">prop.test(total.approvals, n = total.evals, p = 0.46, alternative = 'two.sided')</span>
 
-### Conclusion
+<span class="o">### Conclusion</span>
 
-The p-value is much smaller than 0.05. At the 0.05 significance level, we *reject* the null hypothesis. There is enough evidence to claim that the proportion of the American public that *approves* the missile strike is *different* from 46%. The proportion that approves the strike is 58%.</code></pre>
+<span class="o">The p-value is much smaller than 0.05. At the 0.05 significance level, we *reject* the null hypothesis. There is enough evidence to claim that the proportion of the American public that *approves* the missile strike is *different* from 46%</span><span class="n">.</span> <span class="n">The</span> <span class="n">proportion</span> <span class="n">that</span> <span class="n">approves</span> <span class="n">the</span> <span class="n">strike</span> <span class="n">is</span> <span class="m">58</span>%<span class="n">.</span>
+</pre></div>
 
 </div>
 </div>
