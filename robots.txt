@@ -1,1 +1,1 @@
-Sitemap: https://closedloopai.github.io/portfolio/sitemap.xml
+Sitemap: /portfolio/sitemap.xml
