@@ -349,9 +349,9 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The R-code finds 53 self-loops:</p>
-
-<pre><code>&gt; sum(which_loop(usa))
-[1] 53</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">which_loop</span><span class="p">(</span><span class="n">usa</span><span class="p">))</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">53</span>
+</pre></div>
 
 </div>
 </div>
@@ -426,9 +426,9 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The R code reveals that there are cliques present and that the size of the largest maximally complete subgraph is 27:</p>
-
-<pre><code>&gt; clique.number(usa)
-[1] 27</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">clique.number</span><span class="p">(</span><span class="n">usa</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">27</span>
+</pre></div>
 
 </div>
 </div>
@@ -445,10 +445,10 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After removal, we have this network:</p>
-
-<pre><code>&gt; summary(usa2)
-IGRAPH b11c16a DN-- 755 23420 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Carrier (e/c), Departures (e/n),| Seats (e/n), Passengers (e/n), Aircraft (e/n), Distance (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa2</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="n">b11c16a</span> <span class="n">DN</span><span class="o">--</span> <span class="m">755</span> <span class="m">23420</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Carrier </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Aircraft </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -457,12 +457,12 @@ IGRAPH b11c16a DN-- 755 23420 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I will simplify the network by collapsing all the multi-edges. In other words, I will turn the multigraph into a simple graph. Doing this will simplify the analysis. It does not make sense to combine the values for <em>Carrier</em> and <em>Aircraft</em> from multiple edges into a single value for my purposes. I will ignore these edge attributes. For the other edge attributes I will combine them by summing. This means I will sum all the <em>Departures</em>, <em>Seats</em>, and <em>Passengers</em> for all the similarly-directed edges between a given vertex pair. The network will still be directional. The <em>Distance</em> edge attribute values will be combined by taking the max of sets of equal values. After simplification, we have:</p>
-
-<pre><code>&gt; summary(usa3)
-IGRAPH ddbc561 DN-- 755 8228 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)
-&gt; is_simple(usa3) #confirm that usa3 is now a simple graph
-[1] TRUE</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa3</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="n">ddbc561</span> <span class="n">DN</span><span class="o">--</span> <span class="m">755</span> <span class="m">8228</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">is_simple</span><span class="p">(</span><span class="n">usa3</span><span class="p">)</span> <span class="c1">#confirm that usa3 is now a simple graph</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="kc">TRUE</span>
+</pre></div>
 
 </div>
 </div>
@@ -471,10 +471,10 @@ IGRAPH ddbc561 DN-- 755 8228 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I will turn the graph into a <em>weighted</em> network. I will use the <em>Distance</em> edge attribute to weight each edge.  After weighting, we have:</p>
-
-<pre><code>&gt; summary(usa4)
-IGRAPH ddbc561 DNW- 755 8228 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa4</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="n">ddbc561</span> <span class="n">DNW</span><span class="o">-</span> <span class="m">755</span> <span class="m">8228</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">weight </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -483,19 +483,19 @@ IGRAPH ddbc561 DNW- 755 8228 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first ten edges now look like this:</p>
-
-<pre><code>&gt; E(usa4)[[1:10]]+ 10/8228 edges from ddbc561 (vertex names):
-   tail head tid hid Departures Seats Passengers Distance weight
-1   BGR  BOS   1   2          1    34          6      201    201
-2   BGR  JFK   1   4          2   525        446      382    382
-3   BGR  MIA   1   6          1    12          4     1459   1459
-4   BGR  EWR   1   7          4   758        680      393    393
-5   BGR  DCA   1  43          4   200        116      590    590
-6   BGR  DTW   1  44         55  2750       1955      750    750
-7   BGR  LGA   1  57        130  6266       3640      378    378
-8   BGR  PHL   1  71        100  6274       4953      473    473
-9   BGR  PIE   1 157          9  1350       1198     1394   1394
-10  BGR  SFB   1 370         11  1650       1491     1299   1299</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">E</span><span class="p">(</span><span class="n">usa4</span><span class="p">)[[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]]</span><span class="o">+</span> <span class="m">10</span><span class="o">/</span><span class="m">8228</span> <span class="n">edges</span> <span class="n">from</span> <span class="nf">ddbc561 </span><span class="p">(</span><span class="n">vertex</span> <span class="n">names</span><span class="p">)</span><span class="o">:</span>
+   <span class="n">tail</span> <span class="n">head</span> <span class="n">tid</span> <span class="n">hid</span> <span class="n">Departures</span> <span class="n">Seats</span> <span class="n">Passengers</span> <span class="n">Distance</span> <span class="n">weight</span>
+<span class="m">1</span>   <span class="n">BGR</span>  <span class="n">BOS</span>   <span class="m">1</span>   <span class="m">2</span>          <span class="m">1</span>    <span class="m">34</span>          <span class="m">6</span>      <span class="m">201</span>    <span class="m">201</span>
+<span class="m">2</span>   <span class="n">BGR</span>  <span class="n">JFK</span>   <span class="m">1</span>   <span class="m">4</span>          <span class="m">2</span>   <span class="m">525</span>        <span class="m">446</span>      <span class="m">382</span>    <span class="m">382</span>
+<span class="m">3</span>   <span class="n">BGR</span>  <span class="n">MIA</span>   <span class="m">1</span>   <span class="m">6</span>          <span class="m">1</span>    <span class="m">12</span>          <span class="m">4</span>     <span class="m">1459</span>   <span class="m">1459</span>
+<span class="m">4</span>   <span class="n">BGR</span>  <span class="n">EWR</span>   <span class="m">1</span>   <span class="m">7</span>          <span class="m">4</span>   <span class="m">758</span>        <span class="m">680</span>      <span class="m">393</span>    <span class="m">393</span>
+<span class="m">5</span>   <span class="n">BGR</span>  <span class="n">DCA</span>   <span class="m">1</span>  <span class="m">43</span>          <span class="m">4</span>   <span class="m">200</span>        <span class="m">116</span>      <span class="m">590</span>    <span class="m">590</span>
+<span class="m">6</span>   <span class="n">BGR</span>  <span class="n">DTW</span>   <span class="m">1</span>  <span class="m">44</span>         <span class="m">55</span>  <span class="m">2750</span>       <span class="m">1955</span>      <span class="m">750</span>    <span class="m">750</span>
+<span class="m">7</span>   <span class="n">BGR</span>  <span class="n">LGA</span>   <span class="m">1</span>  <span class="m">57</span>        <span class="m">130</span>  <span class="m">6266</span>       <span class="m">3640</span>      <span class="m">378</span>    <span class="m">378</span>
+<span class="m">8</span>   <span class="n">BGR</span>  <span class="n">PHL</span>   <span class="m">1</span>  <span class="m">71</span>        <span class="m">100</span>  <span class="m">6274</span>       <span class="m">4953</span>      <span class="m">473</span>    <span class="m">473</span>
+<span class="m">9</span>   <span class="n">BGR</span>  <span class="n">PIE</span>   <span class="m">1</span> <span class="m">157</span>          <span class="m">9</span>  <span class="m">1350</span>       <span class="m">1198</span>     <span class="m">1394</span>   <span class="m">1394</span>
+<span class="m">10</span>  <span class="n">BGR</span>  <span class="n">SFB</span>   <span class="m">1</span> <span class="m">370</span>         <span class="m">11</span>  <span class="m">1650</span>       <span class="m">1491</span>     <span class="m">1299</span>   <span class="m">1299</span>
+</pre></div>
 
 </div>
 </div>
@@ -504,15 +504,15 @@ IGRAPH ddbc561 DNW- 755 8228 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After inspecting a much larger listing, we find that there are many flights with only a few passengers. This is also evident from the histogram in Figure 4. For example, there are 128 flights with a single passenger, 256 with 1 or 2 passengers, 522 with 5 or less, and 756 with 10 or fewer passengers:</p>
-
-<pre><code>&gt; length(E(usa4)[Passengers &lt;= 1]$Passengers)
-[1] 128
-&gt; length(E(usa4)[Passengers &lt;= 2]$Passengers)
-[1] 256
-&gt; length(E(usa4)[Passengers &lt;= 5]$Passengers)
-[1] 522
-&gt; length(E(usa4)[Passengers &lt;= 10]$Passengers)
-[1] 756</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="n">usa4</span><span class="p">)[</span><span class="n">Passengers</span> <span class="o">&lt;=</span> <span class="m">1</span><span class="p">]</span><span class="o">$</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">128</span>
+<span class="o">&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="n">usa4</span><span class="p">)[</span><span class="n">Passengers</span> <span class="o">&lt;=</span> <span class="m">2</span><span class="p">]</span><span class="o">$</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">256</span>
+<span class="o">&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="n">usa4</span><span class="p">)[</span><span class="n">Passengers</span> <span class="o">&lt;=</span> <span class="m">5</span><span class="p">]</span><span class="o">$</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">522</span>
+<span class="o">&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">E</span><span class="p">(</span><span class="n">usa4</span><span class="p">)[</span><span class="n">Passengers</span> <span class="o">&lt;=</span> <span class="m">10</span><span class="p">]</span><span class="o">$</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">756</span>
+</pre></div>
 
 </div>
 </div>
@@ -529,10 +529,10 @@ IGRAPH ddbc561 DNW- 755 8228 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I will remove all these edges. In fact, I will remove all edges that have 50,000 or less passengers. After this, we have the network:</p>
-
-<pre><code>&gt; summary(usa5)
-IGRAPH 6d89fa3 DNW- 755 131 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa5</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="m">6</span><span class="n">d89fa3</span> <span class="n">DNW</span><span class="o">-</span> <span class="m">755</span> <span class="m">131</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">weight </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -541,10 +541,10 @@ IGRAPH 6d89fa3 DNW- 755 131 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I will remove all the isolates (vertices without any connected edges). After this step, we have:</p>
-
-<pre><code>&gt; summary(usa5)
-IGRAPH 679f9d1 DNW- 38 131 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n), weight (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa5</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="m">679</span><span class="n">f9d1</span> <span class="n">DNW</span><span class="o">-</span> <span class="m">38</span> <span class="m">131</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">weight </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -569,10 +569,10 @@ IGRAPH 679f9d1 DNW- 38 131 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The next step is to convert the network to an undirected, unweighted graph. This will allow us more algorithms for the detection of communities. In converting to an undirected network, I will sum the <em>Departures</em> for both directions between a vertex pair. This will also be done for the edge attributes <em>Seats</em> and <em>Passengers</em>. For distance, I will take the max (of two identical numbers). The <em>weight</em> edge attribute will be ignored. After these operations, we have:</p>
-
-<pre><code>&gt; summary(usa6)
-IGRAPH 999ad18 UN-- 38 72 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa6</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="m">999</span><span class="n">ad18</span> <span class="n">UN</span><span class="o">--</span> <span class="m">38</span> <span class="m">72</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -581,10 +581,10 @@ IGRAPH 999ad18 UN-- 38 72 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This network consists of two clusters. We extract the largest component and then have:</p>
-
-<pre><code>&gt; summary(usa7)
-IGRAPH 6881ea4 UN-- 36 71 -- US airports
-+ attr:name (g/c), name (v/c), City (v/c), Position (v/c), Departures (e/n), Seats (e/n),| Passengers (e/n), Distance (e/n)</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">usa7</span><span class="p">)</span>
+<span class="n">IGRAPH</span> <span class="m">6881</span><span class="n">ea4</span> <span class="n">UN</span><span class="o">--</span> <span class="m">36</span> <span class="m">71</span> <span class="o">--</span> <span class="n">US</span> <span class="n">airports</span>
+<span class="o">+</span> <span class="n">attr</span><span class="o">:</span><span class="nf">name </span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">name </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">City </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Position </span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">c</span><span class="p">),</span> <span class="nf">Departures </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Seats </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="o">|</span> <span class="nf">Passengers </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">),</span> <span class="nf">Distance </span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -826,9 +826,9 @@ IGRAPH 6881ea4 UN-- 36 71 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To me, the most interesting community structure was provided by the edge-betweenness algorithm. This structure is repeated in Figure 15 and has a modularity of 0.31. It cleanly partitions the vertices into three communities. One community is strongly centered around Atlanta, GA. It has a particularly central and strong hub (Atlanta) from where a number of “spokes” emanates to smaller airports. This is not a surprise. Most Americans know that Atlanta is a world-wide flight hub. Due to its star-like structure, we expect the density of the subgraph associated with this “Atlanta” community to be low. Indeed, when we form an induced subgraph and calculate its density we get a density of only 0.16:</p>
-
-<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[1]]]) #Atlanta
-[1] 0.1648352</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">community_density</span><span class="p">(</span><span class="n">usa7</span><span class="p">,</span> <span class="nf">V</span><span class="p">(</span><span class="n">usa7</span><span class="p">)[</span><span class="n">ceb</span><span class="p">[[</span><span class="m">1</span><span class="p">]]])</span> <span class="c1">#Atlanta</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.1648352</span>
+</pre></div>
 
 </div>
 </div>
@@ -853,9 +853,9 @@ IGRAPH 6881ea4 UN-- 36 71 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Due to its star-like structure, we also expect the density of the subgraph associated with the “Hawaii” community to be low. However, it has a very small number of vertices and there are not many more links that can be made. So, its density turns out to be 0.4:</p>
-
-<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[3]]]) #Hawaii
-[1] 0.4</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">community_density</span><span class="p">(</span><span class="n">usa7</span><span class="p">,</span> <span class="nf">V</span><span class="p">(</span><span class="n">usa7</span><span class="p">)[</span><span class="n">ceb</span><span class="p">[[</span><span class="m">3</span><span class="p">]]])</span> <span class="c1">#Hawaii</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.4</span>
+</pre></div>
 
 </div>
 </div>
@@ -864,9 +864,9 @@ IGRAPH 6881ea4 UN-- 36 71 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The third community is interesting in the sense that it almost resembles a random (Erdos-Renyi) network (Erdos, Renyi, 1959). It seems like the relatively large airports contained within it compete with each other to be larger hubs and in the process, ends up more-or-less as “peers.” This random appearance suggests that the subgraph associated with this “Other” community might be denser, and indeed it is when compared with the “Atlanta” community which has a density of only 0.16. This community has a density of 0.28:</p>
-
-<pre><code>&gt; community_density(usa7, V(usa7)[ceb[[2]]]) #Others
-[1] 0.2794118</code></pre>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">community_density</span><span class="p">(</span><span class="n">usa7</span><span class="p">,</span> <span class="nf">V</span><span class="p">(</span><span class="n">usa7</span><span class="p">)[</span><span class="n">ceb</span><span class="p">[[</span><span class="m">2</span><span class="p">]]])</span> <span class="c1">#Others</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">0.2794118</span>
+</pre></div>
 
 </div>
 </div>
@@ -933,25 +933,25 @@ IGRAPH 6881ea4 UN-- 36 71 -- US airports
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using only the edge feature, I got this model (called null.mod in the R code):</p>
+<div class="highlight"><pre><span></span><span class="o">==========================</span>
+<span class="n">Summary</span> <span class="n">of</span> <span class="n">model</span> <span class="n">fit</span>
+<span class="o">==========================</span>
 
-<pre><code>==========================
-Summary of model fit
-==========================
+<span class="n">Formula</span><span class="o">:</span>   <span class="n">usa.n</span> <span class="o">~</span> <span class="n">edges</span>
 
-Formula:   usa.n ~ edges
+<span class="n">Iterations</span><span class="o">:</span>  <span class="m">5</span> <span class="n">out</span> <span class="n">of</span> <span class="m">20</span> 
 
-Iterations:  5 out of 20 
+<span class="n">Monte</span> <span class="n">Carlo</span> <span class="n">MLE</span> <span class="n">Results</span><span class="o">:</span>
+      <span class="n">Estimate</span> <span class="n">Std.</span> <span class="n">Error</span> <span class="n">MCMC</span> % <span class="n">z</span> <span class="n">value</span> <span class="nf">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span><span class="p">)</span>    
+<span class="n">edges</span>   <span class="m">-2.063</span>      <span class="m">0.126</span>      <span class="m">0</span>  <span class="m">-16.38</span>   <span class="o">&lt;</span><span class="m">1e-04</span> <span class="o">***</span>
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> ‘<span class="o">***</span>’ <span class="m">0.001</span> ‘<span class="o">**</span>’ <span class="m">0.01</span> ‘<span class="o">*</span>’ <span class="m">0.05</span> ‘<span class="n">.</span>’ <span class="m">0.1</span> ‘ ’ <span class="m">1</span>
 
-Monte Carlo MLE Results:
-      Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
-edges   -2.063      0.126      0  -16.38   &lt;1e-04 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+     <span class="n">Null</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">873.4</span>  <span class="n">on</span> <span class="m">630</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+ <span class="n">Residual</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">443.7</span>  <span class="n">on</span> <span class="m">629</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
 
-     Null Deviance: 873.4  on 630  degrees of freedom
- Residual Deviance: 443.7  on 629  degrees of freedom
-
-AIC: 445.7    BIC: 450.1    (Smaller is better.)</code></pre>
+<span class="n">AIC</span><span class="o">:</span> <span class="m">445.7</span>    <span class="n">BIC</span><span class="o">:</span> <span class="m">450.1</span>    <span class="p">(</span><span class="n">Smaller</span> <span class="n">is</span> <span class="n">better.</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -977,26 +977,26 @@ AIC: 445.7    BIC: 450.1    (Smaller is better.)</code></pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Adding the population data to the existing model, I get the following model (called pop.mod in the R code):</p>
+<div class="highlight"><pre><span></span><span class="o">==========================</span>
+<span class="n">Summary</span> <span class="n">of</span> <span class="n">model</span> <span class="n">fit</span>
+<span class="o">==========================</span>
 
-<pre><code>==========================
-Summary of model fit
-==========================
+<span class="n">Formula</span><span class="o">:</span>   <span class="n">usa.n</span> <span class="o">~</span> <span class="n">edges</span> <span class="o">+</span> <span class="nf">nodecov</span><span class="p">(</span><span class="s">"Population"</span><span class="p">)</span>
 
-Formula:   usa.n ~ edges + nodecov("Population")
+<span class="n">Iterations</span><span class="o">:</span>  <span class="m">4</span> <span class="n">out</span> <span class="n">of</span> <span class="m">20</span> 
 
-Iterations:  4 out of 20 
+<span class="n">Monte</span> <span class="n">Carlo</span> <span class="n">MLE</span> <span class="n">Results</span><span class="o">:</span>
+                     <span class="n">Estimate</span> <span class="n">Std.</span> <span class="n">Error</span> <span class="n">MCMC</span> % <span class="n">z</span> <span class="n">value</span> <span class="nf">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span><span class="p">)</span>    
+<span class="n">edges</span>              <span class="m">-2.332e+00</span>  <span class="m">1.743e-01</span>      <span class="m">0</span> <span class="m">-13.375</span>   <span class="o">&lt;</span><span class="m">1e-04</span> <span class="o">***</span>
+<span class="n">nodecov.Population</span>  <span class="m">1.023e-07</span>  <span class="m">4.097e-08</span>      <span class="m">0</span>   <span class="m">2.496</span>   <span class="m">0.0126</span> <span class="o">*</span>  
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> ‘<span class="o">***</span>’ <span class="m">0.001</span> ‘<span class="o">**</span>’ <span class="m">0.01</span> ‘<span class="o">*</span>’ <span class="m">0.05</span> ‘<span class="n">.</span>’ <span class="m">0.1</span> ‘ ’ <span class="m">1</span>
 
-Monte Carlo MLE Results:
-                     Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
-edges              -2.332e+00  1.743e-01      0 -13.375   &lt;1e-04 ***
-nodecov.Population  1.023e-07  4.097e-08      0   2.496   0.0126 *  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+     <span class="n">Null</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">873.4</span>  <span class="n">on</span> <span class="m">630</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+ <span class="n">Residual</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">438.0</span>  <span class="n">on</span> <span class="m">628</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
 
-     Null Deviance: 873.4  on 630  degrees of freedom
- Residual Deviance: 438.0  on 628  degrees of freedom
-
-AIC: 442    BIC: 450.9    (Smaller is better.)</code></pre>
+<span class="n">AIC</span><span class="o">:</span> <span class="m">442</span>    <span class="n">BIC</span><span class="o">:</span> <span class="m">450.9</span>    <span class="p">(</span><span class="n">Smaller</span> <span class="n">is</span> <span class="n">better.</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -1006,8 +1006,8 @@ AIC: 442    BIC: 450.9    (Smaller is better.)</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The low p value of nodecov.Population shows that the coefficient of nodecov.Population is somewhat significant in predicting the connection between two airport nodes. For example, the 
 likelihood of a flight connection between two cities with population of 1 and 2 million respectively, is:</p>
-
-<pre><code>plogis(-2.332 + 1.023e-07*1 + 1.023e-07*2) = 0.08850721</code></pre>
+<div class="highlight"><pre><span></span><span class="nf">plogis</span><span class="p">(</span><span class="m">-2.332</span> <span class="o">+</span> <span class="m">1.023e-07</span><span class="o">*</span><span class="m">1</span> <span class="o">+</span> <span class="m">1.023e-07</span><span class="o">*</span><span class="m">2</span><span class="p">)</span> <span class="o">=</span> <span class="m">0.08850721</span>
+</pre></div>
 
 </div>
 </div>
@@ -1033,28 +1033,28 @@ likelihood of a flight connection between two cities with population of 1 and 2 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I will use homophily to see if matches between Coastal values of vertices might help. Doing this, I got the following model (called hom.mod in the R code):</p>
+<div class="highlight"><pre><span></span><span class="o">==========================</span>
+<span class="n">Summary</span> <span class="n">of</span> <span class="n">model</span> <span class="n">fit</span>
+<span class="o">==========================</span>
 
-<pre><code>==========================
-Summary of model fit
-==========================
+<span class="n">Formula</span><span class="o">:</span>   <span class="n">usa.n</span> <span class="o">~</span> <span class="n">edges</span> <span class="o">+</span> <span class="nf">nodecov</span><span class="p">(</span><span class="s">"Population"</span><span class="p">)</span> 
+                         <span class="o">+</span> <span class="nf">nodematch</span><span class="p">(</span><span class="s">"Coastal"</span><span class="p">,</span> <span class="n">diff</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
 
-Formula:   usa.n ~ edges + nodecov("Population") 
-                         + nodematch("Coastal", diff = F)
+<span class="n">Iterations</span><span class="o">:</span>  <span class="m">5</span> <span class="n">out</span> <span class="n">of</span> <span class="m">20</span> 
 
-Iterations:  5 out of 20 
+<span class="n">Monte</span> <span class="n">Carlo</span> <span class="n">MLE</span> <span class="n">Results</span><span class="o">:</span>
+                     <span class="n">Estimate</span> <span class="n">Std.</span> <span class="n">Error</span> <span class="n">MCMC</span> % <span class="n">z</span> <span class="n">value</span> <span class="nf">Pr</span><span class="p">(</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span><span class="p">)</span>    
+<span class="n">edges</span>              <span class="m">-2.821e+00</span>  <span class="m">2.524e-01</span>      <span class="m">0</span> <span class="m">-11.176</span>  <span class="o">&lt;</span> <span class="m">1e-04</span> <span class="o">***</span>
+<span class="n">nodecov.Population</span>  <span class="m">1.103e-07</span>  <span class="m">4.188e-08</span>      <span class="m">0</span>   <span class="m">2.634</span>  <span class="m">0.00843</span> <span class="o">**</span> 
+<span class="n">nodematch.Coastal</span>   <span class="m">8.241e-01</span>  <span class="m">2.671e-01</span>      <span class="m">0</span>   <span class="m">3.085</span>  <span class="m">0.00203</span> <span class="o">**</span> 
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> ‘<span class="o">***</span>’ <span class="m">0.001</span> ‘<span class="o">**</span>’ <span class="m">0.01</span> ‘<span class="o">*</span>’ <span class="m">0.05</span> ‘<span class="n">.</span>’ <span class="m">0.1</span> ‘ ’ <span class="m">1</span>
 
-Monte Carlo MLE Results:
-                     Estimate Std. Error MCMC % z value Pr(&gt;|z|)    
-edges              -2.821e+00  2.524e-01      0 -11.176  &lt; 1e-04 ***
-nodecov.Population  1.103e-07  4.188e-08      0   2.634  0.00843 ** 
-nodematch.Coastal   8.241e-01  2.671e-01      0   3.085  0.00203 ** 
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+     <span class="n">Null</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">873.4</span>  <span class="n">on</span> <span class="m">630</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
+ <span class="n">Residual</span> <span class="n">Deviance</span><span class="o">:</span> <span class="m">428.0</span>  <span class="n">on</span> <span class="m">627</span>  <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span>
 
-     Null Deviance: 873.4  on 630  degrees of freedom
- Residual Deviance: 428.0  on 627  degrees of freedom
-
-AIC: 434    BIC: 447.3    (Smaller is better.)</code></pre>
+<span class="n">AIC</span><span class="o">:</span> <span class="m">434</span>    <span class="n">BIC</span><span class="o">:</span> <span class="m">447.3</span>    <span class="p">(</span><span class="n">Smaller</span> <span class="n">is</span> <span class="n">better.</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
