@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/portfolio/python/r/api/nlp/2017/04/15/SentimentAnalysis.html</loc>
+<loc>/portfolio/api/nlp/python/nltk/r/2017/04/15/SentimentAnalysis.html</loc>
 <lastmod>2017-04-15T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -13,11 +13,11 @@
 <lastmod>2018-11-07T00:00:00-06:00</lastmod>
 </url>
 <url>
-<loc>/portfolio/2019/02/12/VisualizationProject.html</loc>
+<loc>/portfolio/translation%20industry/visualization/python/seaborn/2019/02/12/VisualizationProject.html</loc>
 <lastmod>2019-02-12T00:00:00-06:00</lastmod>
 </url>
 <url>
-<loc>/portfolio/2019/03/14/NetworkProject_R.html</loc>
+<loc>/portfolio/airline%20industry/network%20modeling/community%20detection/visualization/r/2019/03/14/NetworkProject_R.html</loc>
 <lastmod>2019-03-14T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -25,11 +25,11 @@
 <lastmod>2019-03-15T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>/portfolio/2019/04/06/TextMiningProject.html</loc>
+<loc>/portfolio/nlp/topic%20modeling/network%20analysis/python/gensim/spacy/pyldavis/igraph/2019/04/06/TextMiningProject.html</loc>
 <lastmod>2019-04-06T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>/portfolio/2019/04/22/OpenSky.html</loc>
+<loc>/portfolio/airline%20industry/ads-b/api/python/urllib/2019/04/22/OpenSky.html</loc>
 <lastmod>2019-04-22T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -50,6 +50,6 @@
 </url>
 <url>
 <loc>/portfolio/AnnualReport2018.pdf</loc>
-<lastmod>2020-09-25T12:32:48-05:00</lastmod>
+<lastmod>2020-09-25T13:00:31-05:00</lastmod>
 </url>
 </urlset>
