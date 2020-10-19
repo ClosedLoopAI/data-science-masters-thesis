@@ -98,7 +98,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      40 min read
+      44 min read
     
 </span></p>
 
@@ -659,7 +659,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_E</span> <span class="o">=</span> <span class="n">df_E</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'e_id'</span><span class="p">,</span><span class="s1">'t_senc'</span><span class="p">,</span><span class="s1">'s_typ'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_id'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_eis'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#each record now unique</span>
-<span class="n">df_E</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_E</span>
 </pre></div>
 
     </div>
@@ -745,8 +745,63 @@ window.onload = wrap_img;
       <td>224465</td>
       <td>May we, as His servants, understand His Word, that we were in His fellowship then, and that now that we are risen with Him and setting together in Heavenly places.</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>167284</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>831</td>
+      <td>707747</td>
+      <td>What else could we desire above Jesus Himself?</td>
+    </tr>
+    <tr>
+      <th>167285</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>832</td>
+      <td>707748</td>
+      <td>Is He not everything, even Perfect Everything?</td>
+    </tr>
+    <tr>
+      <th>167286</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>833</td>
+      <td>707749</td>
+      <td>He that hath an ear let him hear what the Spirit saith to the churches.</td>
+    </tr>
+    <tr>
+      <th>167287</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>834</td>
+      <td>707750</td>
+      <td>Amen.</td>
+    </tr>
+    <tr>
+      <th>167288</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>835</td>
+      <td>707751</td>
+      <td>Even so, Lord God, by Thy Spirit, let us hear Thy truth.</td>
+    </tr>
   </tbody>
 </table>
+<p>167289 rows × 6 columns</p>
 </div>
 </div>
 
@@ -929,7 +984,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_E</span><span class="p">[</span><span class="s1">'chars'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
 <span class="c1"># df_E['chars'] = [len(e) if type(e)==str else 1 for e in df_E['e_content']]</span>
-<span class="n">df_E</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_E</span>
 </pre></div>
 
     </div>
@@ -1021,8 +1076,69 @@ window.onload = wrap_img;
       <td>May we, as His servants, understand His Word, that we were in His fellowship then, and that now that we are risen with Him and setting together in Heavenly places.</td>
       <td>163</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>167284</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>831</td>
+      <td>707747</td>
+      <td>What else could we desire above Jesus Himself?</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>167285</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>832</td>
+      <td>707748</td>
+      <td>Is He not everything, even Perfect Everything?</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>167286</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>833</td>
+      <td>707749</td>
+      <td>He that hath an ear let him hear what the Spirit saith to the churches.</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>167287</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>834</td>
+      <td>707750</td>
+      <td>Amen.</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>167288</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>835</td>
+      <td>707751</td>
+      <td>Even so, Lord God, by Thy Spirit, let us hear Thy truth.</td>
+      <td>56</td>
+    </tr>
   </tbody>
 </table>
+<p>167289 rows × 7 columns</p>
 </div>
 </div>
 
@@ -1126,7 +1242,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/</span>
 <span class="n">df_E</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\w+'</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
-<span class="n">df_E</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_E</span>
 </pre></div>
 
     </div>
@@ -1224,8 +1340,75 @@ window.onload = wrap_img;
       <td>163</td>
       <td>30</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>167284</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>831</td>
+      <td>707747</td>
+      <td>What else could we desire above Jesus Himself?</td>
+      <td>46</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>167285</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>832</td>
+      <td>707748</td>
+      <td>Is He not everything, even Perfect Everything?</td>
+      <td>46</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>167286</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>833</td>
+      <td>707749</td>
+      <td>He that hath an ear let him hear what the Spirit saith to the churches.</td>
+      <td>71</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>167287</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>834</td>
+      <td>707750</td>
+      <td>Amen.</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>167288</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101-b</td>
+      <td>835</td>
+      <td>707751</td>
+      <td>Even so, Lord God, by Thy Spirit, let us hear Thy truth.</td>
+      <td>56</td>
+      <td>12</td>
+    </tr>
   </tbody>
 </table>
+<p>167289 rows × 8 columns</p>
 </div>
 </div>
 
@@ -1245,7 +1428,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_E</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'-'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]]</span>
-<span class="n">df_E</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_E</span>
 </pre></div>
 
     </div>
@@ -1343,8 +1526,75 @@ window.onload = wrap_img;
       <td>163</td>
       <td>30</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>167284</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101</td>
+      <td>831</td>
+      <td>707747</td>
+      <td>What else could we desire above Jesus Himself?</td>
+      <td>46</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>167285</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101</td>
+      <td>832</td>
+      <td>707748</td>
+      <td>Is He not everything, even Perfect Everything?</td>
+      <td>46</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>167286</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101</td>
+      <td>833</td>
+      <td>707749</td>
+      <td>He that hath an ear let him hear what the Spirit saith to the churches.</td>
+      <td>71</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>167287</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101</td>
+      <td>834</td>
+      <td>707750</td>
+      <td>Amen.</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>167288</th>
+      <td>CAB-06</td>
+      <td>ENG</td>
+      <td>18-1101</td>
+      <td>835</td>
+      <td>707751</td>
+      <td>Even so, Lord God, by Thy Spirit, let us hear Thy truth.</td>
+      <td>56</td>
+      <td>12</td>
+    </tr>
   </tbody>
 </table>
+<p>167289 rows × 8 columns</p>
 </div>
 </div>
 
@@ -1372,16 +1622,13 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V = pd.read_csv(f'{PATH}/contributions/1965-0829_SatansEden_FIJ_15-1104-B123_V-contributions.csv', sep='~')</span>
-
-<span class="n">all_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">PATH</span><span class="si">}</span><span class="s2">/contributions/*V-contributions.csv"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">PATH</span><span class="si">}</span><span class="s2">/contributions/*V-contributions.csv"</span><span class="p">)</span>
 <span class="n">li</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
     <span class="n">dft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'~'</span><span class="p">)</span>
     <span class="n">li</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>
 <span class="n">df_V</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">df_V</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_V</span>
 </pre></div>
 
     </div>
@@ -1539,8 +1786,135 @@ window.onload = wrap_img;
       <td>linoli</td>
       <td>Ons glo dat U Jesus opgewek het uit die dode, baie jare gelede, en vandag vier ons hierdie aandenking.</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>382737</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>835</td>
+      <td>18-1101-B123</td>
+      <td>n</td>
+      <td>833</td>
+      <td>610356</td>
+      <td>M</td>
+      <td>610356.0</td>
+      <td>M</td>
+      <td>1061632</td>
+      <td>2020-05-25 02:44:38.590448</td>
+      <td>V</td>
+      <td>12</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Hy wat 'n oor het laat hom hoor wat die Gees aan die gemeentes sê.</td>
+    </tr>
+    <tr>
+      <th>382738</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>835</td>
+      <td>18-1101-B123</td>
+      <td>n</td>
+      <td>834</td>
+      <td>610357</td>
+      <td>M</td>
+      <td>610357.0</td>
+      <td>M</td>
+      <td>1061633</td>
+      <td>2020-05-25 02:44:42.21845</td>
+      <td>V</td>
+      <td>3</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Amen.</td>
+    </tr>
+    <tr>
+      <th>382739</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>835</td>
+      <td>18-1101-B123</td>
+      <td>n</td>
+      <td>834</td>
+      <td>610357</td>
+      <td>M</td>
+      <td>494412.0</td>
+      <td>N</td>
+      <td>874368</td>
+      <td>2020-02-02 00:24:14.79957</td>
+      <td>V</td>
+      <td>0</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+      <td>Amen.</td>
+    </tr>
+    <tr>
+      <th>382740</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>835</td>
+      <td>18-1101-B123</td>
+      <td>n</td>
+      <td>835</td>
+      <td>610358</td>
+      <td>M</td>
+      <td>610358.0</td>
+      <td>M</td>
+      <td>1061634</td>
+      <td>2020-05-25 02:44:56.991446</td>
+      <td>V</td>
+      <td>14</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Selfs so, Here God, deur U Gees, laat ons U waarheid hoor.</td>
+    </tr>
+    <tr>
+      <th>382741</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>835</td>
+      <td>18-1101-B123</td>
+      <td>n</td>
+      <td>835</td>
+      <td>610358</td>
+      <td>M</td>
+      <td>494413.0</td>
+      <td>N</td>
+      <td>874370</td>
+      <td>2020-02-02 00:24:42.429672</td>
+      <td>V</td>
+      <td>0</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+      <td>Selfs so, Here God, deur U Gees, laat ons U waarheid hoor.</td>
+    </tr>
   </tbody>
 </table>
+<p>382742 rows × 18 columns</p>
 </div>
 </div>
 
@@ -1559,27 +1933,8 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V[df_V['be_top'].isna()] #are these due to a bug???</span>
-<span class="c1"># df_V[df_V['e_top'].isna()]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V = df_V.drop(['t_senc','s_typ','e_id','be_id','be_top','c_created_at','c_eis','c_base'], axis=1)</span>
-<span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'t_senc'</span><span class="p">,</span><span class="s1">'s_typ'</span><span class="p">,</span><span class="s1">'be_id'</span><span class="p">,</span><span class="s1">'c_eis'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df_V</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'t_senc'</span><span class="p">,</span><span class="s1">'s_typ'</span><span class="p">,</span><span class="s1">'be_id'</span><span class="p">,</span><span class="s1">'c_eis'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_V</span>
 </pre></div>
 
     </div>
@@ -1713,49 +2068,116 @@ window.onload = wrap_img;
       <td>linoli</td>
       <td>Ons glo dat U Jesus opgewek het uit die dode, baie jare gelede, en vandag vier ons hierdie aandenking.</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>382737</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>18-1101-B123</td>
+      <td>833</td>
+      <td>610356</td>
+      <td>M</td>
+      <td>M</td>
+      <td>1061632</td>
+      <td>2020-05-25 02:44:38.590448</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Hy wat 'n oor het laat hom hoor wat die Gees aan die gemeentes sê.</td>
+    </tr>
+    <tr>
+      <th>382738</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>18-1101-B123</td>
+      <td>834</td>
+      <td>610357</td>
+      <td>M</td>
+      <td>M</td>
+      <td>1061633</td>
+      <td>2020-05-25 02:44:42.21845</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Amen.</td>
+    </tr>
+    <tr>
+      <th>382739</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>18-1101-B123</td>
+      <td>834</td>
+      <td>610357</td>
+      <td>M</td>
+      <td>N</td>
+      <td>874368</td>
+      <td>2020-02-02 00:24:14.79957</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+      <td>Amen.</td>
+    </tr>
+    <tr>
+      <th>382740</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>18-1101-B123</td>
+      <td>835</td>
+      <td>610358</td>
+      <td>M</td>
+      <td>M</td>
+      <td>1061634</td>
+      <td>2020-05-25 02:44:56.991446</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+      <td>Selfs so, Here God, deur U Gees, laat ons U waarheid hoor.</td>
+    </tr>
+    <tr>
+      <th>382741</th>
+      <td>CAB-06</td>
+      <td>AFR</td>
+      <td>18-1101-B123</td>
+      <td>835</td>
+      <td>610358</td>
+      <td>M</td>
+      <td>N</td>
+      <td>874370</td>
+      <td>2020-02-02 00:24:42.429672</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+      <td>Selfs so, Here God, deur U Gees, laat ons U waarheid hoor.</td>
+    </tr>
   </tbody>
 </table>
+<p>382742 rows × 14 columns</p>
 </div>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V[df_V['a_role']=='TE']</span>
-<span class="c1"># df_V[df_V['a_role']=='CE']</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V['e_top'].unique()</span>
-<span class="c1"># df_V[~df_V['e_top'].isin(['M','T'])] #show others first before reassigning df</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
