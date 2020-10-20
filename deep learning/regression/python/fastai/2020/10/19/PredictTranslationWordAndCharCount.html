@@ -92,13 +92,13 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">**Predict Translation Word And Char Count**</h1><p class="page-description">Prediction of translated Word or Char Count is used as a Quality or Validation Check</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-19T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Predict Translation Word And Char Count</h1><p class="page-description">Prediction of translated Word or Char Count is used as a Quality or Validation Check</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-19T00:00:00-05:00" itemprop="datePublished">
         Oct 19, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      26 min read
+      28 min read
     
 </span></p>
 
@@ -125,6 +125,9 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Purpose">Purpose </a></li>
+<li class="toc-entry toc-h2"><a href="#Dataset-and-Variables">Dataset and Variables </a></li>
+<li class="toc-entry toc-h1"><a href="#Setup-the-Environment">Setup the Environment </a></li>
 <li class="toc-entry toc-h1"><a href="#Get-train/valid-data">Get train/valid data </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Ingest-all-E-contributions">Ingest all E-contributions </a></li>
@@ -153,6 +156,75 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Purpose">
+<a class="anchor" href="#Purpose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Purpose<a class="anchor-link" href="#Purpose"> </a>
+</h2>
+<p>Machine translation is used increasingly to lighten the load of human translators. The critical component here is the <em>translation engine</em> which is a model that takes a sequence of source words and outputs another sequence of translated words. To train such a model many thousands of sentence pairs need to be aligned for training examples.</p>
+<p>There is a relationship between the number of words (and the number of characters) in the source language and the target language. If this relationship can be established and captured in yet another model, such a model can be helpful in at least two ways:</p>
+<ul>
+<li>For training: Validate the alignment of two sentences (in a training example) by comparing their <em>word size</em> and/or <em>character size</em>
+</li>
+<li>For inference: Validate the <em>word size</em> and/or <em>character size</em> of a translated/proofread sentence</li>
+</ul>
+<p>The purpose of this project is to discover such a model for a variety of languages and to evaluate its use in the above roles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dataset-and-Variables">
+<a class="anchor" href="#Dataset-and-Variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset and Variables<a class="anchor-link" href="#Dataset-and-Variables"> </a>
+</h2>
+<p>The dataset comes in the form of <em>contributions</em>, each captures in one of 167289 rows or data-points. Each contribution is a sentence that could be in the source language (always English) or a translation of the source sentence. There could be many variations/versions of a translated sentence, including the version provided by the translation engine initially. Human proofreaders then provide their own corrections in the form of other versions.</p>
+<p>There are 4 kinds of contributions:</p>
+<ul>
+<li>E: English contributions</li>
+<li>T: Translate contributions - provided by the translation engine</li>
+<li>C: Create contributions - corrections provided by human proofreaders/translators</li>
+<li>V: Vote contributions - whenever a human proofreader/translator indicates agreement with a contribution provided by the translation engine, it is recorded in the form of a vote contribution</li>
+</ul>
+<p>The features of the dataset are:</p>
+<ul>
+<li>m_descriptor: Unique identifier of a document</li>
+<li>t_lan: Language of the translation (English is also considered a translation)</li>
+<li>t_senc: Number of sentences in a document</li>
+<li>t_version: Version of a translation</li>
+<li>s_typ: Type of the sentence</li>
+<li>s_rsen: Number of a sentence within a document</li>
+<li>e_id: Database primary key of a contribution's content</li>
+<li>e_top: Content of the contribution that got the most votes</li>
+<li>be_id: N/A</li>
+<li>be_top: N/A</li>
+<li>c_id: Database primary key of a contribution</li>
+<li>c_created_at: Creation time of a contribution</li>
+<li>c_kind: Kind of a contribution</li>
+<li>c_eis: N/A</li>
+<li>c_base: N/A</li>
+<li>a_role: N/A</li>
+<li>u_name: N/A</li>
+<li>e_content: Text content of a contribution</li>
+<li>chars: Number of characters in a contribution</li>
+<li>words: Number of words in a contribution</li>
+</ul>
+<p>In this notebook we will only prepare the dataset. Exploratory data analysis as well as modeling will occur in followup notebooks.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Setup-the-Environment">
+<a class="anchor" href="#Setup-the-Environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup the Environment<a class="anchor-link" href="#Setup-the-Environment"> </a>
+</h1>
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -170,30 +242,6 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>     |████████████████████████████████| 727kB 2.8MB/s 
-     |████████████████████████████████| 194kB 13.4MB/s 
-     |████████████████████████████████| 51kB 5.2MB/s 
-     |████████████████████████████████| 1.0MB 12.0MB/s 
-     |████████████████████████████████| 51kB 6.6MB/s 
-     |████████████████████████████████| 51kB 6.9MB/s 
-     |████████████████████████████████| 92kB 9.6MB/s 
-     |████████████████████████████████| 40kB 5.7MB/s 
-     |████████████████████████████████| 51kB 7.0MB/s 
-     |████████████████████████████████| 61kB 7.8MB/s 
-     |████████████████████████████████| 2.6MB 22.0MB/s 
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
