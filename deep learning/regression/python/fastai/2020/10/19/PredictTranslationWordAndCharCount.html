@@ -98,7 +98,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      24 min read
+      26 min read
     
 </span></p>
 
@@ -180,16 +180,16 @@ window.onload = wrap_img;
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>     |████████████████████████████████| 727kB 2.8MB/s 
-     |████████████████████████████████| 51kB 4.9MB/s 
-     |████████████████████████████████| 51kB 3.8MB/s 
-     |████████████████████████████████| 194kB 9.2MB/s 
-     |████████████████████████████████| 1.0MB 13.1MB/s 
+     |████████████████████████████████| 194kB 14.0MB/s 
+     |████████████████████████████████| 1.0MB 7.1MB/s 
      |████████████████████████████████| 51kB 6.5MB/s 
-     |████████████████████████████████| 40kB 4.8MB/s 
-     |████████████████████████████████| 92kB 8.1MB/s 
-     |████████████████████████████████| 61kB 6.5MB/s 
-     |████████████████████████████████| 51kB 3.5MB/s 
-     |████████████████████████████████| 2.6MB 17.5MB/s 
+     |████████████████████████████████| 51kB 7.5MB/s 
+     |████████████████████████████████| 51kB 7.5MB/s 
+     |████████████████████████████████| 92kB 9.1MB/s 
+     |████████████████████████████████| 40kB 5.9MB/s 
+     |████████████████████████████████| 51kB 7.1MB/s 
+     |████████████████████████████████| 61kB 7.7MB/s 
+     |████████████████████████████████| 2.6MB 15.6MB/s 
 </pre>
 </div>
 </div>
@@ -356,9 +356,165 @@ window.onload = wrap_img;
     <span class="n">dft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'~'</span><span class="p">)</span>
     <span class="n">li</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>
 <span class="n">df_E</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_E</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_senc</th>
+      <th>t_version</th>
+      <th>s_typ</th>
+      <th>s_rsen</th>
+      <th>e_id</th>
+      <th>e_top</th>
+      <th>be_id</th>
+      <th>be_top</th>
+      <th>c_id</th>
+      <th>c_created_at</th>
+      <th>c_kind</th>
+      <th>c_eis</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>1870</td>
+      <td>18-0101-E1R</td>
+      <td>n</td>
+      <td>1</td>
+      <td>174684</td>
+      <td>Z</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>224461</td>
+      <td>2018-03-29 23:10:24.573038</td>
+      <td>E</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>EP</td>
+      <td>kobest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>1870</td>
+      <td>18-0101-E1R</td>
+      <td>n</td>
+      <td>2</td>
+      <td>174685</td>
+      <td>Z</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>224462</td>
+      <td>2018-03-29 23:10:24.595501</td>
+      <td>E</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>EP</td>
+      <td>kobest</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>1870</td>
+      <td>18-0101-E1R</td>
+      <td>n</td>
+      <td>3</td>
+      <td>174686</td>
+      <td>Z</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>224463</td>
+      <td>2018-03-29 23:10:24.628362</td>
+      <td>E</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>EP</td>
+      <td>kobest</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>1870</td>
+      <td>18-0101-E1R</td>
+      <td>n</td>
+      <td>4</td>
+      <td>174687</td>
+      <td>Z</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>224464</td>
+      <td>2018-03-29 23:10:24.650119</td>
+      <td>E</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>EP</td>
+      <td>kobest</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>1870</td>
+      <td>18-0101-E1R</td>
+      <td>n</td>
+      <td>5</td>
+      <td>174688</td>
+      <td>Z</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>224465</td>
+      <td>2018-03-29 23:10:24.670806</td>
+      <td>E</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>EP</td>
+      <td>kobest</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -373,9 +529,93 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_E</span> <span class="o">=</span> <span class="n">df_E</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'e_id'</span><span class="p">,</span><span class="s1">'t_senc'</span><span class="p">,</span><span class="s1">'s_typ'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_id'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_eis'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#each record now unique</span>
+<span class="n">df_E</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>1</td>
+      <td>224461</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>2</td>
+      <td>224462</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>3</td>
+      <td>224463</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>4</td>
+      <td>224464</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>5</td>
+      <td>224465</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -556,9 +796,108 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add chars column</span>
 <span class="n">df_E</span><span class="p">[</span><span class="s1">'chars'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
 <span class="c1"># df_E['chars'] = [len(e) if type(e)==str else 1 for e in df_E['e_content']]</span>
+<span class="n">df_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+      <th>chars</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>1</td>
+      <td>224461</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>2</td>
+      <td>224462</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>3</td>
+      <td>224463</td>
+      <td>109</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>4</td>
+      <td>224464</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>5</td>
+      <td>224465</td>
+      <td>163</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>6</td>
+      <td>224466</td>
+      <td>96</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -659,9 +998,115 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add words column</span>
 <span class="c1">#https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/</span>
 <span class="n">df_E</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\w+'</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
+<span class="n">df_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>1</td>
+      <td>224461</td>
+      <td>21</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>2</td>
+      <td>224462</td>
+      <td>225</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>3</td>
+      <td>224463</td>
+      <td>109</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>4</td>
+      <td>224464</td>
+      <td>49</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>5</td>
+      <td>224465</td>
+      <td>163</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101-E1R</td>
+      <td>6</td>
+      <td>224466</td>
+      <td>96</td>
+      <td>17</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -677,9 +1122,115 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#remove BER from t_version</span>
 <span class="n">df_E</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'-'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_E</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]]</span>
+<span class="n">df_E</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>1</td>
+      <td>224461</td>
+      <td>21</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>2</td>
+      <td>224462</td>
+      <td>225</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>3</td>
+      <td>224463</td>
+      <td>109</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>4</td>
+      <td>224464</td>
+      <td>49</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>5</td>
+      <td>224465</td>
+      <td>163</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1965-0418x</td>
+      <td>ENG</td>
+      <td>18-0101</td>
+      <td>6</td>
+      <td>224466</td>
+      <td>96</td>
+      <td>17</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -708,9 +1259,165 @@ window.onload = wrap_img;
     <span class="n">dft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'~'</span><span class="p">)</span>
     <span class="n">li</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>
 <span class="n">df_V</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_senc</th>
+      <th>t_version</th>
+      <th>s_typ</th>
+      <th>s_rsen</th>
+      <th>e_id</th>
+      <th>e_top</th>
+      <th>be_id</th>
+      <th>be_top</th>
+      <th>c_id</th>
+      <th>c_created_at</th>
+      <th>c_kind</th>
+      <th>c_eis</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>181444.0</td>
+      <td>M</td>
+      <td>844713</td>
+      <td>2020-01-15 02:13:34.847562</td>
+      <td>V</td>
+      <td>11</td>
+      <td>a</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>181444.0</td>
+      <td>M</td>
+      <td>256723</td>
+      <td>2018-04-23 11:04:31.787641</td>
+      <td>V</td>
+      <td>28</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>2</td>
+      <td>339948</td>
+      <td>T</td>
+      <td>200635.0</td>
+      <td>N</td>
+      <td>468379</td>
+      <td>2019-01-30 22:21:29.62162</td>
+      <td>V</td>
+      <td>0</td>
+      <td>c</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>2</td>
+      <td>200635</td>
+      <td>N</td>
+      <td>181445.0</td>
+      <td>N</td>
+      <td>256725</td>
+      <td>2018-04-23 11:23:43.781013</td>
+      <td>V</td>
+      <td>0</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>3</td>
+      <td>200637</td>
+      <td>M</td>
+      <td>200636.0</td>
+      <td>N</td>
+      <td>256727</td>
+      <td>2018-04-23 11:26:37.965897</td>
+      <td>V</td>
+      <td>0</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -725,9 +1432,141 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'t_senc'</span><span class="p">,</span><span class="s1">'s_typ'</span><span class="p">,</span><span class="s1">'be_id'</span><span class="p">,</span><span class="s1">'c_eis'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_id</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_id</th>
+      <th>c_created_at</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>M</td>
+      <td>844713</td>
+      <td>2020-01-15 02:13:34.847562</td>
+      <td>V</td>
+      <td>a</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>M</td>
+      <td>256723</td>
+      <td>2018-04-23 11:04:31.787641</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>2</td>
+      <td>339948</td>
+      <td>T</td>
+      <td>N</td>
+      <td>468379</td>
+      <td>2019-01-30 22:21:29.62162</td>
+      <td>V</td>
+      <td>c</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>2</td>
+      <td>200635</td>
+      <td>N</td>
+      <td>N</td>
+      <td>256725</td>
+      <td>2018-04-23 11:23:43.781013</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>3</td>
+      <td>200637</td>
+      <td>M</td>
+      <td>N</td>
+      <td>256727</td>
+      <td>2018-04-23 11:26:37.965897</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -744,9 +1583,141 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#keep only top edits</span>
 <span class="c1"># df_V[df_V['e_top'].isin(['M','T'])] #Majority &amp; Tie</span>
 <span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="p">[</span><span class="n">df_V</span><span class="p">[</span><span class="s1">'e_top'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'M'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">])]</span> <span class="c1">#Majority &amp; Tie</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_id</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_id</th>
+      <th>c_created_at</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>M</td>
+      <td>844713</td>
+      <td>2020-01-15 02:13:34.847562</td>
+      <td>V</td>
+      <td>a</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>M</td>
+      <td>256723</td>
+      <td>2018-04-23 11:04:31.787641</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>2</td>
+      <td>339948</td>
+      <td>T</td>
+      <td>N</td>
+      <td>468379</td>
+      <td>2019-01-30 22:21:29.62162</td>
+      <td>V</td>
+      <td>c</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>3</td>
+      <td>200637</td>
+      <td>M</td>
+      <td>N</td>
+      <td>256727</td>
+      <td>2018-04-23 11:26:37.965897</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>linoli</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>18-0101-B123E1R</td>
+      <td>3</td>
+      <td>200637</td>
+      <td>M</td>
+      <td>M</td>
+      <td>468380</td>
+      <td>2019-01-30 22:21:51.780404</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -778,9 +1749,221 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'m_descriptor'</span><span class="p">,</span> <span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'e_top'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'be_top'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'c_created_at'</span><span class="p">:[</span><span class="s1">'last'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">],</span> <span class="s1">'c_kind'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'c_base'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'a_role'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'u_name'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">,</span> <span class="s1">'e_content'</span><span class="p">:</span><span class="s1">'last'</span><span class="p">})</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th colspan="2" halign="left">c_created_at</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+      <th>count</th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+    </tr>
+    <tr>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">1948-0304</th>
+      <th rowspan="5" valign="top">GER</th>
+      <th rowspan="5" valign="top">15-0902-B123</th>
+      <th>1</th>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">CAB-06</th>
+      <th rowspan="5" valign="top">AFR</th>
+      <th rowspan="5" valign="top">18-1101-B123</th>
+      <th>831</th>
+      <td>T</td>
+      <td>N</td>
+      <td>2020-05-25 02:43:59.956802</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>832</th>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 02:44:26.239919</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>833</th>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 02:44:38.590448</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>CE</td>
+      <td>engest</td>
+    </tr>
+    <tr>
+      <th>834</th>
+      <td>M</td>
+      <td>N</td>
+      <td>2020-02-02 00:24:14.79957</td>
+      <td>2</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>M</td>
+      <td>N</td>
+      <td>2020-02-02 00:24:42.429672</td>
+      <td>2</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>tilvan</td>
+    </tr>
+  </tbody>
+</table>
+<p>248389 rows × 8 columns</p>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -817,9 +2000,165 @@ window.onload = wrap_img;
     <span class="n">dft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'~'</span><span class="p">)</span>
     <span class="n">li</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dft</span><span class="p">)</span>
 <span class="n">df_T</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_T</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_senc</th>
+      <th>t_version</th>
+      <th>s_typ</th>
+      <th>s_rsen</th>
+      <th>e_id</th>
+      <th>e_top</th>
+      <th>be_id</th>
+      <th>be_top</th>
+      <th>c_id</th>
+      <th>c_created_at</th>
+      <th>c_kind</th>
+      <th>c_eis</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>1</td>
+      <td>181444</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>231225</td>
+      <td>2018-03-30 13:05:50.489319</td>
+      <td>T</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MT</td>
+      <td>todmo-2.0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>2</td>
+      <td>181445</td>
+      <td>N</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>231226</td>
+      <td>2018-03-30 13:05:50.524888</td>
+      <td>T</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MT</td>
+      <td>todmo-2.0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>3</td>
+      <td>181446</td>
+      <td>N</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>231227</td>
+      <td>2018-03-30 13:05:50.56683</td>
+      <td>T</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MT</td>
+      <td>todmo-2.0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>4</td>
+      <td>181447</td>
+      <td>N</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>231228</td>
+      <td>2018-03-30 13:05:50.601543</td>
+      <td>T</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MT</td>
+      <td>todmo-2.0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1965-0418x</td>
+      <td>AFR</td>
+      <td>1870</td>
+      <td>18-0101-B123E1R</td>
+      <td>n</td>
+      <td>5</td>
+      <td>181448</td>
+      <td>N</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>231229</td>
+      <td>2018-03-30 13:05:50.635029</td>
+      <td>T</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MT</td>
+      <td>todmo-2.0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -998,9 +2337,149 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_V</span> <span class="o">=</span> <span class="n">df_V</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th colspan="2" halign="left">c_created_at</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+      <th>count</th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1315,461 +2794,9 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#handle NaNs in e_content</span>
 <span class="n">e_content_nans</span> <span class="o">=</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
-<span class="n">df_V</span><span class="p">[</span><span class="n">e_content_nans</span><span class="p">]</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>m_descriptor</th>
-      <th>t_lan</th>
-      <th>t_version</th>
-      <th>s_rsen</th>
-      <th>e_top</th>
-      <th>be_top</th>
-      <th>c_created_at</th>
-      <th>c_created_at_count</th>
-      <th>c_kind</th>
-      <th>c_base</th>
-      <th>a_role</th>
-      <th>u_name</th>
-      <th>e_content</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>15724</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1102</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-06-11 09:12:28.088006</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>15775</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-06-15 03:25:11.855078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>30871</th>
-      <td>1955-1118</td>
-      <td>CHN</td>
-      <td>15-0401-h</td>
-      <td>18</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2018-01-06 19:20:40.907983</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>estzhe</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>33361</th>
-      <td>1956-0805</td>
-      <td>CHN</td>
-      <td>15-0402-h</td>
-      <td>1176</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-07-24 00:12:14.971666</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>corche</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>34819</th>
-      <td>1957-0114</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>1204</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-05-13 03:47:44.384779</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>35746</th>
-      <td>1957-0120x</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>360</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-02-01 06:08:24.434038</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>42964</th>
-      <td>1957-0419</td>
-      <td>BEM</td>
-      <td>15-0401-B123</td>
-      <td>505</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-05-31 07:05:46.896578</td>
-      <td>2</td>
-      <td>V</td>
-      <td>a</td>
-      <td>CE</td>
-      <td>marmwa</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>55587</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>123</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-08-20 13:16:51.415398</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>55749</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>285</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-08-27 01:45:11.773081</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56098</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>634</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-01 02:36:08.515518</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56326</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>862</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:13:59.529688</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56361</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>897</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:21:49.99019</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56362</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>898</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:02.231998</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56363</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>899</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:08.276047</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56364</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>900</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:37.933537</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56365</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>901</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:50.554829</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56366</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>902</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:02.436897</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56367</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>903</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:09.395605</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56368</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>904</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:22.975408</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56369</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>905</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:34.411307</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56370</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>906</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:47.23145</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56371</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>907</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:00.698148</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56372</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>908</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:12.476136</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56616</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1152</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:35:58.779078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>56617</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:36:09.230981</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -1787,461 +2814,9 @@ window.onload = wrap_img;
 <span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">e_content_nans</span><span class="p">,</span> <span class="s1">'e_content'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span>
 <span class="c1"># df_V.loc[e_content_nans, ['e_content']]</span>
 <span class="c1"># OR</span>
-<span class="n">df_V</span><span class="p">[</span><span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]</span><span class="o">==</span><span class="s1">''</span><span class="p">]</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>m_descriptor</th>
-      <th>t_lan</th>
-      <th>t_version</th>
-      <th>s_rsen</th>
-      <th>e_top</th>
-      <th>be_top</th>
-      <th>c_created_at</th>
-      <th>c_created_at_count</th>
-      <th>c_kind</th>
-      <th>c_base</th>
-      <th>a_role</th>
-      <th>u_name</th>
-      <th>e_content</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>15724</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1102</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-06-11 09:12:28.088006</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>15775</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-06-15 03:25:11.855078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>30871</th>
-      <td>1955-1118</td>
-      <td>CHN</td>
-      <td>15-0401-h</td>
-      <td>18</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2018-01-06 19:20:40.907983</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>estzhe</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>33361</th>
-      <td>1956-0805</td>
-      <td>CHN</td>
-      <td>15-0402-h</td>
-      <td>1176</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-07-24 00:12:14.971666</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>corche</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>34819</th>
-      <td>1957-0114</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>1204</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-05-13 03:47:44.384779</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>35746</th>
-      <td>1957-0120x</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>360</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-02-01 06:08:24.434038</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>42964</th>
-      <td>1957-0419</td>
-      <td>BEM</td>
-      <td>15-0401-B123</td>
-      <td>505</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-05-31 07:05:46.896578</td>
-      <td>2</td>
-      <td>V</td>
-      <td>a</td>
-      <td>CE</td>
-      <td>marmwa</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>55587</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>123</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-08-20 13:16:51.415398</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>55749</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>285</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-08-27 01:45:11.773081</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56098</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>634</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-01 02:36:08.515518</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56326</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>862</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:13:59.529688</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56361</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>897</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:21:49.99019</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56362</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>898</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:02.231998</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56363</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>899</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:08.276047</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56364</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>900</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:37.933537</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56365</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>901</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:50.554829</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56366</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>902</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:02.436897</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56367</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>903</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:09.395605</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56368</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>904</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:22.975408</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56369</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>905</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:34.411307</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56370</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>906</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:47.23145</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56371</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>907</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:00.698148</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56372</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>908</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:12.476136</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56616</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1152</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:35:58.779078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>56617</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:36:09.230981</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -2258,25 +2833,7 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add chars column</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'chars'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span> <span class="c1">#TypeError: object of type 'float' has no len()</span>
 <span class="c1"># df_V['chars'] = [len(e) if type(e)==str else 1 for e in df_V['e_content']]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_V.loc[e_content_nans, ['e_content','chars']]</span>
-<span class="c1"># OR</span>
-<span class="n">df_V</span><span class="p">[</span><span class="n">df_V</span><span class="p">[</span><span class="s1">'chars'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -2320,435 +2877,105 @@ window.onload = wrap_img;
       <th>c_base</th>
       <th>a_role</th>
       <th>u_name</th>
-      <th>e_content</th>
       <th>chars</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>15724</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1102</td>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>1</td>
       <td>M</td>
-      <td>M</td>
-      <td>2019-06-11 09:12:28.088006</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
       <td>1</td>
       <td>V</td>
-      <td>a</td>
+      <td>c</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>112</td>
     </tr>
     <tr>
-      <th>15775</th>
-      <td>1953-0405s</td>
-      <td>CHN</td>
-      <td>19-0201-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-06-15 03:25:11.855078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>30871</th>
-      <td>1955-1118</td>
-      <td>CHN</td>
-      <td>15-0401-h</td>
-      <td>18</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2018-01-06 19:20:40.907983</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>estzhe</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>33361</th>
-      <td>1956-0805</td>
-      <td>CHN</td>
-      <td>15-0402-h</td>
-      <td>1176</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-07-24 00:12:14.971666</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>corche</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>34819</th>
-      <td>1957-0114</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>1204</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-05-13 03:47:44.384779</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>35746</th>
-      <td>1957-0120x</td>
-      <td>CHN</td>
-      <td>19-0701-h</td>
-      <td>360</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2020-02-01 06:08:24.434038</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>42964</th>
-      <td>1957-0419</td>
-      <td>BEM</td>
-      <td>15-0401-B123</td>
-      <td>505</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-05-31 07:05:46.896578</td>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
       <td>2</td>
-      <td>V</td>
-      <td>a</td>
-      <td>CE</td>
-      <td>marmwa</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>55587</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>123</td>
       <td>M</td>
       <td>M</td>
-      <td>2019-08-20 13:16:51.415398</td>
+      <td>2019-07-30 13:44:34.151158</td>
       <td>1</td>
       <td>V</td>
       <td>a</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>28</td>
     </tr>
     <tr>
-      <th>55749</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>285</td>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>3</td>
       <td>M</td>
       <td>M</td>
-      <td>2019-08-27 01:45:11.773081</td>
+      <td>2019-07-30 13:44:45.966924</td>
       <td>1</td>
       <td>V</td>
       <td>a</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>41</td>
     </tr>
     <tr>
-      <th>56098</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>634</td>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>4</td>
       <td>M</td>
       <td>M</td>
-      <td>2019-09-01 02:36:08.515518</td>
+      <td>2019-07-30 13:44:53.096079</td>
       <td>1</td>
       <td>V</td>
       <td>a</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>18</td>
     </tr>
     <tr>
-      <th>56326</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>862</td>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>5</td>
       <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:13:59.529688</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
       <td>1</td>
       <td>V</td>
-      <td>a</td>
+      <td>c</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>106</td>
     </tr>
     <tr>
-      <th>56361</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>897</td>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>6</td>
       <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:21:49.99019</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
       <td>1</td>
       <td>V</td>
-      <td>a</td>
+      <td>c</td>
       <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56362</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>898</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:02.231998</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56363</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>899</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:08.276047</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56364</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>900</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:37.933537</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56365</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>901</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:22:50.554829</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56366</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>902</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:02.436897</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56367</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>903</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:09.395605</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56368</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>904</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:22.975408</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56369</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>905</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:34.411307</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56370</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>906</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:23:47.23145</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56371</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>907</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:00.698148</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56372</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>908</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-10 04:24:12.476136</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56616</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1152</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:35:58.779078</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56617</th>
-      <td>1960-0607</td>
-      <td>CHN</td>
-      <td>19-0401-h</td>
-      <td>1153</td>
-      <td>M</td>
-      <td>M</td>
-      <td>2019-09-13 22:36:09.230981</td>
-      <td>1</td>
-      <td>V</td>
-      <td>a</td>
-      <td>TE</td>
-      <td>dawnxu</td>
-      <td></td>
-      <td>0</td>
+      <td>hugmes</td>
+      <td>36</td>
     </tr>
   </tbody>
 </table>
@@ -2773,9 +3000,164 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add words column</span>
 <span class="c1">#https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\w+'</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>c_created_at_count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>106</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>6</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>36</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2808,9 +3190,164 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#remove BER from t_version</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'-'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>c_created_at_count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>106</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>6</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>36</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2834,9 +3371,192 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_joind_EV</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_E</span><span class="p">,</span> <span class="n">df_V</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'m_descriptor'</span><span class="p">,</span> <span class="s1">'t_version'</span><span class="p">,</span> <span class="s1">'s_rsen'</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_E'</span><span class="p">,</span> <span class="s1">'_V'</span><span class="p">),</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_joind_EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan_E'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars_E'</span><span class="p">,</span><span class="s1">'words_E'</span><span class="p">,</span><span class="s1">'t_lan_V'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'u_name'</span><span class="p">,</span><span class="s1">'chars_V'</span><span class="p">,</span><span class="s1">'words_V'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan_E</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+      <th>chars_E</th>
+      <th>words_E</th>
+      <th>t_lan_V</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>c_created_at_count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>u_name</th>
+      <th>chars_V</th>
+      <th>words_V</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>660286</td>
+      <td>98</td>
+      <td>21</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>660286</td>
+      <td>98</td>
+      <td>21</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:14.358631</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>QE</td>
+      <td>kobes2</td>
+      <td>104</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>660287</td>
+      <td>27</td>
+      <td>6</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>660287</td>
+      <td>27</td>
+      <td>6</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:30.820954</td>
+      <td>3</td>
+      <td>V</td>
+      <td>a</td>
+      <td>QE</td>
+      <td>kobes2</td>
+      <td>25</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>660288</td>
+      <td>36</td>
+      <td>7</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>hugmes</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>660288</td>
+      <td>36</td>
+      <td>7</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:42.224382</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>QE</td>
+      <td>kobes2</td>
+      <td>32</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
