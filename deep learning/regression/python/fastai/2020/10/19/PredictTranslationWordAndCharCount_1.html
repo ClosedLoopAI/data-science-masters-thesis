@@ -98,7 +98,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      12 min read
+      13 min read
     
 </span></p>
 
@@ -169,7 +169,7 @@ window.onload = wrap_img;
 <h2 id="Dataset-and-Variables">
 <a class="anchor" href="#Dataset-and-Variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset and Variables<a class="anchor-link" href="#Dataset-and-Variables"> </a>
 </h2>
-<p>The dataset comes in the form of <em>contributions</em>, each captures in one of 167289 rows or data-points. Each contribution is a sentence that could be in the source language (always English) or a translation of the source sentence. There could be many variations/versions of a translated sentence, including the version provided by the translation engine initially. Human proofreaders then provide their own corrections in the form of other versions.</p>
+<p>The dataset comes in the form of <em>contributions</em>, each captured in one of 167289 rows or data-points. Each contribution is a sentence that could be in the source language (always English) or a translation of the source sentence. There could be many variations/versions of a translated sentence, including the version provided by the translation engine initially. Human proofreaders then provide their own corrections in the form of other versions.</p>
 <p>There are 4 kinds of contributions:</p>
 <ul>
 <li>E: English contributions</li>
@@ -231,30 +231,6 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>     |████████████████████████████████| 727kB 4.4MB/s 
-     |████████████████████████████████| 194kB 14.0MB/s 
-     |████████████████████████████████| 51kB 8.2MB/s 
-     |████████████████████████████████| 1.0MB 19.9MB/s 
-     |████████████████████████████████| 51kB 8.3MB/s 
-     |████████████████████████████████| 51kB 8.8MB/s 
-     |████████████████████████████████| 40kB 7.1MB/s 
-     |████████████████████████████████| 92kB 11.4MB/s 
-     |████████████████████████████████| 61kB 9.5MB/s 
-     |████████████████████████████████| 51kB 9.2MB/s 
-     |████████████████████████████████| 2.6MB 35.8MB/s 
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2588,7 +2564,7 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add chars column</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'chars'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span> <span class="c1">#TypeError: object of type 'float' has no len()</span>
 <span class="c1"># df_V['chars'] = [len(e) if type(e)==str else 1 for e in df_V['e_content']]</span>
-<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">]]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
@@ -2600,66 +2576,136 @@ window.onload = wrap_img;
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-59-6f3669492967&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> df_V<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'chars'</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>len<span class="ansi-blue-fg">(</span>e<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> e <span class="ansi-green-fg">in</span> df_V<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'e_content'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span> <span class="ansi-red-fg">#TypeError: object of type 'float' has no len()</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-red-fg"># df_V['chars'] = [len(e) if type(e)==str else 1 for e in df_V['e_content']]</span>
-<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg"> </span>df_V<span class="ansi-blue-fg">.</span>loc<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'m_descriptor'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'t_lan'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'t_version'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'s_rsen'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'e_top'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'be_top'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'c_created_at'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'c_created_at_count'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'c_kind'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'c_base'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'a_role'</span><span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">'chars'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span>
 
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-intense-fg ansi-bold">    871</span>                     <span class="ansi-red-fg"># AttributeError for IntervalTree get_value</span>
-<span class="ansi-green-intense-fg ansi-bold">    872</span>                     <span class="ansi-green-fg">pass</span>
-<span class="ansi-green-fg">--&gt; 873</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_getitem_tuple<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    874</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    875</span>             <span class="ansi-red-fg"># we by definition only have the 0th axis</span>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_getitem_tuple</span><span class="ansi-blue-fg">(self, tup)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1053</span>             <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_multi_take<span class="ansi-blue-fg">(</span>tup<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1054</span> 
-<span class="ansi-green-fg">-&gt; 1055</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_getitem_tuple_same_dim<span class="ansi-blue-fg">(</span>tup<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1056</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1057</span>     <span class="ansi-green-fg">def</span> _get_label<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> label<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">:</span> int<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_getitem_tuple_same_dim</span><span class="ansi-blue-fg">(self, tup)</span>
-<span class="ansi-green-intense-fg ansi-bold">    748</span>                 <span class="ansi-green-fg">continue</span>
-<span class="ansi-green-intense-fg ansi-bold">    749</span> 
-<span class="ansi-green-fg">--&gt; 750</span><span class="ansi-red-fg">             </span>retval <span class="ansi-blue-fg">=</span> getattr<span class="ansi-blue-fg">(</span>retval<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>name<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>_getitem_axis<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span>i<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    751</span>             <span class="ansi-red-fg"># We should never have retval.ndim &lt; self.ndim, as that should</span>
-<span class="ansi-green-intense-fg ansi-bold">    752</span>             <span class="ansi-red-fg">#  be handled by the _getitem_lowerdim call above.</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_getitem_axis</span><span class="ansi-blue-fg">(self, key, axis)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1097</span>                     <span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">"Cannot index with multidimensional key"</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1098</span> 
-<span class="ansi-green-fg">-&gt; 1099</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_getitem_iterable<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span>axis<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1100</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1101</span>             <span class="ansi-red-fg"># nested tuple slicing</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_getitem_iterable</span><span class="ansi-blue-fg">(self, key, axis)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1035</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1036</span>         <span class="ansi-red-fg"># A collection of keys</span>
-<span class="ansi-green-fg">-&gt; 1037</span><span class="ansi-red-fg">         </span>keyarr<span class="ansi-blue-fg">,</span> indexer <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_get_listlike_indexer<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">,</span> raise_missing<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1038</span>         return self.obj._reindex_with_indexers(
-<span class="ansi-green-intense-fg ansi-bold">   1039</span>             <span class="ansi-blue-fg">{</span>axis<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">[</span>keyarr<span class="ansi-blue-fg">,</span> indexer<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">,</span> copy<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> allow_dups<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_get_listlike_indexer</span><span class="ansi-blue-fg">(self, key, axis, raise_missing)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1252</span>             keyarr<span class="ansi-blue-fg">,</span> indexer<span class="ansi-blue-fg">,</span> new_indexer <span class="ansi-blue-fg">=</span> ax<span class="ansi-blue-fg">.</span>_reindex_non_unique<span class="ansi-blue-fg">(</span>keyarr<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1253</span> 
-<span class="ansi-green-fg">-&gt; 1254</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_validate_read_indexer<span class="ansi-blue-fg">(</span>keyarr<span class="ansi-blue-fg">,</span> indexer<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">,</span> raise_missing<span class="ansi-blue-fg">=</span>raise_missing<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1255</span>         <span class="ansi-green-fg">return</span> keyarr<span class="ansi-blue-fg">,</span> indexer
-<span class="ansi-green-intense-fg ansi-bold">   1256</span> 
-
-<span class="ansi-green-fg">/usr/local/lib/python3.6/dist-packages/pandas/core/indexing.py</span> in <span class="ansi-cyan-fg">_validate_read_indexer</span><span class="ansi-blue-fg">(self, key, indexer, axis, raise_missing)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1314</span>                 <span class="ansi-green-fg">with</span> option_context<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">"display.max_seq_items"</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">"display.width"</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">80</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1315</span>                     raise KeyError(
-<span class="ansi-green-fg">-&gt; 1316</span><span class="ansi-red-fg">                         </span><span class="ansi-blue-fg">"Passing list-likes to .loc or [] with any missing labels "</span>
-<span class="ansi-green-intense-fg ansi-bold">   1317</span>                         <span class="ansi-blue-fg">"is no longer supported. "</span>
-<span class="ansi-green-intense-fg ansi-bold">   1318</span>                         <span class="ansi-blue-fg">f"The following labels were missing: {not_found}. "</span>
-
-<span class="ansi-red-fg">KeyError</span>: "Passing list-likes to .loc or [] with any missing labels is no longer supported. The following labels were missing: Index(['c_created_at_count'], dtype='object'). See https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#deprecate-loc-reindex-listlike"</pre>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>chars</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>6</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 
 </div>
@@ -2678,10 +2724,157 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#add words column</span>
 <span class="c1">#https://www.geeksforgeeks.org/python-program-to-count-words-in-a-sentence/</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\w+'</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'e_content'</span><span class="p">]]</span>
-<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>106</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902-B123</td>
+      <td>6</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>36</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2697,10 +2890,157 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#remove BER part from t_version; allows for joining to English contributions</span>
 <span class="n">df_V</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'-'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">df_V</span><span class="p">[</span><span class="s1">'t_version'</span><span class="p">]]</span>
-<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
+<span class="n">df_V</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars'</span><span class="p">,</span><span class="s1">'words'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>chars</th>
+      <th>words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>4</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:53.096079</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>18</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>5</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:45:56.611909</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>106</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>GER</td>
+      <td>15-0902</td>
+      <td>6</td>
+      <td>M</td>
+      <td>N</td>
+      <td>2019-07-30 13:46:34.354399</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>36</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2724,10 +3064,185 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_joind_EV</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_E</span><span class="p">,</span> <span class="n">df_V</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'m_descriptor'</span><span class="p">,</span> <span class="s1">'t_version'</span><span class="p">,</span> <span class="s1">'s_rsen'</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">'_E'</span><span class="p">,</span> <span class="s1">'_V'</span><span class="p">),</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_joind_EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan_E'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars_E'</span><span class="p">,</span><span class="s1">'words_E'</span><span class="p">,</span><span class="s1">'t_lan_V'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'c_created_at_count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars_V'</span><span class="p">,</span><span class="s1">'words_V'</span><span class="p">]]</span>
+<span class="n">df_joind_EV</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,[</span><span class="s1">'m_descriptor'</span><span class="p">,</span><span class="s1">'t_lan_E'</span><span class="p">,</span><span class="s1">'t_version'</span><span class="p">,</span><span class="s1">'s_rsen'</span><span class="p">,</span><span class="s1">'c_id'</span><span class="p">,</span><span class="s1">'chars_E'</span><span class="p">,</span><span class="s1">'words_E'</span><span class="p">,</span><span class="s1">'t_lan_V'</span><span class="p">,</span><span class="s1">'e_top'</span><span class="p">,</span><span class="s1">'be_top'</span><span class="p">,</span><span class="s1">'c_created_at'</span><span class="p">,</span><span class="s1">'count'</span><span class="p">,</span><span class="s1">'c_kind'</span><span class="p">,</span><span class="s1">'c_base'</span><span class="p">,</span><span class="s1">'a_role'</span><span class="p">,</span><span class="s1">'chars_V'</span><span class="p">,</span><span class="s1">'words_V'</span><span class="p">]]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m_descriptor</th>
+      <th>t_lan_E</th>
+      <th>t_version</th>
+      <th>s_rsen</th>
+      <th>c_id</th>
+      <th>chars_E</th>
+      <th>words_E</th>
+      <th>t_lan_V</th>
+      <th>e_top</th>
+      <th>be_top</th>
+      <th>c_created_at</th>
+      <th>count</th>
+      <th>c_kind</th>
+      <th>c_base</th>
+      <th>a_role</th>
+      <th>chars_V</th>
+      <th>words_V</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>660286</td>
+      <td>98</td>
+      <td>21</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>2019-07-30 13:44:14.904495</td>
+      <td>1</td>
+      <td>V</td>
+      <td>c</td>
+      <td>TE</td>
+      <td>112</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>1</td>
+      <td>660286</td>
+      <td>98</td>
+      <td>21</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:14.358631</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>QE</td>
+      <td>104</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>660287</td>
+      <td>27</td>
+      <td>6</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:34.151158</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>28</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>2</td>
+      <td>660287</td>
+      <td>27</td>
+      <td>6</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:30.820954</td>
+      <td>3</td>
+      <td>V</td>
+      <td>a</td>
+      <td>QE</td>
+      <td>25</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>660288</td>
+      <td>36</td>
+      <td>7</td>
+      <td>GER</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2019-07-30 13:44:45.966924</td>
+      <td>1</td>
+      <td>V</td>
+      <td>a</td>
+      <td>TE</td>
+      <td>41</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1948-0304</td>
+      <td>ENG</td>
+      <td>15-0902</td>
+      <td>3</td>
+      <td>660288</td>
+      <td>36</td>
+      <td>7</td>
+      <td>POR</td>
+      <td>M</td>
+      <td>M</td>
+      <td>2020-05-25 18:11:42.224382</td>
+      <td>2</td>
+      <td>V</td>
+      <td>t</td>
+      <td>QE</td>
+      <td>32</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
