@@ -366,7 +366,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set the prefix for files</span>
 <span class="c1"># PREFIX = '19'; print(PREFIX)</span>
-<span class="n">PREFIX</span> <span class="o">=</span> <span class="s1">'CAB'</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">PREFIX</span><span class="p">)</span>
+<span class="n">PREFIX</span> <span class="o">=</span> <span class="s1">'CA'</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">PREFIX</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -379,7 +379,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CAB
+<pre>CA
 </pre>
 </div>
 </div>
@@ -1201,23 +1201,6 @@ outlier char &amp; word data-points: 12
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># java -jar ../../work/utils/separator.jar 0_1965-0711_Ashamed_ENG_18-0101-B123___1965-0711_Ashamed_LUG_18-0101-B123-m.txt</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1352,7 +1335,7 @@ outlier char &amp; word data-points: 12
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># if doing -P files:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># if doing -P files: drop outliers</span>
 <span class="n">df_O</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">out_ixs</span><span class="p">)</span>
 </pre></div>
 
@@ -1624,24 +1607,10 @@ SENTENCE UTILIZATION (AFTER OUTLIER REMOVAL): 0.9670116429495472
 <span class="o">!</span>rm ./0_<span class="s2">"{ENG}"</span>___<span class="s2">"{OTH}"</span>-m.txt
 
 <span class="o">!</span>rm <span class="o">{</span>WORK_PATH<span class="o">}</span>/0_<span class="s2">"{ENG}"</span>___<span class="s2">"{OTH}"</span>-v.txt
-<span class="o">!</span>rm <span class="o">{</span>WORK_PATH<span class="o">}</span>/0_<span class="s2">"{ENG}"</span>___<span class="s2">"{OTH}"</span>-i.txt
+<span class="c1"># !rm {WORK_PATH}/0_"{ENG}"___"{OTH}"-i.txt</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>rm: /Users/kobus/work_lug/tmp/0_CAB-09_TheLaodiceanChurchAge_ENG_18-1101-B123-P___CAB-09_TheLaodiceanChurchAge_LUG_18-1101-B123-P-i.txt: No such file or directory
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
