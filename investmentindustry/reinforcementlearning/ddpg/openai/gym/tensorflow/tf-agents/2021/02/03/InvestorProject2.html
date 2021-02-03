@@ -232,16 +232,17 @@ $$ \Large
 &amp; s_7=\text{Taxable Savings} \\
 \end{align}
 $$<p>The following <strong>actions</strong> (applied monthly) will be setup to influence the environment/investor:</p>
-$$
-\begin{aligned}\Large
+$$ \Large
+\begin{align}
 &amp; a_1=\text{Home Loan Payment Amount} \\
 &amp; a_2=\text{Tax Deferred Deposit Amount} \\
 &amp; a_3=\text{Taxable Deposit Amount} \\
 &amp; a_4=\text{Luxury Spending Amount} \\
-\end{aligned}
+\end{align}
 $$<p>The values of all states and actions will be in terms of millions, i.e. M$ (mega-dollars) in the case of monetary amounts. Neural networks work better with smaller numbers.</p>
 <p>The model of the environment/investor will have the following <strong>parameters</strong>:</p>
-\begin{aligned}\Large
+$$ \Large
+\begin{align}
 &amp; \theta_1=\text{Investor Start Age} \\
 &amp; \theta_2=\text{Investor Retire Age} \\
 &amp; \theta_3=\text{Inflation Rate} \\
@@ -255,7 +256,8 @@ $$<p>The values of all states and actions will be in terms of millions, i.e. M$ 
 &amp; \theta_{11}=\text{Investment Return Rate} \\
 &amp; \theta_{12}=\text{Tax Deferred Contributions Limit (government's annual cap)} \\
 &amp; \theta_{13}=\text{Company Match on Tax Deferred Contributions} \\
-\end{aligned}<p>Rather than having the investor's salary directly as a parameter, we will have two parameters, one for the low value and one for the high value. This makes the model more flexible, in particular during training. The same applies for the two parameters used for the house price. In addition, we will add some variability for the interest rates. The latter variabilities may be considered <em>disturbances</em> experienced by the investor. The agent has the ability to incorporate such disturbances during its operation.</p>
+\end{align}
+$$<p>Rather than having the investor's salary directly as a parameter, we will have two parameters, one for the low value and one for the high value. This makes the model more flexible, in particular during training. The same applies for the two parameters used for the house price. In addition, we will add some variability for the interest rates. The latter variabilities may be considered <em>disturbances</em> experienced by the investor. The agent has the ability to incorporate such disturbances during its operation.</p>
 
 </div>
 </div>
