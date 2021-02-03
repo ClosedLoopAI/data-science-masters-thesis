@@ -221,8 +221,7 @@ window.onload = wrap_img;
 <p>The solution requires the setup of a digital twin for the investor, the client in this case. In RL parlance this model of the investor is called an <strong>environment</strong>. The environment contains <strong>states</strong> which are modified by applying <strong>actions</strong> to it.</p>
 <p>The present solution was inspired by the suggestion of <a href="https://sites.wustl.edu/jeffheaton/">Jeff Heaton</a>, McKelvey School of Engineering, Washington University in St. Louis.</p>
 <p>We will choose the following <strong>states</strong> for the environment:</p>
-$$
-\Large\begin{aligned}
+\begin{aligned}\Large
 &amp; s_1=\text{Age} \\
 &amp; s_2=\text{Salary} \\
 &amp; s_3=\text{Home Value} \\
@@ -230,14 +229,15 @@ $$
 &amp; s_5=\text{Home Required Payment} \\
 &amp; s_6=\text{Tax Deferred Savings} \\
 &amp; s_7=\text{Taxable Savings} \\
-\end{aligned}
-$$<p>The following <strong>actions</strong> (applied monthly) will be setup to influence the environment/investor:</p>
+\end{aligned}<p>The following <strong>actions</strong> (applied monthly) will be setup to influence the environment/investor:</p>
+$$
 \begin{aligned}\Large
 &amp; a_1=\text{Home Loan Payment Amount} \\
 &amp; a_2=\text{Tax Deferred Deposit Amount} \\
 &amp; a_3=\text{Taxable Deposit Amount} \\
 &amp; a_4=\text{Luxury Spending Amount} \\
-\end{aligned}<p>The values of all states and actions will be in terms of millions, i.e. M$ (mega-dollars) in the case of monetary amounts. Neural networks work better with smaller numbers.</p>
+\end{aligned}
+$$<p>The values of all states and actions will be in terms of millions, i.e. M$ (mega-dollars) in the case of monetary amounts. Neural networks work better with smaller numbers.</p>
 <p>The model of the environment/investor will have the following <strong>parameters</strong>:</p>
 \begin{aligned}\Large
 &amp; \theta_1=\text{Investor Start Age} \\
